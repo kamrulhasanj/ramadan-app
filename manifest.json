@@ -1,7 +1,7 @@
 {
-  "name": "Sahru Ramadan APP",
-  "short_name": "Ramadan APP",
-  "description": "Ramadan Schedule, Tracker and Tools",
+  "name": "Shahru Ramadan",
+  "short_name": "Shahru Ramadan",
+  "description": "Shahru Ramadan Schedule, Tracker and Tools",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#f0fdf4",

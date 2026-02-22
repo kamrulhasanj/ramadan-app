@@ -34,6 +34,14 @@
         #ramadan-widget-btn:hover {
             transform: scale(1.05);
         }
+
+        #ramadan-widget-btn img {
+            filter: brightness(0) invert(1) !important;
+             /* ইমোজির সাইজ ঠিক রাখার জন্য */
+            width: 1.2em !important;
+            height: 1.2em !important;
+        }
+        
         #ramadan-widget-iframe-container {
             display: none;
             position: absolute;
