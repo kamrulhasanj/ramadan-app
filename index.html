@@ -2,8 +2,13 @@
 <html lang="bn" class="light">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Al-Ramadan 2026</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Sahru Ramadan APP</title>
+
+    <meta name="theme-color" content="#15803d">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" sizes="192x192" href="icon-192x192.png">
+    <link rel="apple-touch-icon" href="icon-192x192.png">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -15,37 +20,25 @@
       };
     </script>
 
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-      rel="stylesheet"
-    />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap");
 
+      html { background-color: #e5e7eb; }
+      html.dark { background-color: #030712; }
+
       body {
         font-family: "Hind Siliguri", sans-serif;
         padding-bottom: 80px;
-        transition:
-          background-color 0.3s ease,
-          color 0.3s ease;
-          /* Anti-Copy Protection: Disables text selection and highlighting */
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
       }
 
-      .hero-card {
-        background: linear-gradient(135deg, #15803d, #14532d);
-    }
-
-      .dark .hero-card {
-        background: linear-gradient(135deg, #064e3b, #022c22);
-      }
-
-      /* View transition styles */
       .view-section {
         display: none;
         animation: fadeIn 0.3s ease-in-out;
@@ -55,69 +48,46 @@
       }
 
       @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(10px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
       }
 
-      /* Accordion transition smooth */
       .accordion-content {
-        transition:
-          max-height 0.3s ease-in-out,
-          opacity 0.3s ease-in-out;
+        transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
         max-height: 0;
         opacity: 0;
         overflow: hidden;
       }
       .accordion-content.expanded {
-        max-height: 200px;
+        max-height: 250px;
         opacity: 1;
+      }
+      
+      select option {
+          padding: 10px;
       }
     </style>
   </head>
-  <body
-    class="bg-[#f0fdf4] dark:bg-gray-900 text-gray-800 dark:text-gray-200 antialiased selection:bg-green-200 dark:selection:bg-green-800"
-  >
-    <header
-      class="bg-green-600 dark:bg-gray-800 text-white text-center py-4 sticky top-0 z-50 shadow-md transition-colors duration-300"
-    >
-      <p
-        class="text-xl font-arabic font-bold tracking-wider text-green-100 dark:text-gray-300"
-        dir="rtl"
-      >
+  <body class="max-w-[768px] mx-auto relative min-h-screen bg-[#f0fdf4] dark:bg-gray-900 text-gray-800 dark:text-gray-200 antialiased selection:bg-green-200 dark:selection:bg-green-800 shadow-[0_0_40px_rgba(0,0,0,0.1)]">
+    
+    <header class="bg-green-600 dark:bg-gray-800 text-white text-center py-4 sticky top-0 z-50 shadow-md transition-colors duration-300">
+      <p class="text-xl font-arabic font-bold tracking-wider text-green-100 dark:text-gray-300" dir="rtl">
         أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ
       </p>
       <h1 class="text-xl font-bold tracking-wide relative mt-2">
         <i class="fas fa-moon mr-2 text-yellow-300"></i>Al-Ramadan 2026
-
-        <button
-          id="theme-toggle"
-          class="absolute right-4 top-0 text-xl hover:text-yellow-300 transition-colors focus:outline-none"
-        >
+        <button id="theme-toggle" class="absolute right-4 top-0 text-xl hover:text-yellow-300 transition-colors focus:outline-none">
           <i class="fas fa-sun hidden" id="theme-icon-light"></i>
           <i class="fas fa-moon" id="theme-icon-dark"></i>
         </button>
       </h1>
     </header>
 
-    <main class="max-w-md mx-auto p-4 space-y-6">
-      <div
-        class="flex items-center justify-between bg-white dark:bg-gray-800 p-3 rounded-xl shadow-sm border border-green-50 dark:border-gray-700 transition-colors"
-      >
-        <label
-          for="district-select"
-          class="font-bold text-green-700 dark:text-green-400"
-          ><i class="fas fa-map-marker-alt mr-2"></i>আপনার জেলা:</label
-        >
-        <select
-          id="district-select"
-          class="bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-white border border-gray-200 dark:border-gray-600 rounded-lg px-3 py-1 outline-none focus:border-green-500 font-medium"
-        >
+    <main class="w-full mx-auto p-4 space-y-6">
+      
+      <div class="flex items-center justify-between bg-white dark:bg-gray-800 p-3 rounded-xl shadow-sm border border-green-50 dark:border-gray-700 transition-colors">
+        <label for="district-select" class="font-bold text-green-700 dark:text-green-400"><i class="fas fa-map-marker-alt mr-2"></i>আপনার জেলা:</label>
+        <select id="district-select" class="bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-white border border-gray-200 dark:border-gray-600 rounded-lg px-3 py-1 outline-none focus:border-green-500 font-medium">
           <option value="ঢাকা">ঢাকা</option>
           <option value="জামালপুর">জামালপুর</option>
           <option value="শেরপুর">শেরপুর</option>
@@ -127,577 +97,342 @@
       </div>
 
       <div id="view-home" class="view-section active space-y-6">
-        <section
-          class="hero-card rounded-2xl p-6 text-center text-white relative overflow-hidden shadow-lg"
-        >
-          <h2
-            class="text-lg font-medium mb-1 text-green-100"
-            id="countdown-label"
-          >
-            ইফতারের বাকি
-          </h2>
-          <div class="text-5xl font-bold mb-2 tracking-wider font-mono drop-shadow-md" id="countdown">
-            ০০:০০:০০
-          </div>
-          <div class="text-sm mb-6 text-green-200 font-medium tracking-wide bg-black/20 inline-block px-4 py-1 rounded-full font-mono" id="current-date-display">
-            --
-          </div>
+        <section class="bg-gradient-to-br from-[#15803d] to-[#14532d] dark:from-[#064e3b] dark:to-[#022c22] rounded-2xl p-6 text-center text-white relative overflow-hidden shadow-lg transition-colors duration-300">
+          <h2 class="text-lg font-medium mb-1 text-green-100" id="countdown-label">ইফতারের বাকি</h2>
+          <div class="text-5xl font-bold mb-2 tracking-wider font-mono drop-shadow-md" id="countdown">০০:০০:০০</div>
+          <div class="text-sm mb-6 text-green-200 font-medium tracking-wide bg-black/20 inline-block px-4 py-1 rounded-full font-mono" id="current-date-display">--</div>
 
           <div class="flex justify-between gap-4 relative z-10">
-            <div
-              class="bg-white/10 rounded-xl p-3 w-1/2 backdrop-blur-sm border border-white/20"
-            >
+            <div class="bg-white/10 rounded-xl p-3 w-1/2 backdrop-blur-sm border border-white/20">
               <div class="text-2xl mb-1">🌙</div>
-              <div class="text-xl font-bold font-mono" id="sehri-time">
-                --:--
-              </div>
+              <div class="text-xl font-bold font-mono" id="sehri-time">--:--</div>
               <div class="text-xs text-green-100 mt-1">সেহরির শেষ</div>
             </div>
-            <div
-              class="bg-white/10 rounded-xl p-3 w-1/2 backdrop-blur-sm border border-white/20"
-            >
+            <div class="bg-white/10 rounded-xl p-3 w-1/2 backdrop-blur-sm border border-white/20">
               <div class="text-2xl mb-1">☀️</div>
-              <div class="text-xl font-bold font-mono" id="iftar-time">
-                --:--
-              </div>
+              <div class="text-xl font-bold font-mono" id="iftar-time">--:--</div>
               <div class="text-xs text-green-100 mt-1">ইফতার শুরু</div>
             </div>
           </div>
         </section>
 
-        <section
-          class="bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-sm border border-green-50 dark:border-gray-700 transition-colors duration-300"
-        >
-          <h2
-            class="text-lg font-bold mb-4 text-green-700 dark:text-green-400 border-b border-gray-100 dark:border-gray-700 pb-3"
-          >
+        <section class="bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-sm border border-green-50 dark:border-gray-700 transition-colors duration-300">
+          <h2 class="text-lg font-bold mb-4 text-green-700 dark:text-green-400 border-b border-gray-100 dark:border-gray-700 pb-3">
             <i class="fas fa-clipboard-check mr-2"></i>আজকের আমল ট্র্যাকার
           </h2>
           <div class="space-y-2">
-            <label
-              class="flex items-center space-x-3 p-2.5 hover:bg-green-50 dark:hover:bg-gray-700 rounded-lg cursor-pointer transition border border-transparent hover:border-green-100 dark:hover:border-gray-600"
-            >
-              <input
-                type="checkbox"
-                id="amal-1"
-                class="w-5 h-5 text-green-600 rounded border-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:ring-green-500 accent-green-600"
-              />
-              <span class="text-gray-700 dark:text-gray-300 font-medium"
-                >৫ ওয়াক্ত নামাজ</span
-              >
+            <label class="flex items-center space-x-3 p-2.5 hover:bg-green-50 dark:hover:bg-gray-700 rounded-lg cursor-pointer transition border border-transparent hover:border-green-100 dark:hover:border-gray-600">
+              <input type="checkbox" id="amal-1" class="w-5 h-5 text-green-600 rounded border-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:ring-green-500 accent-green-600" />
+              <span class="text-gray-700 dark:text-gray-300 font-medium">৫ ওয়াক্ত নামাজ</span>
             </label>
-            <label
-              class="flex items-center space-x-3 p-2.5 hover:bg-green-50 dark:hover:bg-gray-700 rounded-lg cursor-pointer transition border border-transparent hover:border-green-100 dark:hover:border-gray-600"
-            >
-              <input
-                type="checkbox"
-                id="amal-2"
-                class="w-5 h-5 text-green-600 rounded border-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:ring-green-500 accent-green-600"
-              />
-              <span class="text-gray-700 dark:text-gray-300 font-medium"
-                >তাহাজ্জুদ নামাজ</span
-              >
+            <label class="flex items-center space-x-3 p-2.5 hover:bg-green-50 dark:hover:bg-gray-700 rounded-lg cursor-pointer transition border border-transparent hover:border-green-100 dark:hover:border-gray-600">
+              <input type="checkbox" id="amal-2" class="w-5 h-5 text-green-600 rounded border-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:ring-green-500 accent-green-600" />
+              <span class="text-gray-700 dark:text-gray-300 font-medium">তাহাজ্জুদ নামাজ</span>
             </label>
-            <label
-              class="flex items-center space-x-3 p-2.5 hover:bg-green-50 dark:hover:bg-gray-700 rounded-lg cursor-pointer transition border border-transparent hover:border-green-100 dark:hover:border-gray-600"
-            >
-              <input
-                type="checkbox"
-                id="amal-3"
-                class="w-5 h-5 text-green-600 rounded border-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:ring-green-500 accent-green-600"
-              />
-              <span class="text-gray-700 dark:text-gray-300 font-medium"
-                >কুরআন তিলাওয়াত</span
-              >
+            <label class="flex items-center space-x-3 p-2.5 hover:bg-green-50 dark:hover:bg-gray-700 rounded-lg cursor-pointer transition border border-transparent hover:border-green-100 dark:hover:border-gray-600">
+              <input type="checkbox" id="amal-3" class="w-5 h-5 text-green-600 rounded border-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:ring-green-500 accent-green-600" />
+              <span class="text-gray-700 dark:text-gray-300 font-medium">কুরআন তিলাওয়াত</span>
             </label>
-            <label
-              class="flex items-center space-x-3 p-2.5 hover:bg-green-50 dark:hover:bg-gray-700 rounded-lg cursor-pointer transition border border-transparent hover:border-green-100 dark:hover:border-gray-600"
-            >
-              <input
-                type="checkbox"
-                id="amal-4"
-                class="w-5 h-5 text-green-600 rounded border-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:ring-green-500 accent-green-600"
-              />
-              <span class="text-gray-700 dark:text-gray-300 font-medium"
-                >যিকর ও ইস্তিগফার
-              </span>
+            <label class="flex items-center space-x-3 p-2.5 hover:bg-green-50 dark:hover:bg-gray-700 rounded-lg cursor-pointer transition border border-transparent hover:border-green-100 dark:hover:border-gray-600">
+              <input type="checkbox" id="amal-4" class="w-5 h-5 text-green-600 rounded border-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:ring-green-500 accent-green-600" />
+              <span class="text-gray-700 dark:text-gray-300 font-medium">যিকর ও ইস্তিগফার</span>
             </label>
-            <label
-              class="flex items-center space-x-3 p-2.5 hover:bg-green-50 dark:hover:bg-gray-700 rounded-lg cursor-pointer transition border border-transparent hover:border-green-100 dark:hover:border-gray-600"
-            >
-              <input
-                type="checkbox"
-                id="amal-5"
-                class="w-5 h-5 text-green-600 rounded border-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:ring-green-500 accent-green-600"
-              />
-              <span class="text-gray-700 dark:text-gray-300 font-medium"
-                >সদকাহ / দান</span
-              >
+            <label class="flex items-center space-x-3 p-2.5 hover:bg-green-50 dark:hover:bg-gray-700 rounded-lg cursor-pointer transition border border-transparent hover:border-green-100 dark:hover:border-gray-600">
+              <input type="checkbox" id="amal-5" class="w-5 h-5 text-green-600 rounded border-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:ring-green-500 accent-green-600" />
+              <span class="text-gray-700 dark:text-gray-300 font-medium">সদকাহ / দান</span>
             </label>
           </div>
         </section>
 
-        <section
-          class="bg-teal-50 dark:bg-teal-900/30 border-l-4 border-teal-500 rounded-r-xl p-4 shadow-sm transition-colors"
-        >
+        <section class="bg-teal-50 dark:bg-teal-900/30 border-l-4 border-teal-500 rounded-r-xl p-4 shadow-sm transition-colors">
           <h2 class="text-base font-bold mb-1 text-teal-800 dark:text-teal-400">
-            <i class="fas fa-heartbeat mr-2"></i>স্বাস্থ্য পরামর্শ - ইফতার ও
-            সেহরির মাঝে
-          </h2>
-          <br />
-          <p class="text-teal-900 dark:text-teal-200 text-sm">
-            ১) পর্যাপ্ত পানি পান করুন (কমপক্ষে ৮-১০ গ্লাস)।
-          </p>
-          <br />
-          <p class="text-teal-900 dark:text-teal-200 text-sm">
-            ২) ভাজাপোড়া ও অতিরিক্ত মশলাযুক্ত খাবার ত্যাগ করুন।
-          </p>
-          <br />
-          <p class="text-teal-900 dark:text-teal-200 text-sm">
-            ৩) নিয়মিত শাক-সবজি ও ফলমূল খান।
-          </p>
+            <i class="fas fa-heartbeat mr-2"></i>স্বাস্থ্য পরামর্শ - ইফতার ও সেহরির মাঝে
+          </h2><br />
+          <p class="text-teal-900 dark:text-teal-200 text-sm">১) পর্যাপ্ত পানি পান করুন (কমপক্ষে ৮-১০ গ্লাস)।</p><br />
+          <p class="text-teal-900 dark:text-teal-200 text-sm">২) ভাজাপোড়া ও অতিরিক্ত মশলাযুক্ত খাবার ত্যাগ করুন।</p><br />
+          <p class="text-teal-900 dark:text-teal-200 text-sm">৩) নিয়মিত শাক-সবজি ও ফলমূল খান।</p>
         </section>
       </div>
 
       <div id="view-schedule" class="view-section">
-        <section
-          class="bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-sm border border-green-50 dark:border-gray-700 transition-colors"
-        >
-          <h2
-            class="text-lg font-bold mb-4 text-green-700 dark:text-green-400 border-b border-gray-100 dark:border-gray-700 pb-3"
-          >
+        <section class="bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-sm border border-green-50 dark:border-gray-700 transition-colors">
+          <h2 class="text-lg font-bold mb-4 text-green-700 dark:text-green-400 border-b border-gray-100 dark:border-gray-700 pb-3">
             <i class="fas fa-calendar-alt mr-2"></i>রমজান সূচী ২০২৬
           </h2>
-          <div
-            class="overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-700 max-h-[60vh] overflow-y-auto"
-          >
+          <div class="overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-700 max-h-[60vh] overflow-y-auto">
             <table class="w-full text-center border-collapse text-sm">
               <thead class="sticky top-0 z-10">
-                <tr
-                  class="bg-green-100 dark:bg-gray-700 text-green-800 dark:text-green-300"
-                >
-                  <th class="p-3 border-b dark:border-gray-600 font-semibold">
-                    রমজান
-                  </th>
-                  <th
-                    class="p-3 border-b dark:border-gray-600 font-semibold border-l dark:border-gray-600"
-                  >
-                    তারিখ
-                  </th>
-                  <th
-                    class="p-3 border-b dark:border-gray-600 font-semibold border-l dark:border-gray-600"
-                  >
-                    সেহরি
-                  </th>
-                  <th
-                    class="p-3 border-b dark:border-gray-600 font-semibold border-l dark:border-gray-600"
-                  >
-                    ইফতার
-                  </th>
+                <tr class="bg-green-100 dark:bg-gray-700 text-green-800 dark:text-green-300">
+                  <th class="p-3 border-b dark:border-gray-600 font-semibold">রমজান</th>
+                  <th class="p-3 border-b dark:border-gray-600 font-semibold border-l dark:border-gray-600">তারিখ</th>
+                  <th class="p-3 border-b dark:border-gray-600 font-semibold border-l dark:border-gray-600">সেহরি</th>
+                  <th class="p-3 border-b dark:border-gray-600 font-semibold border-l dark:border-gray-600">ইফতার</th>
                 </tr>
               </thead>
               <tbody id="schedule-body"></tbody>
             </table>
           </div>
-
-          <button
-            onclick="downloadPDF()"
-            class="mt-5 w-full bg-green-50 dark:bg-gray-700 text-green-700 dark:text-green-400 font-bold py-3 rounded-xl hover:bg-green-100 dark:hover:bg-gray-600 transition shadow-sm border border-green-200 dark:border-gray-600 active:scale-95"
-          >
-            <i class="fas fa-file-pdf mr-2 text-red-500"></i> ডাউনলোড সময়সূচি
-            (PDF)
+          <button onclick="downloadPDF()" class="mt-5 w-full bg-green-50 dark:bg-gray-700 text-green-700 dark:text-green-400 font-bold py-3 rounded-xl hover:bg-green-100 dark:hover:bg-gray-600 transition shadow-sm border border-green-200 dark:border-gray-600 active:scale-95">
+            <i class="fas fa-file-pdf mr-2 text-red-500"></i> ডাউনলোড সময়সূচি (PDF)
           </button>
         </section>
       </div>
 
       <div id="view-duas" class="view-section space-y-6">
-        <section
-          class="bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-sm border border-green-50 dark:border-gray-700 transition-colors"
-        >
-          <h2
-            class="text-lg font-bold mb-4 text-green-700 dark:text-green-400 border-b border-gray-100 dark:border-gray-700 pb-3"
-          >
+        <section class="bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-sm border border-green-50 dark:border-gray-700 transition-colors">
+          <h2 class="text-lg font-bold mb-4 text-green-700 dark:text-green-400 border-b border-gray-100 dark:border-gray-700 pb-3">
             <i class="fas fa-quran mr-2"></i>আল-কোরআনে সাওম
           </h2>
-
-          <div class="mb-6 bg-gray-50 dark:bg-gray-700 p-4 rounded-xl">
-            <h4
-              class="font-bold text-green-800 dark:text-green-300 mb-3 text-center bg-green-100 dark:bg-gray-800 inline-block px-3 py-1 rounded-full text-sm"
-            >
-              সূরা আল-বাকারা, আয়াত ১৮৭ (আংশিক)
-            </h4>
-            <p
-              class="text-right text-xl text-gray-800 dark:text-gray-100 font-arabic mb-4 leading-relaxed"
-              dir="rtl"
-            >
-              وَكُلُوا وَاشْرَبُوا حَتَّى يَتَبَيَّنَ لَكُمُ الْخَيْطُ
-              الْأَبْيَضُ مِنَ الْخَيْطِ الْأَسْوَدِ مِنَ الْفَجْرِ ۖ ثُمَّ
-              أَتِمُّوا الصِّيَامَ إِلَى اللَّيْلِ
-            </p>
-            <p
-              class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed border-t border-gray-200 dark:border-gray-600 pt-3 mb-3"
-            >
-              <strong>উচ্চারণ:</strong> ওয়া কুলু ওয়াশরাবু হাত্তা
-              ইয়াতাবাইয়্যানা লাকুমুল খাইতুল আবইয়াদু মিনাল খাইতিল আসওয়াদি
-              মিনাল ফাজরি ছুম্মা আতিম্মুস সিয়ামা ইলাল লাইল।
-            </p>
-            <p
-              class="text-sm text-gray-600 dark:text-gray-400 bg-white dark:bg-gray-800 p-3 rounded border border-gray-100 dark:border-gray-600 leading-relaxed"
-            >
-              <strong>অর্থ:</strong> আর তোমরা পানাহার কর যতক্ষণ না ভোরের কালো
-              রেখা থেকে সাদা রেখা তোমাদের কাছে স্পষ্ট হয়। এরপর রাত পর্যন্ত রোজা
-              পূর্ণ কর।
-            </p>
+          <div class="bg-gray-50 dark:bg-gray-700 p-5 rounded-2xl mb-6">
+              <div class="inline-block bg-[#dcfce7] dark:bg-green-900/50 text-[#166534] dark:text-green-300 font-bold px-4 py-1.5 rounded-full text-sm mb-4">সূরা আল-বাকারা, আয়াত ১৮৭ (আংশিক)</div>
+              <p class="text-center text-2xl text-gray-800 dark:text-gray-100 font-arabic mb-6 leading-loose" dir="rtl">
+                  وَكُلُوا وَاشْرَبُوا حَتَّىٰ يَتَبَيَّنَ لَكُمُ الْخَيْطُ الْأَبْيَضُ مِنَ الْخَيْطِ الْأَسْوَدِ مِنَ الْفَجْرِ ۖ ثُمَّ أَتِمُّوا الصِّيَامَ إِلَى اللَّيْلِ
+              </p>
+              <div class="border-t border-gray-200 dark:border-gray-600 pt-4 mb-4">
+                  <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed"><strong>উচ্চারণ:</strong> ওয়া কুলু ওয়াশরাবু হাত্তা ইয়াতাবাইয়্যানা লাকুমুল খাইতুল আবইয়াদু মিনাল খাইতিল আসওয়াদি মিনাল ফাজরি ছুম্মা আতিম্মুস সিয়ামা ইলাল লাইল।</p>
+              </div>
+              <div class="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-600 p-4 rounded-xl shadow-sm text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                  <strong>অর্থ:</strong> আর তোমরা পানাহার কর যতক্ষণ না ভোরের কালো রেখা থেকে সাদা রেখা তোমাদের কাছে স্পষ্ট হয়। এরপর রাত পর্যন্ত রোজা পূর্ণ কর।
+              </div>
           </div>
-
-          <div class="mb-6 bg-gray-50 dark:bg-gray-700 p-4 rounded-xl">
-            <h4
-              class="font-bold text-green-800 dark:text-green-300 mb-3 text-center bg-green-100 dark:bg-gray-800 inline-block px-3 py-1 rounded-full text-sm"
-            >
-              সূরা আল-বাকারা, আয়াত ১৮৩
-            </h4>
-            <p
-              class="text-right text-xl text-gray-800 dark:text-gray-100 font-arabic mb-4 leading-relaxed"
-              dir="rtl"
-            >
-              يَا أَيُّهَا الَّذِينَ آمَنُوا كُتِبَ عَلَيْكُمُ الصِّيَامُ كَمَا
-              كُتِبَ عَلَى الَّذِينَ مِن قَبْلِكُمْ لَعَلَّكُمْ تَتَّقُونَ
-            </p>
-            <p
-              class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed border-t border-gray-200 dark:border-gray-600 pt-3 mb-3"
-            >
-              <strong>উচ্চারণ:</strong> ইয়া আইয়্যোহাল্লাজিনা আমানু কুতিবা
-              আলাইকুমুস সিয়ামু কামা কুতিবা আলাল্লাজিনা মিন কবলিকুম লাআল্লাকুম
-              তাত্তাকুন।
-            </p>
-            <p
-              class="text-sm text-gray-600 dark:text-gray-400 bg-white dark:bg-gray-800 p-3 rounded border border-gray-100 dark:border-gray-600 leading-relaxed"
-            >
-              <strong>অর্থ:</strong> হে মুমিনগণ! তোমাদের ওপর রোজা ফরজ করা হয়েছে,
-              যেমন ফরজ করা হয়েছিল তোমাদের পূর্ববর্তীদের ওপর; যাতে তোমরা তাকওয়া
-              (আল্লাহভীতি) অর্জন করতে পারো।
-            </p>
+          <div class="bg-gray-50 dark:bg-gray-700 p-5 rounded-2xl mb-6">
+              <div class="inline-block bg-[#dcfce7] dark:bg-green-900/50 text-[#166534] dark:text-green-300 font-bold px-4 py-1.5 rounded-full text-sm mb-4">সূরা আল-বাকারা, আয়াত ১৮৩</div>
+              <p class="text-center text-2xl text-gray-800 dark:text-gray-100 font-arabic mb-6 leading-loose" dir="rtl">
+                  يَا أَيُّهَا الَّذِينَ آمَنُوا كُتِبَ عَلَيْكُمُ الصِّيَامُ كَمَا كُتِبَ عَلَى الَّذِينَ مِن قَبْلِكُمْ لَعَلَّكُمْ تَتَّقُونَ
+              </p>
+              <div class="border-t border-gray-200 dark:border-gray-600 pt-4 mb-4">
+                  <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed"><strong>উচ্চারণ:</strong> ইয়া আইয়্যোহাল্লাজিনা আমানু কুতিবা আলাইকুমুস সিয়ামু কামা কুতিবা আলাল্লাজিনা মিন কবলিকুম লাআল্লাকুম তাত্তাকুন।</p>
+              </div>
+              <div class="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-600 p-4 rounded-xl shadow-sm text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                  <strong>অর্থ:</strong> হে মুমিনগণ! তোমাদের ওপর রোজা ফরজ করা হয়েছে, যেমন ফরজ করা হয়েছিল তোমাদের পূর্ববর্তীদের ওপর; যাতে তোমরা তাকওয়া (আল্লাহভীতি) অর্জন করতে পারো।
+              </div>
           </div>
-
-          <div class="mb-6 bg-gray-50 dark:bg-gray-700 p-4 rounded-xl">
-            <h4
-              class="font-bold text-green-800 dark:text-green-300 mb-3 text-center bg-green-100 dark:bg-gray-800 inline-block px-3 py-1 rounded-full text-sm"
-            >
-              সূরা আল-বাকারা, আয়াত ১৮৫ (আংশিক)
-            </h4>
-            <p
-              class="text-right text-xl text-gray-800 dark:text-gray-100 font-arabic mb-4 leading-relaxed"
-              dir="rtl"
-            >
-              شَهْرُ رَمَضَانَ الَّذِي أُنزِلَ فِيهِ الْقُرْآنُ هُدًى لِّلنَّاسِ
-              وَبَيِّنَاتٍ مِّنَ الْهُدَىٰ وَالْفُرْقَانِ ۚ فَمَن شَهِدَ مِنكُمُ
-              الشَّهْرَ فَلْيَصُمْهُ
-            </p>
-            <p
-              class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed border-t border-gray-200 dark:border-gray-600 pt-3 mb-3"
-            >
-              <strong>উচ্চারণ:</strong> শাহরু রামাদানাল্লাযী উনযিলা ফীহিল কুরআন,
-              হুদাল্লিন্নাসি ওয়া বাইয়্যিনাতিন মিনাল হুদা ওয়াল ফুরকান। ফামান
-              শাহিদা মিনকুমুশ শাহরা ফালইয়াসুমহু।
-            </p>
-            <p
-              class="text-sm text-gray-600 dark:text-gray-400 bg-white dark:bg-gray-800 p-3 rounded border border-gray-100 dark:border-gray-600 leading-relaxed"
-            >
-              <strong>অর্থ:</strong> রমজান মাস, যে মাসে কোরআন অবতীর্ণ হয়েছে, যা
-              মানুষের জন্য হেদায়েত এবং সুপথ প্রাপ্তির সুস্পষ্ট পথনির্দেশ আর
-              হক-বাতিলের পার্থক্যকারী। সুতরাং তোমাদের মধ্যে যে ব্যক্তি এ মাসটি
-              পাবে, সে যেন রোজা রাখে।
-            </p>
+          <div class="bg-gray-50 dark:bg-gray-700 p-5 rounded-2xl mb-6">
+              <div class="inline-block bg-[#dcfce7] dark:bg-green-900/50 text-[#166534] dark:text-green-300 font-bold px-4 py-1.5 rounded-full text-sm mb-4">সূরা আল-বাকারা, আয়াত ১৮৫ (আংশিক)</div>
+              <p class="text-center text-2xl text-gray-800 dark:text-gray-100 font-arabic mb-6 leading-loose" dir="rtl">
+                  شَهْرُ رَمَضَانَ الَّذِي أُنزِلَ فِيهِ الْقُرْآنُ هُدًى لِّلنَّاسِ وَبَيِّنَاتٍ مِّنَ الْهُدَىٰ وَالْفُرْقَانِ ۚ فَمَن شَهِدَ مِنكُمُ الشَّهْرَ فَلْيَصُمْهُ
+              </p>
+              <div class="border-t border-gray-200 dark:border-gray-600 pt-4 mb-4">
+                  <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed"><strong>উচ্চারণ:</strong> শাহরু রামাদানাল্লাযী উনযিলা ফীহিল কুরআন, হুদাল্লিন্নাসি ওয়া বাইয়্যিনাতিন মিনাল হুদা ওয়াল ফুরকান। ফামান শাহিদা মিনকুমুশ শাহরা ফালইয়াসুমহু।</p>
+              </div>
+              <div class="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-600 p-4 rounded-xl shadow-sm text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                  <strong>অর্থ:</strong> রমজান মাস, যে মাসে কোরআন অবতীর্ণ হয়েছে, যা মানুষের জন্য হেদায়েত এবং সুপথ প্রাপ্তির সুস্পষ্ট পথনির্দেশ আর হক-বাতিলের পার্থক্যকারী। সুতরাং তোমাদের মধ্যে যে ব্যক্তি এ মাসটি পাবে, সে যেন রোজা রাখে।
+              </div>
           </div>
-
-          <div
-            class="mt-4 rounded-xl overflow-hidden shadow-sm border border-gray-100 dark:border-gray-600"
-          >
-            <img
-              src="https://i.ibb.co.com/bRYfwRLr/night-day-bn-ramadan.jpg"
-              alt="Ramadan Night and Day Visual"
-              class="w-full h-auto object-cover"
-            />
+          <div class="mt-4 rounded-xl overflow-hidden shadow-sm border border-gray-100 dark:border-gray-600">
+            <img src="https://i.ibb.co.com/bRYfwRLr/night-day-bn-ramadan.jpg" alt="Ramadan Night and Day Visual" class="w-full h-auto object-cover" />
           </div>
         </section>
 
-        <section
-          class="bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-sm border border-green-50 dark:border-gray-700 transition-colors"
-        >
-          <h2
-            class="text-lg font-bold mb-4 text-green-700 dark:text-green-400 border-b border-gray-100 dark:border-gray-700 pb-3"
-          >
-            <i class="fas fa-praying-hands mr-2"></i>প্রয়োজনীয় দোয়া
+        <section class="bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-sm border border-green-50 dark:border-gray-700 transition-colors">
+          <h2 class="text-lg font-bold mb-4 text-green-700 dark:text-green-400 border-b border-gray-100 dark:border-gray-700 pb-3">
+            <i class="fas fa-praying-hands mr-2"></i>প্রয়োজনীয় দোয়া
           </h2>
-
-          <div class="mb-6 bg-gray-50 dark:bg-gray-700 p-4 rounded-xl">
-            <h4
-              class="font-bold text-green-800 dark:text-green-300 mb-3 text-center bg-green-100 dark:bg-gray-800 inline-block px-3 py-1 rounded-full text-sm"
-            >
-              সেহরির নিয়ত
-            </h4>
-            <p
-              class="text-right text-xl text-gray-800 dark:text-gray-100 font-arabic mb-3 leading-relaxed"
-              dir="rtl"
-            >
-              نَوَيْتُ اَنْ اَصُوْمَ غَدًا مِّنْ شَهْرِ رَمَضَانَ الْمُبَارَكِ
-              فَرْضًا لَكَ يَا اَللهُ فَتَقَبَّلْ مِنِّى اِنَّكَ اَنْتَ
-              السَّمِيْعُ الْعَلِيْمُ
-            </p>
-            <p
-              class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed border-t border-gray-200 dark:border-gray-600 pt-3"
-            >
-              <strong>উচ্চারণ:</strong> নাওয়াইতু আন আছুমা গাদাম মিন শাহরি
-              রামাদানাল মুবারাকি ফারদাল্লাকা ইয়া আল্লাহু ফাতাকাব্বাল মিন্নি
-              ইন্নাকা আনতাস সামিউল আলিম।
-            </p>
+          <div class="mb-6 bg-gray-50 dark:bg-gray-700 p-4 rounded-xl border border-gray-100 dark:border-gray-600">
+            <h4 class="font-bold text-green-800 dark:text-green-300 mb-3 text-center bg-green-100 dark:bg-gray-800 inline-block px-3 py-1 rounded-full text-sm">সেহরির নিয়ত</h4>
+            <p class="text-right text-xl text-gray-800 dark:text-gray-100 font-arabic mb-3 leading-relaxed" dir="rtl">نَوَيْتُ اَنْ اَصُوْمَ غَدًا مِّنْ شَهْرِ رَمَضَانَ الْمُبَارَكِ فَرْضًا لَكَ يَا اَللهُ فَتَقَبَّلْ مِنِّى اِنَّكَ اَنْتَ السَّمِيْعُ الْعَلِيْمُ</p>
+            <div class="border-t border-gray-200 dark:border-gray-600 pt-3">
+                <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed"><strong>উচ্চারণ:</strong> নাওয়াইতু আন আছুমা গাদাম মিন শাহরি রামাদানাল মুবারাকি ফারদাল্লাকা ইয়া আল্লাহু ফাতাকাব্বাল মিন্নি ইন্নাকা আনতাস সামিউল আলিম।</p>
+            </div>
           </div>
-
-          <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-xl">
-            <h4
-              class="font-bold text-green-800 dark:text-green-300 mb-3 text-center bg-green-100 dark:bg-gray-800 inline-block px-3 py-1 rounded-full text-sm"
-            >
-              ইফতারের দোয়া
-            </h4>
-            <p
-              class="text-right text-xl text-gray-800 dark:text-gray-100 font-arabic mb-3 leading-relaxed"
-              dir="rtl"
-            >
-              اللَّهُمَّ لَكَ صُمْتُ وَعَلَى رِزْقِكَ اَفْطَرْتُ
-            </p>
-            <p
-              class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed border-t border-gray-200 dark:border-gray-600 pt-3 mb-2"
-            >
-              <strong>উচ্চারণ:</strong> আল্লাহুম্মা লাকা ছুমতু ওয়া আলা রিযকিকা
-              আফতারতু।
-            </p>
-            <p
-              class="text-sm text-gray-600 dark:text-gray-400 bg-white dark:bg-gray-800 p-2 rounded border border-gray-100 dark:border-gray-600"
-            >
-              <strong>অর্থ:</strong> হে আল্লাহ! আমি তোমারই সন্তুষ্টির জন্য রোজা
-              রেখেছি এবং তোমারই দেয়া রিযিক দ্বারা ইফতার করছি।
-            </p>
+          <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-xl border border-gray-100 dark:border-gray-600">
+            <h4 class="font-bold text-green-800 dark:text-green-300 mb-3 text-center bg-green-100 dark:bg-gray-800 inline-block px-3 py-1 rounded-full text-sm">ইফতারের দোয়া</h4>
+            <p class="text-right text-xl text-gray-800 dark:text-gray-100 font-arabic mb-3 leading-relaxed" dir="rtl">اللَّهُمَّ لَكَ صُمْتُ وَعَلَى رِزْقِكَ اَفْطَرْتُ</p>
+            <div class="border-t border-gray-200 dark:border-gray-600 pt-3 mb-2">
+                <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed"><strong>উচ্চারণ:</strong> আল্লাহুম্মা লাকা ছুমতু ওয়া আলা রিযকিকা আফতারতু।</p>
+            </div>
+            <p class="text-sm text-gray-600 dark:text-gray-400 bg-white dark:bg-gray-800 p-3 rounded-lg border border-gray-100 dark:border-gray-600 mt-2"><strong>অর্থ:</strong> হে আল্লাহ! আমি তোমারই সন্তুষ্টির জন্য রোজা রেখেছি এবং তোমারই দেয়া রিযিক দ্বারা ইফতার করছি।</p>
           </div>
         </section>
 
-        <section
-          class="bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-sm border border-green-50 dark:border-gray-700 transition-colors"
-        >
-          <h2
-            class="text-lg font-bold mb-4 text-green-700 dark:text-green-400 border-b border-gray-100 dark:border-gray-700 pb-3"
-          >
+        <section class="bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-sm border border-green-50 dark:border-gray-700 transition-colors">
+          <h2 class="text-lg font-bold mb-4 text-green-700 dark:text-green-400 border-b border-gray-100 dark:border-gray-700 pb-3">
             <i class="fas fa-book-open mr-2"></i>রমজান মাসআলা
           </h2>
-
           <div class="space-y-3">
-            <div
-              class="accordion-item border border-gray-100 dark:border-gray-600 rounded-xl bg-gray-50/50 dark:bg-gray-700/50"
-            >
-              <button
-                class="accordion-header w-full text-left p-3 font-bold text-gray-800 dark:text-gray-200 text-sm flex justify-between items-start focus:outline-none"
-              >
-                <span class="flex items-start pr-2">
-                  <i
-                    class="fas fa-question-circle text-green-600 dark:text-green-400 mt-1 mr-2 flex-shrink-0"
-                  ></i>
-                  ভুলবশত কিছু খেয়ে ফেললে কি রোজা ভেঙে যায়?
-                </span>
-                <span
-                  class="icon text-green-600 dark:text-green-400 font-bold text-lg leading-none"
-                  >+</span
-                >
+            <div class="accordion-item border border-gray-100 dark:border-gray-600 rounded-xl bg-gray-50/50 dark:bg-gray-700/50">
+              <button class="accordion-header w-full text-left p-3 font-bold text-gray-800 dark:text-gray-200 text-sm flex justify-between items-start focus:outline-none">
+                <span class="flex items-start pr-2"><i class="fas fa-question-circle text-green-600 dark:text-green-400 mt-1 mr-2 flex-shrink-0"></i>ভুলবশত কিছু খেয়ে ফেললে কি রোজা ভেঙে যায়?</span>
+                <span class="icon text-green-600 dark:text-green-400 font-bold text-lg leading-none">+</span>
               </button>
-              <div
-                class="accordion-content px-3 pb-3 text-sm text-gray-600 dark:text-gray-400 pl-8 leading-relaxed"
-              >
-                না, ভুলবশত কিছু খেলে বা পান করলে রোজা ভাঙে না। মনে হওয়ার সাথে
-                সাথে খাবার বন্ধ করে মুখ পরিষ্কার করে নিতে হবে।
-              </div>
+              <div class="accordion-content px-3 pb-3 text-sm text-gray-600 dark:text-gray-400 pl-8 leading-relaxed">না, ভুলবশত কিছু খেলে বা পান করলে রোজা ভাঙে না। মনে হওয়ার সাথে সাথে খাবার বন্ধ করে মুখ পরিষ্কার করে নিতে হবে।</div>
             </div>
-
-            <div
-              class="accordion-item border border-gray-100 dark:border-gray-600 rounded-xl bg-gray-50/50 dark:bg-gray-700/50"
-            >
-              <button
-                class="accordion-header w-full text-left p-3 font-bold text-gray-800 dark:text-gray-200 text-sm flex justify-between items-start focus:outline-none"
-              >
-                <span class="flex items-start pr-2">
-                  <i
-                    class="fas fa-question-circle text-green-600 dark:text-green-400 mt-1 mr-2 flex-shrink-0"
-                  ></i>
-                  রোজা অবস্থায় ইনজেকশন বা স্যালাইন নেওয়া যাবে কি?
-                </span>
-                <span
-                  class="icon text-green-600 dark:text-green-400 font-bold text-lg leading-none"
-                  >+</span
-                >
+            <div class="accordion-item border border-gray-100 dark:border-gray-600 rounded-xl bg-gray-50/50 dark:bg-gray-700/50">
+              <button class="accordion-header w-full text-left p-3 font-bold text-gray-800 dark:text-gray-200 text-sm flex justify-between items-start focus:outline-none">
+                <span class="flex items-start pr-2"><i class="fas fa-question-circle text-green-600 dark:text-green-400 mt-1 mr-2 flex-shrink-0"></i>রোজা অবস্থায় ইনজেকশন বা স্যালাইন নেওয়া যাবে কি?</span>
+                <span class="icon text-green-600 dark:text-green-400 font-bold text-lg leading-none">+</span>
               </button>
-              <div
-                class="accordion-content px-3 pb-3 text-sm text-gray-600 dark:text-gray-400 pl-8 leading-relaxed"
-              >
-                অসুস্থতার কারণে শরীরে (মাংসে বা রগে) চিকিৎসা বা ব্যথানাশক
-                ইনজেকশন নিলে রোজা ভাঙবে না। তবে শরীরে শক্তি বৃদ্ধির জন্য বা
-                পুষ্টির জন্য স্যালাইন বা গ্লুকোজ নিলে রোজা ভেঙে যাবে।
-              </div>
+              <div class="accordion-content px-3 pb-3 text-sm text-gray-600 dark:text-gray-400 pl-8 leading-relaxed">অসুস্থতার কারণে শরীরে (মাংসে বা রগে) চিকিৎসা বা ব্যথানাশক ইনজেকশন নিলে রোজা ভাঙবে না। তবে শরীরে শক্তি বৃদ্ধির জন্য বা পুষ্টির জন্য স্যালাইন বা গ্লুকোজ নিলে রোজা ভেঙে যাবে।</div>
             </div>
-
-            <div
-              class="accordion-item border border-gray-100 dark:border-gray-600 rounded-xl bg-gray-50/50 dark:bg-gray-700/50"
-            >
-              <button
-                class="accordion-header w-full text-left p-3 font-bold text-gray-800 dark:text-gray-200 text-sm flex justify-between items-start focus:outline-none"
-              >
-                <span class="flex items-start pr-2">
-                  <i
-                    class="fas fa-question-circle text-green-600 dark:text-green-400 mt-1 mr-2 flex-shrink-0"
-                  ></i>
-                  রোজা অবস্থায় টুথপেস্ট বা মেসওয়াক ব্যবহার করা যাবে?
-                </span>
-                <span
-                  class="icon text-green-600 dark:text-green-400 font-bold text-lg leading-none"
-                  >+</span
-                >
+            <div class="accordion-item border border-gray-100 dark:border-gray-600 rounded-xl bg-gray-50/50 dark:bg-gray-700/50">
+              <button class="accordion-header w-full text-left p-3 font-bold text-gray-800 dark:text-gray-200 text-sm flex justify-between items-start focus:outline-none">
+                <span class="flex items-start pr-2"><i class="fas fa-question-circle text-green-600 dark:text-green-400 mt-1 mr-2 flex-shrink-0"></i>রোজা অবস্থায় টুথপেস্ট বা মেসওয়াক ব্যবহার করা যাবে?</span>
+                <span class="icon text-green-600 dark:text-green-400 font-bold text-lg leading-none">+</span>
               </button>
-              <div
-                class="accordion-content px-3 pb-3 text-sm text-gray-600 dark:text-gray-400 pl-8 leading-relaxed"
-              >
-                রোজা অবস্থায় ডাল দিয়ে মেসওয়াক করা সুন্নত, এতে কোনো সমস্যা নেই।
-                তবে টুথপেস্ট বা মাজন ব্যবহার করা মাকরুহ। যদি পেস্টের স্বাদ বা
-                অংশ গলার ভেতরে চলে যায়, তবে রোজা ভেঙে যাবে।
-              </div>
+              <div class="accordion-content px-3 pb-3 text-sm text-gray-600 dark:text-gray-400 pl-8 leading-relaxed">রোজা অবস্থায় ডাল দিয়ে মেসওয়াক করা সুন্নত, এতে কোনো সমস্যা নেই। তবে টুথপেস্ট বা মাজন ব্যবহার করা মাকরুহ। যদি পেস্টের স্বাদ বা অংশ গলার ভেতরে চলে যায়, তবে রোজা ভেঙে যাবে।</div>
             </div>
-
-            <div
-              class="accordion-item border border-gray-100 dark:border-gray-600 rounded-xl bg-gray-50/50 dark:bg-gray-700/50"
-            >
-              <button
-                class="accordion-header w-full text-left p-3 font-bold text-gray-800 dark:text-gray-200 text-sm flex justify-between items-start focus:outline-none"
-              >
-                <span class="flex items-start pr-2">
-                  <i
-                    class="fas fa-question-circle text-green-600 dark:text-green-400 mt-1 mr-2 flex-shrink-0"
-                  ></i>
-                  চোখে বা কানে ড্রপ দিলে কি রোজা ভাঙে?
-                </span>
-                <span
-                  class="icon text-green-600 dark:text-green-400 font-bold text-lg leading-none"
-                  >+</span
-                >
+            <div class="accordion-item border border-gray-100 dark:border-gray-600 rounded-xl bg-gray-50/50 dark:bg-gray-700/50">
+              <button class="accordion-header w-full text-left p-3 font-bold text-gray-800 dark:text-gray-200 text-sm flex justify-between items-start focus:outline-none">
+                <span class="flex items-start pr-2"><i class="fas fa-question-circle text-green-600 dark:text-green-400 mt-1 mr-2 flex-shrink-0"></i>চোখে বা কানে ড্রপ দিলে কি রোজা ভাঙে?</span>
+                <span class="icon text-green-600 dark:text-green-400 font-bold text-lg leading-none">+</span>
               </button>
-              <div
-                class="accordion-content px-3 pb-3 text-sm text-gray-600 dark:text-gray-400 pl-8 leading-relaxed"
-              >
-                চোখে ড্রপ বা সুরমা ব্যবহার করলে রোজা ভাঙে না। তবে কানে ড্রপ দিলে
-                যদি কান দিয়ে ঔষধ পেটে বা মস্তিষ্কে পৌঁছায় বলে নিশ্চিত হওয়া যায়,
-                তবে রোজা ভেঙে যাবে।
-              </div>
+              <div class="accordion-content px-3 pb-3 text-sm text-gray-600 dark:text-gray-400 pl-8 leading-relaxed">চোখে ড্রপ বা সুরমা ব্যবহার করলে রোজা ভাঙে না। তবে কানে ড্রপ দিলে যদি কান দিয়ে ঔষধ পেটে বা মস্তিষ্কে পৌঁছায় বলে নিশ্চিত হওয়া যায়, তবে রোজা ভেঙে যাবে।</div>
             </div>
-
-            <div
-              class="accordion-item border border-gray-100 dark:border-gray-600 rounded-xl bg-gray-50/50 dark:bg-gray-700/50"
-            >
-              <button
-                class="accordion-header w-full text-left p-3 font-bold text-gray-800 dark:text-gray-200 text-sm flex justify-between items-start focus:outline-none"
-              >
-                <span class="flex items-start pr-2">
-                  <i
-                    class="fas fa-question-circle text-green-600 dark:text-green-400 mt-1 mr-2 flex-shrink-0"
-                  ></i>
-                  রোজা অবস্থায় রক্তদান করা বা রক্ত পরীক্ষা করা যাবে?
-                </span>
-                <span
-                  class="icon text-green-600 dark:text-green-400 font-bold text-lg leading-none"
-                  >+</span
-                >
+            <div class="accordion-item border border-gray-100 dark:border-gray-600 rounded-xl bg-gray-50/50 dark:bg-gray-700/50">
+              <button class="accordion-header w-full text-left p-3 font-bold text-gray-800 dark:text-gray-200 text-sm flex justify-between items-start focus:outline-none">
+                <span class="flex items-start pr-2"><i class="fas fa-question-circle text-green-600 dark:text-green-400 mt-1 mr-2 flex-shrink-0"></i>রোজা অবস্থায় রক্তদান করা বা রক্ত পরীক্ষা করা যাবে?</span>
+                <span class="icon text-green-600 dark:text-green-400 font-bold text-lg leading-none">+</span>
               </button>
-              <div
-                class="accordion-content px-3 pb-3 text-sm text-gray-600 dark:text-gray-400 pl-8 leading-relaxed"
-              >
-                পরীক্ষার জন্য রক্ত দিলে বা কাউকে রক্তদান করলে রোজা ভাঙে না। তবে
-                রক্ত দেওয়ার কারণে যদি কেউ এতটা দুর্বল হয়ে পড়ে যে তার রোজা ভেঙে
-                ফেলার আশঙ্কা থাকে, তবে রক্ত দেওয়া মাকরুহ।
-              </div>
+              <div class="accordion-content px-3 pb-3 text-sm text-gray-600 dark:text-gray-400 pl-8 leading-relaxed">পরীক্ষার জন্য রক্ত দিলে বা কাউকে রক্তদান করলে রোজা ভাঙে না। তবে রক্ত দেওয়ার কারণে যদি কেউ এতটা দুর্বল হয়ে পড়ে যে তার রোজা ভেঙে ফেলার আশঙ্কা থাকে, তবে রক্ত দেওয়া মাকরুহ।</div>
             </div>
           </div>
         </section>
       </div>
 
       <div id="view-tools" class="view-section space-y-6">
-        <section
-          class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-green-50 dark:border-gray-700 text-center transition-colors"
-        >
-          <h2
-            class="text-lg font-bold mb-6 text-green-700 dark:text-green-400 border-b border-gray-100 dark:border-gray-700 pb-3 text-left"
-          >
+        
+        <section class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-green-50 dark:border-gray-700 text-center transition-colors">
+          <h2 class="text-lg font-bold mb-6 text-green-700 dark:text-green-400 border-b border-gray-100 dark:border-gray-700 pb-3 text-left">
             <i class="fas fa-fingerprint mr-2"></i>ডিজিটাল তসবিহ
           </h2>
-
-          <div
-            class="w-40 h-40 mx-auto bg-green-50 dark:bg-gray-700 rounded-full flex items-center justify-center shadow-inner border-[6px] border-green-100 dark:border-gray-600 mb-6 cursor-pointer active:scale-95 transition-transform"
-            onclick="incrementTasbih()"
-          >
-            <span
-              class="text-6xl font-bold text-green-700 dark:text-green-400 drop-shadow-sm select-none"
-              id="tasbih-counter"
-              >0</span
-            >
+          <div class="w-40 h-40 mx-auto bg-green-50 dark:bg-gray-700 rounded-full flex items-center justify-center shadow-inner border-[6px] border-green-100 dark:border-gray-600 mb-6 cursor-pointer active:scale-95 transition-transform" onclick="incrementTasbih()">
+            <span class="text-6xl font-bold text-green-700 dark:text-green-400 drop-shadow-sm select-none" id="tasbih-counter">0</span>
           </div>
-
-          <p class="text-lg text-gray-500 dark:text-gray-400 mb-5 font-medium">
-            সুবহানাল্লাহ / আলহামদুলিল্লাহ / আল্লাহু আকবার
-          </p>
-
-          <button
-            class="bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 px-6 py-2.5 rounded-full font-bold hover:bg-red-100 dark:hover:bg-red-900/50 transition shadow-sm"
-            onclick="resetTasbih()"
-          >
+          <p class="text-lg text-gray-500 dark:text-gray-400 mb-5 font-medium">সুবহানাল্লাহ / আলহামদুলিল্লাহ / আল্লাহু আকবার</p>
+          <button class="bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 px-6 py-2.5 rounded-full font-bold hover:bg-red-100 dark:hover:bg-red-900/50 transition shadow-sm" onclick="resetTasbih()">
             <i class="fas fa-redo-alt mr-2"></i> রিসেট
           </button>
         </section>
+
+        <section class="bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-sm border border-green-50 dark:border-gray-700 transition-colors">
+            <h2 class="text-lg font-bold mb-3 text-green-700 dark:text-green-400 border-b border-gray-100 dark:border-gray-700 pb-3">
+                <i class="fas fa-calculator mr-2"></i>জাকাত ক্যালকুলেটর
+            </h2>
+            <p class="text-sm text-gray-600 dark:text-gray-400 mb-4 bg-gray-50 dark:bg-gray-700 p-2 rounded border border-gray-100 dark:border-gray-600">আপনার নিসাব পরিমাণ সম্পদের <strong class="text-green-700 dark:text-green-400">২.৫%</strong> জাকাত হিসেব করুন।</p>
+            <div class="space-y-4">
+                <div class="flex items-center border border-gray-300 dark:border-gray-600 rounded-xl overflow-hidden bg-white dark:bg-gray-700 shadow-inner focus-within:border-green-500 transition">
+                    <span class="px-4 text-gray-500 dark:text-gray-400 font-bold bg-gray-50 dark:bg-gray-800 border-r border-gray-200 dark:border-gray-600 py-3.5">৳</span>
+                    <input type="text" inputmode="numeric" id="zakat-input" placeholder="মোট সম্পদের পরিমাণ" class="w-full p-3.5 font-sans bg-transparent outline-none text-gray-800 dark:text-white font-medium" oninput="calculateZakat()">
+                </div>
+                <div class="bg-green-600 dark:bg-green-700 text-white p-4 rounded-xl shadow-md flex justify-between items-center">
+                    <span class="text-green-100 dark:text-green-200 font-medium text-sm">জাকাতের পরিমাণ:</span>
+                    <span class="text-2xl font-bold font-mono" id="zakat-result">৳ ০</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-sm border border-green-50 dark:border-gray-700 transition-colors">
+            <h2 class="text-lg font-bold mb-4 text-green-700 dark:text-green-400 border-b border-gray-100 dark:border-gray-700 pb-3">
+                <i class="fas fa-coins mr-2"></i>খুমস ক্যালকুলেটর
+            </h2>
+            <div class="bg-gray-50 dark:bg-gray-700 p-5 rounded-2xl mb-6">
+                <div class="inline-block bg-[#dcfce7] dark:bg-green-900/50 text-[#166534] dark:text-green-300 font-bold px-4 py-1.5 rounded-full text-sm mb-4">
+                    সূরা আল-আনফাল, আয়াত ৪১ (আংশিক)
+                </div>
+                <p class="text-center text-xl text-gray-800 dark:text-gray-100 font-arabic mb-6 leading-loose" dir="rtl">
+                    وَاعْلَمُوا أَنَّمَا غَنِمْتُم مِّن شَيْءٍ فَأَنَّ لِلَّهِ خُمُسَهُ
+                </p>
+                <div class="border-t border-gray-200 dark:border-gray-600 pt-4 mb-4">
+                    <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                        <strong>উচ্চারণ:</strong> ওয়া'লামু আন্নামা গানিমতুম মিন শাইয়িন ফাআন্না লিল্লাহি খুমুসাহু...
+                    </p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-600 p-4 rounded-xl shadow-sm text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                    <strong>অর্থ:</strong> আর জেনে রাখো, তোমরা যা কিছু লাভ করো তার এক-পঞ্চমাংশ (২০%) আল্লাহ, তাঁর রাসূল, রাসূলের নিকটাত্মীয়, ইয়াতিম, মিসকীন ও মুসাফিরদের জন্য।
+                </div>
+            </div>
+            <p class="text-sm text-gray-600 dark:text-gray-400 mb-4 bg-gray-50 dark:bg-gray-700 p-2 rounded border border-gray-100 dark:border-gray-600">মাসিক উপার্জন বা উদ্বৃত্ত সম্পদের <strong class="text-indigo-600 dark:text-indigo-400">২০%</strong> খুমস হিসেব করুন।</p>
+            <div class="space-y-4">
+                <div class="flex items-center border border-gray-300 dark:border-gray-600 rounded-xl overflow-hidden bg-white dark:bg-gray-700 shadow-inner focus-within:border-indigo-500 transition">
+                    <span class="px-4 text-gray-500 dark:text-gray-400 font-bold bg-gray-50 dark:bg-gray-800 border-r border-gray-200 dark:border-gray-600 py-3.5">৳</span>
+                    <input type="text" inputmode="numeric" id="khums-input" placeholder="উদ্বৃত্ত সম্পদের পরিমাণ" class="w-full p-3.5 font-sans bg-transparent outline-none text-gray-800 dark:text-white font-medium" oninput="calculateKhums()">
+                </div>
+                <div class="bg-indigo-600 dark:bg-indigo-700 text-white p-4 rounded-xl shadow-md flex justify-between items-center">
+                    <span class="text-indigo-100 dark:text-indigo-200 font-medium text-sm">খুমসের পরিমাণ:</span>
+                    <span class="text-2xl font-bold font-mono" id="khums-result">৳ ০</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-sm border border-green-50 dark:border-gray-700 transition-colors">
+            <h2 class="text-lg font-bold mb-3 text-green-700 dark:text-green-400 border-b border-gray-100 dark:border-gray-700 pb-3">
+                <i class="fas fa-hand-holding-heart mr-2"></i>ফিতরা ক্যালকুলেটর
+            </h2>
+            <p class="text-sm text-gray-600 dark:text-gray-400 mb-4 bg-gray-50 dark:bg-gray-700 p-2 rounded border border-gray-100 dark:border-gray-600">পরিবারের সদস্য সংখ্যা এবং খাদ্যের ধরন অনুযায়ী ফিতরা হিসেব করুন।</p>
+            <div class="space-y-4">
+                <div class="flex items-center border border-gray-300 dark:border-gray-600 rounded-xl overflow-hidden bg-white dark:bg-gray-700 shadow-inner focus-within:border-teal-500 transition">
+                    <span class="px-4 text-gray-500 dark:text-gray-400 font-bold bg-gray-50 dark:bg-gray-800 border-r border-gray-200 dark:border-gray-600 py-3.5"><i class="fas fa-users"></i></span>
+                    <input type="text" inputmode="numeric" id="fitra-members" placeholder="সদস্য সংখ্যা" class="w-full p-3.5 font-sans bg-transparent outline-none text-gray-800 dark:text-white font-medium" oninput="calculateFitra()">
+                </div>
+                <div class="flex items-center border border-gray-300 dark:border-gray-600 rounded-xl overflow-hidden bg-white dark:bg-gray-700 shadow-inner focus-within:border-teal-500 transition relative">
+                    <span class="px-4 text-gray-500 dark:text-gray-400 font-bold bg-gray-50 dark:bg-gray-800 border-r border-gray-200 dark:border-gray-600 py-3.5"><i class="fas fa-wheat-awn"></i></span>
+                    <select id="fitra-rate" class="w-full p-3.5 font-sans appearance-none bg-transparent outline-none text-gray-800 dark:text-white font-medium cursor-pointer" onchange="calculateFitra()">
+                        <option value="115" class="text-gray-800">আটা/গম - ১১৫ ৳ (সর্বনিম্ন)</option>
+                        <option value="396" class="text-gray-800">যব - ৩৯৬ ৳</option>
+                        <option value="1650" class="text-gray-800">কিশমিশ - ১৬৫০ ৳</option>
+                        <option value="1980" class="text-gray-800">খেজুর - ১৯৮০ ৳</option>
+                        <option value="2640" class="text-gray-800">পনির - ২৬৪০ ৳ (সর্বোচ্চ)</option>
+                    </select>
+                    <i class="fas fa-chevron-down absolute right-4 text-gray-400 pointer-events-none"></i>
+                </div>
+                <div class="bg-teal-600 dark:bg-teal-700 text-white p-4 rounded-xl shadow-md flex justify-between items-center">
+                    <span class="text-teal-100 dark:text-teal-200 font-medium text-sm">মোট ফিতরা:</span>
+                    <span class="text-2xl font-bold font-mono" id="fitra-result">৳ ০</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-sm border border-green-50 dark:border-gray-700 transition-colors">
+            <h2 class="text-lg font-bold mb-3 text-green-700 dark:text-green-400 border-b border-gray-100 dark:border-gray-700 pb-3">
+                <i class="fas fa-hand-holding-medical mr-2"></i>ফিদিয়া ক্যালকুলেটর
+            </h2>
+            <p class="text-sm text-gray-600 dark:text-gray-400 mb-4 bg-gray-50 dark:bg-gray-700 p-2 rounded border border-gray-100 dark:border-gray-600">ভাঙা বা কাজা রোজার সংখ্যা এবং খাদ্যের ধরন অনুযায়ী ফিদিয়া হিসেব করুন।</p>
+            <div class="space-y-4">
+                <div class="flex items-center border border-gray-300 dark:border-gray-600 rounded-xl overflow-hidden bg-white dark:bg-gray-700 shadow-inner focus-within:border-rose-500 transition">
+                    <span class="px-4 text-gray-500 dark:text-gray-400 font-bold bg-gray-50 dark:bg-gray-800 border-r border-gray-200 dark:border-gray-600 py-3.5"><i class="fas fa-calendar-times"></i></span>
+                    <input type="text" inputmode="numeric" id="fidiya-days" placeholder="ভাঙা রোজার সংখ্যা" class="w-full p-3.5 font-sans bg-transparent outline-none text-gray-800 dark:text-white font-medium" oninput="calculateFidiya()">
+                </div>
+                <div class="flex items-center border border-gray-300 dark:border-gray-600 rounded-xl overflow-hidden bg-white dark:bg-gray-700 shadow-inner focus-within:border-rose-500 transition relative">
+                    <span class="px-4 text-gray-500 dark:text-gray-400 font-bold bg-gray-50 dark:bg-gray-800 border-r border-gray-200 dark:border-gray-600 py-3.5"><i class="fas fa-wheat-awn"></i></span>
+                    <select id="fidiya-rate" class="w-full p-3.5 font-sans appearance-none bg-transparent outline-none text-gray-800 dark:text-white font-medium cursor-pointer" onchange="calculateFidiya()">
+                        <option value="115" class="text-gray-800">আটা/গম - ১১৫ ৳ (সর্বনিম্ন)</option>
+                        <option value="396" class="text-gray-800">যব - ৩৯৬ ৳</option>
+                        <option value="1650" class="text-gray-800">কিশমিশ - ১৬৫০ ৳</option>
+                        <option value="1980" class="text-gray-800">খেজুর - ১৯৮০ ৳</option>
+                        <option value="2640" class="text-gray-800">পনির - ২৬৪০ ৳ (সর্বোচ্চ)</option>
+                    </select>
+                    <i class="fas fa-chevron-down absolute right-4 text-gray-400 pointer-events-none"></i>
+                </div>
+                <div class="bg-rose-600 dark:bg-rose-700 text-white p-4 rounded-xl shadow-md flex justify-between items-center">
+                    <span class="text-rose-100 dark:text-rose-200 font-medium text-sm">মোট ফিদিয়া:</span>
+                    <span class="text-2xl font-bold font-mono" id="fidiya-result">৳ ০</span>
+                </div>
+            </div>
+        </section>
+
       </div>
 
-      <div
-        class="text-center pt-4 pb-2 text-sm text-gray-500 dark:text-gray-400 transition-colors"
-      >
+      <div class="text-center pt-4 pb-2 text-sm text-gray-500 dark:text-gray-400 transition-colors">
         Design & Developed with ❤️ by
-        <a
-          href="https://facebook.com/uikamrul"
-          target="_blank"
-          class="text-green-600 dark:text-green-400 font-bold hover:underline"
-          >Kamrul Hasan</a
-        >
+        <a href="https://facebook.com/uikamrul" target="_blank" class="text-green-600 dark:text-green-400 font-bold hover:underline">Kamrul Hasan</a>
       </div>
     </main>
 
-    <nav
-      class="fixed bottom-0 w-full bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 shadow-[0_-4px_20px_rgba(0,0,0,0.04)] z-50 transition-colors duration-300"
-    >
-      <div class="max-w-md mx-auto flex justify-around px-2 py-3">
-        <button
-          onclick="switchTab('home', this)"
-          class="nav-btn flex flex-col items-center text-green-600 dark:text-green-500 w-16"
-        >
+    <nav class="fixed bottom-0 w-full max-w-[768px] left-1/2 -translate-x-1/2 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 shadow-[0_-4px_20px_rgba(0,0,0,0.04)] z-50 transition-colors duration-300">
+      <div class="w-full flex justify-around px-2 py-3">
+        <button onclick="switchTab('home', this)" class="nav-btn flex flex-col items-center text-green-600 dark:text-green-500 w-16">
           <i class="fas fa-home text-xl mb-1"></i>
           <span class="text-[11px] font-bold">হোম</span>
         </button>
-        <button
-          onclick="switchTab('schedule', this)"
-          class="nav-btn flex flex-col items-center text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition w-16"
-        >
+        <button onclick="switchTab('schedule', this)" class="nav-btn flex flex-col items-center text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition w-16">
           <i class="fas fa-calendar-alt text-xl mb-1"></i>
           <span class="text-[11px] font-medium">সূচী</span>
         </button>
-        <button
-          onclick="switchTab('duas', this)"
-          class="nav-btn flex flex-col items-center text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition w-16"
-        >
+        <button onclick="switchTab('duas', this)" class="nav-btn flex flex-col items-center text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition w-16">
           <i class="fas fa-praying-hands text-xl mb-1"></i>
-          <span class="text-[11px] font-medium">দোয়া</span>
+          <span class="text-[11px] font-medium">দোয়া</span>
         </button>
-        <button
-          onclick="switchTab('tools', this)"
-          class="nav-btn flex flex-col items-center text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition w-16"
-        >
+        <button onclick="switchTab('tools', this)" class="nav-btn flex flex-col items-center text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition w-16">
           <i class="fas fa-toolbox text-xl mb-1"></i>
           <span class="text-[11px] font-medium">টুলস</span>
         </button>
@@ -705,40 +440,30 @@
     </nav>
 
     <script>
+      // ================= PWA Service Worker Registration =================
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('sw.js').then(reg => {
+            console.log('PWA Service Worker registered:', reg);
+          }).catch(err => console.log('SW config error:', err));
+        });
+      }
+
       // ================= Disable Right-Click (Context Menu) =================
-      document.addEventListener("contextmenu", (event) =>
-        event.preventDefault(),
-      );
+      document.addEventListener("contextmenu", (event) => event.preventDefault());
 
       // ================= Disable common developer tools keyboard shortcuts =================
       document.onkeydown = function (e) {
-        // ======== Disable F12 ========
-        if (event.keyCode == 123) {
-          return false;
-        }
-        // ======== Disable Ctrl+Shift+I (Inspect Element) ========
-        if (e.ctrlKey && e.shiftKey && e.keyCode == "I".charCodeAt(0)) {
-          return false;
-        }
-        // ======== Disable Ctrl+Shift+J (Console) ========
-        if (e.ctrlKey && e.shiftKey && e.keyCode == "J".charCodeAt(0)) {
-          return false;
-        }
-        // ======== Disable Ctrl+U (View Source) ========
-        if (e.ctrlKey && e.keyCode == "U".charCodeAt(0)) {
-          return false;
-        }
-        // ======== Disable Ctrl+C (Copy) ========
-        if (e.ctrlKey && e.keyCode == "C".charCodeAt(0)) {
-          return false;
-        }
+        if (event.keyCode == 123) return false;
+        if (e.ctrlKey && e.shiftKey && e.keyCode == "I".charCodeAt(0)) return false;
+        if (e.ctrlKey && e.shiftKey && e.keyCode == "J".charCodeAt(0)) return false;
+        if (e.ctrlKey && e.keyCode == "U".charCodeAt(0)) return false;
+        if (e.ctrlKey && e.keyCode == "C".charCodeAt(0)) return false;
       };
 
       // ================= SPA NAVIGATION LOGIC =================
       function switchTab(tabId, btnElement) {
-        document
-          .querySelectorAll(".view-section")
-          .forEach((el) => el.classList.remove("active"));
+        document.querySelectorAll(".view-section").forEach((el) => el.classList.remove("active"));
         document.getElementById("view-" + tabId).classList.add("active");
 
         document.querySelectorAll(".nav-btn").forEach((btn) => {
@@ -761,11 +486,7 @@
       const themeIconLight = document.getElementById("theme-icon-light");
       const htmlElement = document.documentElement;
 
-      if (
-        localStorage.getItem("color-theme") === "dark" ||
-        (!("color-theme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
-      ) {
+      if (localStorage.getItem("color-theme") === "dark" || (!("color-theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
         htmlElement.classList.add("dark");
         themeIconDark.classList.add("hidden");
         themeIconLight.classList.remove("hidden");
@@ -791,8 +512,7 @@
       for (let i = 1; i <= 5; i++) {
         let checkbox = document.getElementById("amal-" + i);
         if (checkbox) {
-          if (localStorage.getItem("amal-" + i) === "true")
-            checkbox.checked = true;
+          if (localStorage.getItem("amal-" + i) === "true") checkbox.checked = true;
           checkbox.addEventListener("change", function () {
             localStorage.setItem("amal-" + i, this.checked);
           });
@@ -806,19 +526,12 @@
           const content = header.nextElementSibling;
           const icon = header.querySelector(".icon");
 
-          document
-            .querySelectorAll(".accordion-content")
-            .forEach((otherContent) => {
-              if (
-                otherContent !== content &&
-                otherContent.classList.contains("expanded")
-              ) {
-                otherContent.classList.remove("expanded");
-                otherContent.previousElementSibling.querySelector(
-                  ".icon",
-                ).innerText = "+";
-              }
-            });
+          document.querySelectorAll(".accordion-content").forEach((otherContent) => {
+            if (otherContent !== content && otherContent.classList.contains("expanded")) {
+              otherContent.classList.remove("expanded");
+              otherContent.previousElementSibling.querySelector(".icon").innerText = "+";
+            }
+          });
 
           if (content.classList.contains("expanded")) {
             content.classList.remove("expanded");
@@ -840,8 +553,7 @@
       };
 
       const districtSelect = document.getElementById("district-select");
-      let currentDistrict =
-        localStorage.getItem("selected-district") || "জামালপুর";
+      let currentDistrict = localStorage.getItem("selected-district") || "জামালপুর";
       districtSelect.value = currentDistrict;
 
       districtSelect.addEventListener("change", function (e) {
@@ -856,6 +568,13 @@
         return str.toString().replace(/\d/g, (d) => bnDigits[d]);
       }
 
+      // Convert Bengali input to English numbers for calculation
+      function enDigit(str) {
+        if (!str) return '';
+        const bnDigits = ['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
+        return str.replace(/[০-৯]/g, d => bnDigits.indexOf(d));
+      }
+
       // ================= DATES & TIMER LOGIC =================
       const ramadanStartDate = new Date("2026-02-17T00:00:00");
       const currentHijriYear = "১৪৪৭";
@@ -864,11 +583,9 @@
       function generateSchedule() {
         scheduleData = [];
         let curDate = new Date(ramadanStartDate);
-
         let sehriBase = new Date("2026-02-17T05:08:00");
         let sunriseBase = new Date("2026-02-17T06:29:00");
         let sunsetBase = new Date("2026-02-17T17:55:00");
-
         let offsetMs = (districtOffsets[currentDistrict] || 0) * 60 * 1000;
 
         const tbody = document.getElementById("schedule-body");
@@ -884,26 +601,16 @@
 
           let dayData = {
             ramadanDay: i,
-            dateStr: curDate.toLocaleDateString("en-GB", {
-              day: "numeric",
-              month: "short",
-            }),
-            sehriStr: localSehri.toLocaleTimeString("en-US", {
-              hour: "2-digit",
-              minute: "2-digit",
-            }),
-            iftarStr: calculatedIftar.toLocaleTimeString("en-US", {
-              hour: "2-digit",
-              minute: "2-digit",
-            }),
+            dateStr: curDate.toLocaleDateString("en-GB", { day: "numeric", month: "short" }),
+            sehriStr: localSehri.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" }),
+            iftarStr: calculatedIftar.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" }),
             sehriDate: new Date(localSehri),
             iftarDate: new Date(calculatedIftar),
           };
           scheduleData.push(dayData);
 
           const tr = document.createElement("tr");
-          tr.className =
-            "hover:bg-gray-50 dark:hover:bg-gray-700/50 transition border-b dark:border-gray-700";
+          tr.className = "hover:bg-gray-50 dark:hover:bg-gray-700/50 transition border-b dark:border-gray-700";
           tr.innerHTML = `
                     <td class="p-3 text-gray-700 dark:text-gray-300 font-bold font-mono">${bnDigit(dayData.ramadanDay)}</td>
                     <td class="p-3 border-l dark:border-gray-700 text-gray-700 dark:text-gray-300 font-mono">${bnDigit(dayData.dateStr)}</td>
@@ -926,7 +633,6 @@
 
       function updateTimer() {
         const now = new Date();
-
         let diffTime = now.getTime() - ramadanStartDate.getTime();
         let currentDayIndex = Math.floor(diffTime / (1000 * 3600 * 24));
 
@@ -935,14 +641,9 @@
 
         const todayData = scheduleData[currentDayIndex];
 
-        document.getElementById("current-date-display").innerText =
-          ` আজ ${bnDigit(todayData.ramadanDay)} রমজান ${currentHijriYear} (${bnDigit(todayData.dateStr)})`;
-        document.getElementById("sehri-time").innerText = bnDigit(
-          todayData.sehriStr,
-        );
-        document.getElementById("iftar-time").innerText = bnDigit(
-          todayData.iftarStr,
-        );
+        document.getElementById("current-date-display").innerText = ` আজ ${bnDigit(todayData.ramadanDay)} রমজান ${currentHijriYear} (${bnDigit(todayData.dateStr)})`;
+        document.getElementById("sehri-time").innerText = bnDigit(todayData.sehriStr);
+        document.getElementById("iftar-time").innerText = bnDigit(todayData.iftarStr);
 
         let targetTime;
         let labelText = "";
@@ -954,8 +655,7 @@
           targetTime = todayData.iftarDate;
           labelText = "ইফতারের বাকি আছে";
         } else {
-          let nextDayData =
-            scheduleData[currentDayIndex + 1] || scheduleData[29];
+          let nextDayData = scheduleData[currentDayIndex + 1] || scheduleData[29];
           targetTime = nextDayData.sehriDate;
           labelText = "সেহরির বাকি আছে";
         }
@@ -976,17 +676,16 @@
       updateTimer();
       setInterval(updateTimer, 1000);
 
-      // ================= PDF DOWNLOAD LOGIC (TOP-ALIGNED A4 FIX) =================
+      // ================= PDF DOWNLOAD LOGIC =================
       function downloadPDF() {
         const element = document.createElement("div");
 
-        // Standard A4 dimensions in pixels
         element.style.width = "794px";
         element.style.height = "1123px";
-        element.style.padding = "20px"; // Less padding on top, more on sides
+        element.style.padding = "20px";
         element.style.boxSizing = "border-box";
         element.style.backgroundColor = "white";
-        element.style.display = "block"; // Ensure it's not centered vertically
+        element.style.display = "block"; 
 
         element.innerHTML = `
                 <div style="text-align: center; margin-bottom: 10px;">
@@ -1005,18 +704,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        ${scheduleData
-                          .map(
-                            (day, index) => `
+                        ${scheduleData.map((day) => `
                             <tr style="background-color: #ffffff; line-height: 1;">
                                 <td style="border: 1px solid #000000; padding: 4px; font-family: ui-monospace; color: #000000;">${bnDigit(day.ramadanDay)}</td>
                                 <td style="border: 1px solid #000000; padding: 4px; font-family: ui-monospace; color: #000000;">${bnDigit(day.dateStr)}</td>
                                 <td style="border: 1px solid #000000; padding: 4px; font-family: ui-monospace; color: #000000;">${bnDigit(day.sehriStr)}</td>
                                 <td style="border: 1px solid #000000; padding: 4px; font-family: ui-monospace; color: #000000;">${bnDigit(day.iftarStr)}</td>
                             </tr>
-                        `,
-                          )
-                          .join("")}
+                        `).join("")}
                     </tbody>
                 </table>
                 
@@ -1031,26 +726,14 @@
           margin: 0,
           filename: `Ramadan-2026-${currentDistrict}.pdf`,
           image: { type: "jpeg", quality: 1.0 },
-          html2canvas: {
-            scale: 2,
-            useCORS: true,
-            logging: false,
-            width: 794,
-            height: 1123,
-          },
+          html2canvas: { scale: 2, useCORS: true, logging: false, width: 794, height: 1123 },
           jsPDF: { unit: "px", format: [794, 1123], orientation: "portrait" },
         };
 
-        html2pdf()
-          .set(opt)
-          .from(element)
-          .save()
-          .then(() => {
-            document.body.removeChild(element);
-          });
+        html2pdf().set(opt).from(element).save().then(() => document.body.removeChild(element));
       }
 
-      // ================= TASBIH LOGIC =================
+      // ================= TOOLS LOGIC =================
       let count = parseInt(localStorage.getItem("tasbih-count")) || 0;
       document.getElementById("tasbih-counter").innerText = bnDigit(count);
 
@@ -1064,6 +747,60 @@
         count = 0;
         document.getElementById("tasbih-counter").innerText = bnDigit(count);
         localStorage.setItem("tasbih-count", count);
+      }
+
+      function calculateZakat() {
+        let rawInput = document.getElementById("zakat-input").value;
+        let amount = parseFloat(enDigit(rawInput));
+        const resultElement = document.getElementById("zakat-result");
+        
+        if (!isNaN(amount) && amount > 0) {
+            const zakat = amount * 0.025;
+            resultElement.innerText = "৳ " + bnDigit(Math.floor(zakat));
+        } else {
+            resultElement.innerText = "৳ ০";
+        }
+      }
+
+      function calculateKhums() {
+        let rawInput = document.getElementById("khums-input").value;
+        let amount = parseFloat(enDigit(rawInput));
+        const resultElement = document.getElementById("khums-result");
+        
+        if (!isNaN(amount) && amount > 0) {
+            const khums = amount * 0.20; // 20% calculation
+            resultElement.innerText = "৳ " + bnDigit(Math.floor(khums));
+        } else {
+            resultElement.innerText = "৳ ০";
+        }
+      }
+
+      function calculateFitra() {
+        let rawMembers = document.getElementById("fitra-members").value;
+        let members = parseFloat(enDigit(rawMembers));
+        let rate = parseFloat(document.getElementById("fitra-rate").value);
+        const resultElement = document.getElementById("fitra-result");
+        
+        if (!isNaN(members) && members > 0) {
+            const fitra = members * rate;
+            resultElement.innerText = "৳ " + bnDigit(Math.floor(fitra));
+        } else {
+            resultElement.innerText = "৳ ০";
+        }
+      }
+
+      function calculateFidiya() {
+        let rawDays = document.getElementById("fidiya-days").value;
+        let days = parseFloat(enDigit(rawDays));
+        let rate = parseFloat(document.getElementById("fidiya-rate").value);
+        const resultElement = document.getElementById("fidiya-result");
+        
+        if (!isNaN(days) && days > 0) {
+            const fidiya = days * rate;
+            resultElement.innerText = "৳ " + bnDigit(Math.floor(fidiya));
+        } else {
+            resultElement.innerText = "৳ ০";
+        }
       }
     </script>
   </body>
