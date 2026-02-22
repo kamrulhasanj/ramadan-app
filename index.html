@@ -1,0 +1,1070 @@
+<!doctype html>
+<html lang="bn" class="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Al-Ramadan 2026</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {},
+        },
+      };
+    </script>
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap");
+
+      body {
+        font-family: "Hind Siliguri", sans-serif;
+        padding-bottom: 80px;
+        transition:
+          background-color 0.3s ease,
+          color 0.3s ease;
+          /* Anti-Copy Protection: Disables text selection and highlighting */
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      }
+
+      .hero-card {
+        background: linear-gradient(135deg, #15803d, #14532d);
+    }
+
+      .dark .hero-card {
+        background: linear-gradient(135deg, #064e3b, #022c22);
+      }
+
+      /* View transition styles */
+      .view-section {
+        display: none;
+        animation: fadeIn 0.3s ease-in-out;
+      }
+      .view-section.active {
+        display: block;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Accordion transition smooth */
+      .accordion-content {
+        transition:
+          max-height 0.3s ease-in-out,
+          opacity 0.3s ease-in-out;
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+      }
+      .accordion-content.expanded {
+        max-height: 200px;
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-[#f0fdf4] dark:bg-gray-900 text-gray-800 dark:text-gray-200 antialiased selection:bg-green-200 dark:selection:bg-green-800"
+  >
+    <header
+      class="bg-green-600 dark:bg-gray-800 text-white text-center py-4 sticky top-0 z-50 shadow-md transition-colors duration-300"
+    >
+      <p
+        class="text-xl font-arabic font-bold tracking-wider text-green-100 dark:text-gray-300"
+        dir="rtl"
+      >
+        أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ
+      </p>
+      <h1 class="text-xl font-bold tracking-wide relative mt-2">
+        <i class="fas fa-moon mr-2 text-yellow-300"></i>Al-Ramadan 2026
+
+        <button
+          id="theme-toggle"
+          class="absolute right-4 top-0 text-xl hover:text-yellow-300 transition-colors focus:outline-none"
+        >
+          <i class="fas fa-sun hidden" id="theme-icon-light"></i>
+          <i class="fas fa-moon" id="theme-icon-dark"></i>
+        </button>
+      </h1>
+    </header>
+
+    <main class="max-w-md mx-auto p-4 space-y-6">
+      <div
+        class="flex items-center justify-between bg-white dark:bg-gray-800 p-3 rounded-xl shadow-sm border border-green-50 dark:border-gray-700 transition-colors"
+      >
+        <label
+          for="district-select"
+          class="font-bold text-green-700 dark:text-green-400"
+          ><i class="fas fa-map-marker-alt mr-2"></i>আপনার জেলা:</label
+        >
+        <select
+          id="district-select"
+          class="bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-white border border-gray-200 dark:border-gray-600 rounded-lg px-3 py-1 outline-none focus:border-green-500 font-medium"
+        >
+          <option value="ঢাকা">ঢাকা</option>
+          <option value="জামালপুর">জামালপুর</option>
+          <option value="শেরপুর">শেরপুর</option>
+          <option value="টাংগাইল">টাংগাইল</option>
+          <option value="মানিকগঞ্জ">মানিকগঞ্জ</option>
+        </select>
+      </div>
+
+      <div id="view-home" class="view-section active space-y-6">
+        <section
+          class="hero-card rounded-2xl p-6 text-center text-white relative overflow-hidden shadow-lg"
+        >
+          <h2
+            class="text-lg font-medium mb-1 text-green-100"
+            id="countdown-label"
+          >
+            ইফতারের বাকি
+          </h2>
+          <div class="text-5xl font-bold mb-2 tracking-wider font-mono drop-shadow-md" id="countdown">
+            ০০:০০:০০
+          </div>
+          <div class="text-sm mb-6 text-green-200 font-medium tracking-wide bg-black/20 inline-block px-4 py-1 rounded-full font-mono" id="current-date-display">
+            --
+          </div>
+
+          <div class="flex justify-between gap-4 relative z-10">
+            <div
+              class="bg-white/10 rounded-xl p-3 w-1/2 backdrop-blur-sm border border-white/20"
+            >
+              <div class="text-2xl mb-1">🌙</div>
+              <div class="text-xl font-bold font-mono" id="sehri-time">
+                --:--
+              </div>
+              <div class="text-xs text-green-100 mt-1">সেহরির শেষ</div>
+            </div>
+            <div
+              class="bg-white/10 rounded-xl p-3 w-1/2 backdrop-blur-sm border border-white/20"
+            >
+              <div class="text-2xl mb-1">☀️</div>
+              <div class="text-xl font-bold font-mono" id="iftar-time">
+                --:--
+              </div>
+              <div class="text-xs text-green-100 mt-1">ইফতার শুরু</div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          class="bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-sm border border-green-50 dark:border-gray-700 transition-colors duration-300"
+        >
+          <h2
+            class="text-lg font-bold mb-4 text-green-700 dark:text-green-400 border-b border-gray-100 dark:border-gray-700 pb-3"
+          >
+            <i class="fas fa-clipboard-check mr-2"></i>আজকের আমল ট্র্যাকার
+          </h2>
+          <div class="space-y-2">
+            <label
+              class="flex items-center space-x-3 p-2.5 hover:bg-green-50 dark:hover:bg-gray-700 rounded-lg cursor-pointer transition border border-transparent hover:border-green-100 dark:hover:border-gray-600"
+            >
+              <input
+                type="checkbox"
+                id="amal-1"
+                class="w-5 h-5 text-green-600 rounded border-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:ring-green-500 accent-green-600"
+              />
+              <span class="text-gray-700 dark:text-gray-300 font-medium"
+                >৫ ওয়াক্ত নামাজ</span
+              >
+            </label>
+            <label
+              class="flex items-center space-x-3 p-2.5 hover:bg-green-50 dark:hover:bg-gray-700 rounded-lg cursor-pointer transition border border-transparent hover:border-green-100 dark:hover:border-gray-600"
+            >
+              <input
+                type="checkbox"
+                id="amal-2"
+                class="w-5 h-5 text-green-600 rounded border-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:ring-green-500 accent-green-600"
+              />
+              <span class="text-gray-700 dark:text-gray-300 font-medium"
+                >তাহাজ্জুদ নামাজ</span
+              >
+            </label>
+            <label
+              class="flex items-center space-x-3 p-2.5 hover:bg-green-50 dark:hover:bg-gray-700 rounded-lg cursor-pointer transition border border-transparent hover:border-green-100 dark:hover:border-gray-600"
+            >
+              <input
+                type="checkbox"
+                id="amal-3"
+                class="w-5 h-5 text-green-600 rounded border-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:ring-green-500 accent-green-600"
+              />
+              <span class="text-gray-700 dark:text-gray-300 font-medium"
+                >কুরআন তিলাওয়াত</span
+              >
+            </label>
+            <label
+              class="flex items-center space-x-3 p-2.5 hover:bg-green-50 dark:hover:bg-gray-700 rounded-lg cursor-pointer transition border border-transparent hover:border-green-100 dark:hover:border-gray-600"
+            >
+              <input
+                type="checkbox"
+                id="amal-4"
+                class="w-5 h-5 text-green-600 rounded border-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:ring-green-500 accent-green-600"
+              />
+              <span class="text-gray-700 dark:text-gray-300 font-medium"
+                >যিকর ও ইস্তিগফার
+              </span>
+            </label>
+            <label
+              class="flex items-center space-x-3 p-2.5 hover:bg-green-50 dark:hover:bg-gray-700 rounded-lg cursor-pointer transition border border-transparent hover:border-green-100 dark:hover:border-gray-600"
+            >
+              <input
+                type="checkbox"
+                id="amal-5"
+                class="w-5 h-5 text-green-600 rounded border-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:ring-green-500 accent-green-600"
+              />
+              <span class="text-gray-700 dark:text-gray-300 font-medium"
+                >সদকাহ / দান</span
+              >
+            </label>
+          </div>
+        </section>
+
+        <section
+          class="bg-teal-50 dark:bg-teal-900/30 border-l-4 border-teal-500 rounded-r-xl p-4 shadow-sm transition-colors"
+        >
+          <h2 class="text-base font-bold mb-1 text-teal-800 dark:text-teal-400">
+            <i class="fas fa-heartbeat mr-2"></i>স্বাস্থ্য পরামর্শ - ইফতার ও
+            সেহরির মাঝে
+          </h2>
+          <br />
+          <p class="text-teal-900 dark:text-teal-200 text-sm">
+            ১) পর্যাপ্ত পানি পান করুন (কমপক্ষে ৮-১০ গ্লাস)।
+          </p>
+          <br />
+          <p class="text-teal-900 dark:text-teal-200 text-sm">
+            ২) ভাজাপোড়া ও অতিরিক্ত মশলাযুক্ত খাবার ত্যাগ করুন।
+          </p>
+          <br />
+          <p class="text-teal-900 dark:text-teal-200 text-sm">
+            ৩) নিয়মিত শাক-সবজি ও ফলমূল খান।
+          </p>
+        </section>
+      </div>
+
+      <div id="view-schedule" class="view-section">
+        <section
+          class="bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-sm border border-green-50 dark:border-gray-700 transition-colors"
+        >
+          <h2
+            class="text-lg font-bold mb-4 text-green-700 dark:text-green-400 border-b border-gray-100 dark:border-gray-700 pb-3"
+          >
+            <i class="fas fa-calendar-alt mr-2"></i>রমজান সূচী ২০২৬
+          </h2>
+          <div
+            class="overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-700 max-h-[60vh] overflow-y-auto"
+          >
+            <table class="w-full text-center border-collapse text-sm">
+              <thead class="sticky top-0 z-10">
+                <tr
+                  class="bg-green-100 dark:bg-gray-700 text-green-800 dark:text-green-300"
+                >
+                  <th class="p-3 border-b dark:border-gray-600 font-semibold">
+                    রমজান
+                  </th>
+                  <th
+                    class="p-3 border-b dark:border-gray-600 font-semibold border-l dark:border-gray-600"
+                  >
+                    তারিখ
+                  </th>
+                  <th
+                    class="p-3 border-b dark:border-gray-600 font-semibold border-l dark:border-gray-600"
+                  >
+                    সেহরি
+                  </th>
+                  <th
+                    class="p-3 border-b dark:border-gray-600 font-semibold border-l dark:border-gray-600"
+                  >
+                    ইফতার
+                  </th>
+                </tr>
+              </thead>
+              <tbody id="schedule-body"></tbody>
+            </table>
+          </div>
+
+          <button
+            onclick="downloadPDF()"
+            class="mt-5 w-full bg-green-50 dark:bg-gray-700 text-green-700 dark:text-green-400 font-bold py-3 rounded-xl hover:bg-green-100 dark:hover:bg-gray-600 transition shadow-sm border border-green-200 dark:border-gray-600 active:scale-95"
+          >
+            <i class="fas fa-file-pdf mr-2 text-red-500"></i> ডাউনলোড সময়সূচি
+            (PDF)
+          </button>
+        </section>
+      </div>
+
+      <div id="view-duas" class="view-section space-y-6">
+        <section
+          class="bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-sm border border-green-50 dark:border-gray-700 transition-colors"
+        >
+          <h2
+            class="text-lg font-bold mb-4 text-green-700 dark:text-green-400 border-b border-gray-100 dark:border-gray-700 pb-3"
+          >
+            <i class="fas fa-quran mr-2"></i>আল-কোরআনে সাওম
+          </h2>
+
+          <div class="mb-6 bg-gray-50 dark:bg-gray-700 p-4 rounded-xl">
+            <h4
+              class="font-bold text-green-800 dark:text-green-300 mb-3 text-center bg-green-100 dark:bg-gray-800 inline-block px-3 py-1 rounded-full text-sm"
+            >
+              সূরা আল-বাকারা, আয়াত ১৮৭ (আংশিক)
+            </h4>
+            <p
+              class="text-right text-xl text-gray-800 dark:text-gray-100 font-arabic mb-4 leading-relaxed"
+              dir="rtl"
+            >
+              وَكُلُوا وَاشْرَبُوا حَتَّى يَتَبَيَّنَ لَكُمُ الْخَيْطُ
+              الْأَبْيَضُ مِنَ الْخَيْطِ الْأَسْوَدِ مِنَ الْفَجْرِ ۖ ثُمَّ
+              أَتِمُّوا الصِّيَامَ إِلَى اللَّيْلِ
+            </p>
+            <p
+              class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed border-t border-gray-200 dark:border-gray-600 pt-3 mb-3"
+            >
+              <strong>উচ্চারণ:</strong> ওয়া কুলু ওয়াশরাবু হাত্তা
+              ইয়াতাবাইয়্যানা লাকুমুল খাইতুল আবইয়াদু মিনাল খাইতিল আসওয়াদি
+              মিনাল ফাজরি ছুম্মা আতিম্মুস সিয়ামা ইলাল লাইল।
+            </p>
+            <p
+              class="text-sm text-gray-600 dark:text-gray-400 bg-white dark:bg-gray-800 p-3 rounded border border-gray-100 dark:border-gray-600 leading-relaxed"
+            >
+              <strong>অর্থ:</strong> আর তোমরা পানাহার কর যতক্ষণ না ভোরের কালো
+              রেখা থেকে সাদা রেখা তোমাদের কাছে স্পষ্ট হয়। এরপর রাত পর্যন্ত রোজা
+              পূর্ণ কর।
+            </p>
+          </div>
+
+          <div class="mb-6 bg-gray-50 dark:bg-gray-700 p-4 rounded-xl">
+            <h4
+              class="font-bold text-green-800 dark:text-green-300 mb-3 text-center bg-green-100 dark:bg-gray-800 inline-block px-3 py-1 rounded-full text-sm"
+            >
+              সূরা আল-বাকারা, আয়াত ১৮৩
+            </h4>
+            <p
+              class="text-right text-xl text-gray-800 dark:text-gray-100 font-arabic mb-4 leading-relaxed"
+              dir="rtl"
+            >
+              يَا أَيُّهَا الَّذِينَ آمَنُوا كُتِبَ عَلَيْكُمُ الصِّيَامُ كَمَا
+              كُتِبَ عَلَى الَّذِينَ مِن قَبْلِكُمْ لَعَلَّكُمْ تَتَّقُونَ
+            </p>
+            <p
+              class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed border-t border-gray-200 dark:border-gray-600 pt-3 mb-3"
+            >
+              <strong>উচ্চারণ:</strong> ইয়া আইয়্যোহাল্লাজিনা আমানু কুতিবা
+              আলাইকুমুস সিয়ামু কামা কুতিবা আলাল্লাজিনা মিন কবলিকুম লাআল্লাকুম
+              তাত্তাকুন।
+            </p>
+            <p
+              class="text-sm text-gray-600 dark:text-gray-400 bg-white dark:bg-gray-800 p-3 rounded border border-gray-100 dark:border-gray-600 leading-relaxed"
+            >
+              <strong>অর্থ:</strong> হে মুমিনগণ! তোমাদের ওপর রোজা ফরজ করা হয়েছে,
+              যেমন ফরজ করা হয়েছিল তোমাদের পূর্ববর্তীদের ওপর; যাতে তোমরা তাকওয়া
+              (আল্লাহভীতি) অর্জন করতে পারো।
+            </p>
+          </div>
+
+          <div class="mb-6 bg-gray-50 dark:bg-gray-700 p-4 rounded-xl">
+            <h4
+              class="font-bold text-green-800 dark:text-green-300 mb-3 text-center bg-green-100 dark:bg-gray-800 inline-block px-3 py-1 rounded-full text-sm"
+            >
+              সূরা আল-বাকারা, আয়াত ১৮৫ (আংশিক)
+            </h4>
+            <p
+              class="text-right text-xl text-gray-800 dark:text-gray-100 font-arabic mb-4 leading-relaxed"
+              dir="rtl"
+            >
+              شَهْرُ رَمَضَانَ الَّذِي أُنزِلَ فِيهِ الْقُرْآنُ هُدًى لِّلنَّاسِ
+              وَبَيِّنَاتٍ مِّنَ الْهُدَىٰ وَالْفُرْقَانِ ۚ فَمَن شَهِدَ مِنكُمُ
+              الشَّهْرَ فَلْيَصُمْهُ
+            </p>
+            <p
+              class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed border-t border-gray-200 dark:border-gray-600 pt-3 mb-3"
+            >
+              <strong>উচ্চারণ:</strong> শাহরু রামাদানাল্লাযী উনযিলা ফীহিল কুরআন,
+              হুদাল্লিন্নাসি ওয়া বাইয়্যিনাতিন মিনাল হুদা ওয়াল ফুরকান। ফামান
+              শাহিদা মিনকুমুশ শাহরা ফালইয়াসুমহু।
+            </p>
+            <p
+              class="text-sm text-gray-600 dark:text-gray-400 bg-white dark:bg-gray-800 p-3 rounded border border-gray-100 dark:border-gray-600 leading-relaxed"
+            >
+              <strong>অর্থ:</strong> রমজান মাস, যে মাসে কোরআন অবতীর্ণ হয়েছে, যা
+              মানুষের জন্য হেদায়েত এবং সুপথ প্রাপ্তির সুস্পষ্ট পথনির্দেশ আর
+              হক-বাতিলের পার্থক্যকারী। সুতরাং তোমাদের মধ্যে যে ব্যক্তি এ মাসটি
+              পাবে, সে যেন রোজা রাখে।
+            </p>
+          </div>
+
+          <div
+            class="mt-4 rounded-xl overflow-hidden shadow-sm border border-gray-100 dark:border-gray-600"
+          >
+            <img
+              src="https://i.ibb.co.com/bRYfwRLr/night-day-bn-ramadan.jpg"
+              alt="Ramadan Night and Day Visual"
+              class="w-full h-auto object-cover"
+            />
+          </div>
+        </section>
+
+        <section
+          class="bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-sm border border-green-50 dark:border-gray-700 transition-colors"
+        >
+          <h2
+            class="text-lg font-bold mb-4 text-green-700 dark:text-green-400 border-b border-gray-100 dark:border-gray-700 pb-3"
+          >
+            <i class="fas fa-praying-hands mr-2"></i>প্রয়োজনীয় দোয়া
+          </h2>
+
+          <div class="mb-6 bg-gray-50 dark:bg-gray-700 p-4 rounded-xl">
+            <h4
+              class="font-bold text-green-800 dark:text-green-300 mb-3 text-center bg-green-100 dark:bg-gray-800 inline-block px-3 py-1 rounded-full text-sm"
+            >
+              সেহরির নিয়ত
+            </h4>
+            <p
+              class="text-right text-xl text-gray-800 dark:text-gray-100 font-arabic mb-3 leading-relaxed"
+              dir="rtl"
+            >
+              نَوَيْتُ اَنْ اَصُوْمَ غَدًا مِّنْ شَهْرِ رَمَضَانَ الْمُبَارَكِ
+              فَرْضًا لَكَ يَا اَللهُ فَتَقَبَّلْ مِنِّى اِنَّكَ اَنْتَ
+              السَّمِيْعُ الْعَلِيْمُ
+            </p>
+            <p
+              class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed border-t border-gray-200 dark:border-gray-600 pt-3"
+            >
+              <strong>উচ্চারণ:</strong> নাওয়াইতু আন আছুমা গাদাম মিন শাহরি
+              রামাদানাল মুবারাকি ফারদাল্লাকা ইয়া আল্লাহু ফাতাকাব্বাল মিন্নি
+              ইন্নাকা আনতাস সামিউল আলিম।
+            </p>
+          </div>
+
+          <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-xl">
+            <h4
+              class="font-bold text-green-800 dark:text-green-300 mb-3 text-center bg-green-100 dark:bg-gray-800 inline-block px-3 py-1 rounded-full text-sm"
+            >
+              ইফতারের দোয়া
+            </h4>
+            <p
+              class="text-right text-xl text-gray-800 dark:text-gray-100 font-arabic mb-3 leading-relaxed"
+              dir="rtl"
+            >
+              اللَّهُمَّ لَكَ صُمْتُ وَعَلَى رِزْقِكَ اَفْطَرْتُ
+            </p>
+            <p
+              class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed border-t border-gray-200 dark:border-gray-600 pt-3 mb-2"
+            >
+              <strong>উচ্চারণ:</strong> আল্লাহুম্মা লাকা ছুমতু ওয়া আলা রিযকিকা
+              আফতারতু।
+            </p>
+            <p
+              class="text-sm text-gray-600 dark:text-gray-400 bg-white dark:bg-gray-800 p-2 rounded border border-gray-100 dark:border-gray-600"
+            >
+              <strong>অর্থ:</strong> হে আল্লাহ! আমি তোমারই সন্তুষ্টির জন্য রোজা
+              রেখেছি এবং তোমারই দেয়া রিযিক দ্বারা ইফতার করছি।
+            </p>
+          </div>
+        </section>
+
+        <section
+          class="bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-sm border border-green-50 dark:border-gray-700 transition-colors"
+        >
+          <h2
+            class="text-lg font-bold mb-4 text-green-700 dark:text-green-400 border-b border-gray-100 dark:border-gray-700 pb-3"
+          >
+            <i class="fas fa-book-open mr-2"></i>রমজান মাসআলা
+          </h2>
+
+          <div class="space-y-3">
+            <div
+              class="accordion-item border border-gray-100 dark:border-gray-600 rounded-xl bg-gray-50/50 dark:bg-gray-700/50"
+            >
+              <button
+                class="accordion-header w-full text-left p-3 font-bold text-gray-800 dark:text-gray-200 text-sm flex justify-between items-start focus:outline-none"
+              >
+                <span class="flex items-start pr-2">
+                  <i
+                    class="fas fa-question-circle text-green-600 dark:text-green-400 mt-1 mr-2 flex-shrink-0"
+                  ></i>
+                  ভুলবশত কিছু খেয়ে ফেললে কি রোজা ভেঙে যায়?
+                </span>
+                <span
+                  class="icon text-green-600 dark:text-green-400 font-bold text-lg leading-none"
+                  >+</span
+                >
+              </button>
+              <div
+                class="accordion-content px-3 pb-3 text-sm text-gray-600 dark:text-gray-400 pl-8 leading-relaxed"
+              >
+                না, ভুলবশত কিছু খেলে বা পান করলে রোজা ভাঙে না। মনে হওয়ার সাথে
+                সাথে খাবার বন্ধ করে মুখ পরিষ্কার করে নিতে হবে।
+              </div>
+            </div>
+
+            <div
+              class="accordion-item border border-gray-100 dark:border-gray-600 rounded-xl bg-gray-50/50 dark:bg-gray-700/50"
+            >
+              <button
+                class="accordion-header w-full text-left p-3 font-bold text-gray-800 dark:text-gray-200 text-sm flex justify-between items-start focus:outline-none"
+              >
+                <span class="flex items-start pr-2">
+                  <i
+                    class="fas fa-question-circle text-green-600 dark:text-green-400 mt-1 mr-2 flex-shrink-0"
+                  ></i>
+                  রোজা অবস্থায় ইনজেকশন বা স্যালাইন নেওয়া যাবে কি?
+                </span>
+                <span
+                  class="icon text-green-600 dark:text-green-400 font-bold text-lg leading-none"
+                  >+</span
+                >
+              </button>
+              <div
+                class="accordion-content px-3 pb-3 text-sm text-gray-600 dark:text-gray-400 pl-8 leading-relaxed"
+              >
+                অসুস্থতার কারণে শরীরে (মাংসে বা রগে) চিকিৎসা বা ব্যথানাশক
+                ইনজেকশন নিলে রোজা ভাঙবে না। তবে শরীরে শক্তি বৃদ্ধির জন্য বা
+                পুষ্টির জন্য স্যালাইন বা গ্লুকোজ নিলে রোজা ভেঙে যাবে।
+              </div>
+            </div>
+
+            <div
+              class="accordion-item border border-gray-100 dark:border-gray-600 rounded-xl bg-gray-50/50 dark:bg-gray-700/50"
+            >
+              <button
+                class="accordion-header w-full text-left p-3 font-bold text-gray-800 dark:text-gray-200 text-sm flex justify-between items-start focus:outline-none"
+              >
+                <span class="flex items-start pr-2">
+                  <i
+                    class="fas fa-question-circle text-green-600 dark:text-green-400 mt-1 mr-2 flex-shrink-0"
+                  ></i>
+                  রোজা অবস্থায় টুথপেস্ট বা মেসওয়াক ব্যবহার করা যাবে?
+                </span>
+                <span
+                  class="icon text-green-600 dark:text-green-400 font-bold text-lg leading-none"
+                  >+</span
+                >
+              </button>
+              <div
+                class="accordion-content px-3 pb-3 text-sm text-gray-600 dark:text-gray-400 pl-8 leading-relaxed"
+              >
+                রোজা অবস্থায় ডাল দিয়ে মেসওয়াক করা সুন্নত, এতে কোনো সমস্যা নেই।
+                তবে টুথপেস্ট বা মাজন ব্যবহার করা মাকরুহ। যদি পেস্টের স্বাদ বা
+                অংশ গলার ভেতরে চলে যায়, তবে রোজা ভেঙে যাবে।
+              </div>
+            </div>
+
+            <div
+              class="accordion-item border border-gray-100 dark:border-gray-600 rounded-xl bg-gray-50/50 dark:bg-gray-700/50"
+            >
+              <button
+                class="accordion-header w-full text-left p-3 font-bold text-gray-800 dark:text-gray-200 text-sm flex justify-between items-start focus:outline-none"
+              >
+                <span class="flex items-start pr-2">
+                  <i
+                    class="fas fa-question-circle text-green-600 dark:text-green-400 mt-1 mr-2 flex-shrink-0"
+                  ></i>
+                  চোখে বা কানে ড্রপ দিলে কি রোজা ভাঙে?
+                </span>
+                <span
+                  class="icon text-green-600 dark:text-green-400 font-bold text-lg leading-none"
+                  >+</span
+                >
+              </button>
+              <div
+                class="accordion-content px-3 pb-3 text-sm text-gray-600 dark:text-gray-400 pl-8 leading-relaxed"
+              >
+                চোখে ড্রপ বা সুরমা ব্যবহার করলে রোজা ভাঙে না। তবে কানে ড্রপ দিলে
+                যদি কান দিয়ে ঔষধ পেটে বা মস্তিষ্কে পৌঁছায় বলে নিশ্চিত হওয়া যায়,
+                তবে রোজা ভেঙে যাবে।
+              </div>
+            </div>
+
+            <div
+              class="accordion-item border border-gray-100 dark:border-gray-600 rounded-xl bg-gray-50/50 dark:bg-gray-700/50"
+            >
+              <button
+                class="accordion-header w-full text-left p-3 font-bold text-gray-800 dark:text-gray-200 text-sm flex justify-between items-start focus:outline-none"
+              >
+                <span class="flex items-start pr-2">
+                  <i
+                    class="fas fa-question-circle text-green-600 dark:text-green-400 mt-1 mr-2 flex-shrink-0"
+                  ></i>
+                  রোজা অবস্থায় রক্তদান করা বা রক্ত পরীক্ষা করা যাবে?
+                </span>
+                <span
+                  class="icon text-green-600 dark:text-green-400 font-bold text-lg leading-none"
+                  >+</span
+                >
+              </button>
+              <div
+                class="accordion-content px-3 pb-3 text-sm text-gray-600 dark:text-gray-400 pl-8 leading-relaxed"
+              >
+                পরীক্ষার জন্য রক্ত দিলে বা কাউকে রক্তদান করলে রোজা ভাঙে না। তবে
+                রক্ত দেওয়ার কারণে যদি কেউ এতটা দুর্বল হয়ে পড়ে যে তার রোজা ভেঙে
+                ফেলার আশঙ্কা থাকে, তবে রক্ত দেওয়া মাকরুহ।
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div id="view-tools" class="view-section space-y-6">
+        <section
+          class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-green-50 dark:border-gray-700 text-center transition-colors"
+        >
+          <h2
+            class="text-lg font-bold mb-6 text-green-700 dark:text-green-400 border-b border-gray-100 dark:border-gray-700 pb-3 text-left"
+          >
+            <i class="fas fa-fingerprint mr-2"></i>ডিজিটাল তসবিহ
+          </h2>
+
+          <div
+            class="w-40 h-40 mx-auto bg-green-50 dark:bg-gray-700 rounded-full flex items-center justify-center shadow-inner border-[6px] border-green-100 dark:border-gray-600 mb-6 cursor-pointer active:scale-95 transition-transform"
+            onclick="incrementTasbih()"
+          >
+            <span
+              class="text-6xl font-bold text-green-700 dark:text-green-400 drop-shadow-sm select-none"
+              id="tasbih-counter"
+              >0</span
+            >
+          </div>
+
+          <p class="text-lg text-gray-500 dark:text-gray-400 mb-5 font-medium">
+            সুবহানাল্লাহ / আলহামদুলিল্লাহ / আল্লাহু আকবার
+          </p>
+
+          <button
+            class="bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 px-6 py-2.5 rounded-full font-bold hover:bg-red-100 dark:hover:bg-red-900/50 transition shadow-sm"
+            onclick="resetTasbih()"
+          >
+            <i class="fas fa-redo-alt mr-2"></i> রিসেট
+          </button>
+        </section>
+      </div>
+
+      <div
+        class="text-center pt-4 pb-2 text-sm text-gray-500 dark:text-gray-400 transition-colors"
+      >
+        Design & Developed with ❤️ by
+        <a
+          href="https://facebook.com/uikamrul"
+          target="_blank"
+          class="text-green-600 dark:text-green-400 font-bold hover:underline"
+          >Kamrul Hasan</a
+        >
+      </div>
+    </main>
+
+    <nav
+      class="fixed bottom-0 w-full bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 shadow-[0_-4px_20px_rgba(0,0,0,0.04)] z-50 transition-colors duration-300"
+    >
+      <div class="max-w-md mx-auto flex justify-around px-2 py-3">
+        <button
+          onclick="switchTab('home', this)"
+          class="nav-btn flex flex-col items-center text-green-600 dark:text-green-500 w-16"
+        >
+          <i class="fas fa-home text-xl mb-1"></i>
+          <span class="text-[11px] font-bold">হোম</span>
+        </button>
+        <button
+          onclick="switchTab('schedule', this)"
+          class="nav-btn flex flex-col items-center text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition w-16"
+        >
+          <i class="fas fa-calendar-alt text-xl mb-1"></i>
+          <span class="text-[11px] font-medium">সূচী</span>
+        </button>
+        <button
+          onclick="switchTab('duas', this)"
+          class="nav-btn flex flex-col items-center text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition w-16"
+        >
+          <i class="fas fa-praying-hands text-xl mb-1"></i>
+          <span class="text-[11px] font-medium">দোয়া</span>
+        </button>
+        <button
+          onclick="switchTab('tools', this)"
+          class="nav-btn flex flex-col items-center text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition w-16"
+        >
+          <i class="fas fa-toolbox text-xl mb-1"></i>
+          <span class="text-[11px] font-medium">টুলস</span>
+        </button>
+      </div>
+    </nav>
+
+    <script>
+      // ================= Disable Right-Click (Context Menu) =================
+      document.addEventListener("contextmenu", (event) =>
+        event.preventDefault(),
+      );
+
+      // ================= Disable common developer tools keyboard shortcuts =================
+      document.onkeydown = function (e) {
+        // ======== Disable F12 ========
+        if (event.keyCode == 123) {
+          return false;
+        }
+        // ======== Disable Ctrl+Shift+I (Inspect Element) ========
+        if (e.ctrlKey && e.shiftKey && e.keyCode == "I".charCodeAt(0)) {
+          return false;
+        }
+        // ======== Disable Ctrl+Shift+J (Console) ========
+        if (e.ctrlKey && e.shiftKey && e.keyCode == "J".charCodeAt(0)) {
+          return false;
+        }
+        // ======== Disable Ctrl+U (View Source) ========
+        if (e.ctrlKey && e.keyCode == "U".charCodeAt(0)) {
+          return false;
+        }
+        // ======== Disable Ctrl+C (Copy) ========
+        if (e.ctrlKey && e.keyCode == "C".charCodeAt(0)) {
+          return false;
+        }
+      };
+
+      // ================= SPA NAVIGATION LOGIC =================
+      function switchTab(tabId, btnElement) {
+        document
+          .querySelectorAll(".view-section")
+          .forEach((el) => el.classList.remove("active"));
+        document.getElementById("view-" + tabId).classList.add("active");
+
+        document.querySelectorAll(".nav-btn").forEach((btn) => {
+          btn.classList.remove("text-green-600", "dark:text-green-500");
+          btn.classList.add("text-gray-400");
+          btn.querySelector("span").classList.remove("font-bold");
+          btn.querySelector("span").classList.add("font-medium");
+        });
+        btnElement.classList.remove("text-gray-400");
+        btnElement.classList.add("text-green-600", "dark:text-green-500");
+        btnElement.querySelector("span").classList.remove("font-medium");
+        btnElement.querySelector("span").classList.add("font-bold");
+
+        window.scrollTo(0, 0);
+      }
+
+      // ================= DARK MODE LOGIC =================
+      const themeToggleBtn = document.getElementById("theme-toggle");
+      const themeIconDark = document.getElementById("theme-icon-dark");
+      const themeIconLight = document.getElementById("theme-icon-light");
+      const htmlElement = document.documentElement;
+
+      if (
+        localStorage.getItem("color-theme") === "dark" ||
+        (!("color-theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        htmlElement.classList.add("dark");
+        themeIconDark.classList.add("hidden");
+        themeIconLight.classList.remove("hidden");
+      } else {
+        htmlElement.classList.remove("dark");
+        themeIconLight.classList.add("hidden");
+        themeIconDark.classList.remove("hidden");
+      }
+
+      themeToggleBtn.addEventListener("click", function () {
+        themeIconDark.classList.toggle("hidden");
+        themeIconLight.classList.toggle("hidden");
+        if (htmlElement.classList.contains("dark")) {
+          htmlElement.classList.remove("dark");
+          localStorage.setItem("color-theme", "light");
+        } else {
+          htmlElement.classList.add("dark");
+          localStorage.setItem("color-theme", "dark");
+        }
+      });
+
+      // ================= AMAL TRACKER LOGIC =================
+      for (let i = 1; i <= 5; i++) {
+        let checkbox = document.getElementById("amal-" + i);
+        if (checkbox) {
+          if (localStorage.getItem("amal-" + i) === "true")
+            checkbox.checked = true;
+          checkbox.addEventListener("change", function () {
+            localStorage.setItem("amal-" + i, this.checked);
+          });
+        }
+      }
+
+      // ================= ACCORDION LOGIC =================
+      const accordionHeaders = document.querySelectorAll(".accordion-header");
+      accordionHeaders.forEach((header) => {
+        header.addEventListener("click", () => {
+          const content = header.nextElementSibling;
+          const icon = header.querySelector(".icon");
+
+          document
+            .querySelectorAll(".accordion-content")
+            .forEach((otherContent) => {
+              if (
+                otherContent !== content &&
+                otherContent.classList.contains("expanded")
+              ) {
+                otherContent.classList.remove("expanded");
+                otherContent.previousElementSibling.querySelector(
+                  ".icon",
+                ).innerText = "+";
+              }
+            });
+
+          if (content.classList.contains("expanded")) {
+            content.classList.remove("expanded");
+            icon.innerText = "+";
+          } else {
+            content.classList.add("expanded");
+            icon.innerText = "-";
+          }
+        });
+      });
+
+      // ================= DISTRICT SELECTION & OFFSET LOGIC =================
+      const districtOffsets = {
+        ঢাকা: 0,
+        জামালপুর: 2,
+        শেরপুর: 2,
+        টাংগাইল: 1,
+        মানিকগঞ্জ: 1,
+      };
+
+      const districtSelect = document.getElementById("district-select");
+      let currentDistrict =
+        localStorage.getItem("selected-district") || "জামালপুর";
+      districtSelect.value = currentDistrict;
+
+      districtSelect.addEventListener("change", function (e) {
+        currentDistrict = e.target.value;
+        localStorage.setItem("selected-district", currentDistrict);
+        generateSchedule();
+        updateTimer();
+      });
+
+      function bnDigit(str) {
+        const bnDigits = ["০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯"];
+        return str.toString().replace(/\d/g, (d) => bnDigits[d]);
+      }
+
+      // ================= DATES & TIMER LOGIC =================
+      const ramadanStartDate = new Date("2026-02-17T00:00:00");
+      const currentHijriYear = "১৪৪৭";
+      let scheduleData = [];
+
+      function generateSchedule() {
+        scheduleData = [];
+        let curDate = new Date(ramadanStartDate);
+
+        let sehriBase = new Date("2026-02-17T05:08:00");
+        let sunriseBase = new Date("2026-02-17T06:29:00");
+        let sunsetBase = new Date("2026-02-17T17:55:00");
+
+        let offsetMs = (districtOffsets[currentDistrict] || 0) * 60 * 1000;
+
+        const tbody = document.getElementById("schedule-body");
+        tbody.innerHTML = "";
+
+        for (let i = 1; i <= 30; i++) {
+          let localSehri = new Date(sehriBase.getTime() + offsetMs);
+          let localSunrise = new Date(sunriseBase.getTime() + offsetMs);
+          let localSunset = new Date(sunsetBase.getTime() + offsetMs);
+
+          let gapMs = localSunrise.getTime() - localSehri.getTime();
+          let calculatedIftar = new Date(localSunset.getTime() + gapMs);
+
+          let dayData = {
+            ramadanDay: i,
+            dateStr: curDate.toLocaleDateString("en-GB", {
+              day: "numeric",
+              month: "short",
+            }),
+            sehriStr: localSehri.toLocaleTimeString("en-US", {
+              hour: "2-digit",
+              minute: "2-digit",
+            }),
+            iftarStr: calculatedIftar.toLocaleTimeString("en-US", {
+              hour: "2-digit",
+              minute: "2-digit",
+            }),
+            sehriDate: new Date(localSehri),
+            iftarDate: new Date(calculatedIftar),
+          };
+          scheduleData.push(dayData);
+
+          const tr = document.createElement("tr");
+          tr.className =
+            "hover:bg-gray-50 dark:hover:bg-gray-700/50 transition border-b dark:border-gray-700";
+          tr.innerHTML = `
+                    <td class="p-3 text-gray-700 dark:text-gray-300 font-bold font-mono">${bnDigit(dayData.ramadanDay)}</td>
+                    <td class="p-3 border-l dark:border-gray-700 text-gray-700 dark:text-gray-300 font-mono">${bnDigit(dayData.dateStr)}</td>
+                    <td class="p-3 border-l dark:border-gray-700 font-mono text-gray-700 dark:text-gray-300">${bnDigit(dayData.sehriStr)}</td>
+                    <td class="p-3 border-l dark:border-gray-700 font-mono text-gray-700 dark:text-gray-300">${bnDigit(dayData.iftarStr)}</td>
+                `;
+          tbody.appendChild(tr);
+
+          curDate.setDate(curDate.getDate() + 1);
+          sehriBase.setDate(sehriBase.getDate() + 1);
+          sehriBase.setMinutes(sehriBase.getMinutes() - 1);
+          sunriseBase.setDate(sunriseBase.getDate() + 1);
+          sunriseBase.setMinutes(sunriseBase.getMinutes() - 1);
+          sunsetBase.setDate(sunsetBase.getDate() + 1);
+          if (i % 2 === 0) sunsetBase.setMinutes(sunsetBase.getMinutes() + 1);
+        }
+      }
+
+      generateSchedule();
+
+      function updateTimer() {
+        const now = new Date();
+
+        let diffTime = now.getTime() - ramadanStartDate.getTime();
+        let currentDayIndex = Math.floor(diffTime / (1000 * 3600 * 24));
+
+        if (currentDayIndex < 0) currentDayIndex = 0;
+        if (currentDayIndex > 29) currentDayIndex = 29;
+
+        const todayData = scheduleData[currentDayIndex];
+
+        document.getElementById("current-date-display").innerText =
+          ` আজ ${bnDigit(todayData.ramadanDay)} রমজান ${currentHijriYear} (${bnDigit(todayData.dateStr)})`;
+        document.getElementById("sehri-time").innerText = bnDigit(
+          todayData.sehriStr,
+        );
+        document.getElementById("iftar-time").innerText = bnDigit(
+          todayData.iftarStr,
+        );
+
+        let targetTime;
+        let labelText = "";
+
+        if (now < todayData.sehriDate) {
+          targetTime = todayData.sehriDate;
+          labelText = "সেহরির বাকি আছে";
+        } else if (now >= todayData.sehriDate && now < todayData.iftarDate) {
+          targetTime = todayData.iftarDate;
+          labelText = "ইফতারের বাকি আছে";
+        } else {
+          let nextDayData =
+            scheduleData[currentDayIndex + 1] || scheduleData[29];
+          targetTime = nextDayData.sehriDate;
+          labelText = "সেহরির বাকি আছে";
+        }
+
+        document.getElementById("countdown-label").innerText = labelText;
+
+        let diff = targetTime - now;
+        if (diff <= 0) diff = 0;
+
+        const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+        let timerStr = `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
+        document.getElementById("countdown").innerText = bnDigit(timerStr);
+      }
+
+      updateTimer();
+      setInterval(updateTimer, 1000);
+
+      // ================= PDF DOWNLOAD LOGIC (TOP-ALIGNED A4 FIX) =================
+      function downloadPDF() {
+        const element = document.createElement("div");
+
+        // Standard A4 dimensions in pixels
+        element.style.width = "794px";
+        element.style.height = "1123px";
+        element.style.padding = "20px"; // Less padding on top, more on sides
+        element.style.boxSizing = "border-box";
+        element.style.backgroundColor = "white";
+        element.style.display = "block"; // Ensure it's not centered vertically
+
+        element.innerHTML = `
+                <div style="text-align: center; margin-bottom: 10px;">
+                    <p dir="rtl" style="font-size: 16px; margin: 0; font-weight: bold; color: #15803d; font-family: 'Hind Siliguri';">أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ</p>
+                    <h2 style="font-size: 22px; margin: 2px 0; color: #15803d; font-family: 'Hind Siliguri';">রমজান সূচী ২০২৬</h2>
+                    <p style="font-size: 14px; margin: 0; color: black; font-family: 'Hind Siliguri';">জেলা: ${currentDistrict} | হিজরী: <span style="font-family: ui-monospace;">${currentHijriYear}</span></p>
+                </div>
+                
+                <table style="width: 100%; border-collapse: collapse; text-align: center; font-size: 12px; font-family: 'Hind Siliguri';">
+                    <thead>
+                        <tr style="background-color: #15803d; color: white;">
+                            <th style="border: 1px solid #14532d; padding: 6px;">রমজান</th>
+                            <th style="border: 1px solid #14532d; padding: 6px;">তারিখ</th>
+                            <th style="border: 1px solid #14532d; padding: 6px;">সেহরি (শেষ)</th>
+                            <th style="border: 1px solid #14532d; padding: 6px;">ইফতার (শুরু)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${scheduleData
+                          .map(
+                            (day, index) => `
+                            <tr style="background-color: #ffffff; line-height: 1;">
+                                <td style="border: 1px solid #000000; padding: 4px; font-family: ui-monospace; color: #000000;">${bnDigit(day.ramadanDay)}</td>
+                                <td style="border: 1px solid #000000; padding: 4px; font-family: ui-monospace; color: #000000;">${bnDigit(day.dateStr)}</td>
+                                <td style="border: 1px solid #000000; padding: 4px; font-family: ui-monospace; color: #000000;">${bnDigit(day.sehriStr)}</td>
+                                <td style="border: 1px solid #000000; padding: 4px; font-family: ui-monospace; color: #000000;">${bnDigit(day.iftarStr)}</td>
+                            </tr>
+                        `,
+                          )
+                          .join("")}
+                    </tbody>
+                </table>
+                
+                <div style="margin-top: 15px; text-align: center; font-size: 10px; color: #000000; font-family: 'Hind Siliguri';">
+                    Design & Developed with ❤️ by Kamrul Hasan
+                </div>
+            `;
+
+        document.body.appendChild(element);
+
+        const opt = {
+          margin: 0,
+          filename: `Ramadan-2026-${currentDistrict}.pdf`,
+          image: { type: "jpeg", quality: 1.0 },
+          html2canvas: {
+            scale: 2,
+            useCORS: true,
+            logging: false,
+            width: 794,
+            height: 1123,
+          },
+          jsPDF: { unit: "px", format: [794, 1123], orientation: "portrait" },
+        };
+
+        html2pdf()
+          .set(opt)
+          .from(element)
+          .save()
+          .then(() => {
+            document.body.removeChild(element);
+          });
+      }
+
+      // ================= TASBIH LOGIC =================
+      let count = parseInt(localStorage.getItem("tasbih-count")) || 0;
+      document.getElementById("tasbih-counter").innerText = bnDigit(count);
+
+      function incrementTasbih() {
+        count++;
+        document.getElementById("tasbih-counter").innerText = bnDigit(count);
+        localStorage.setItem("tasbih-count", count);
+        if (navigator.vibrate) navigator.vibrate(50);
+      }
+      function resetTasbih() {
+        count = 0;
+        document.getElementById("tasbih-counter").innerText = bnDigit(count);
+        localStorage.setItem("tasbih-count", count);
+      }
+    </script>
+  </body>
+</html>
