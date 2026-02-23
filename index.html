@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Shahru Ramadan Ramadan APP</title>
+    <title>Shahru Ramadan APP</title>
 
     <meta name="theme-color" content="#15803d">
     <link rel="manifest" href="manifest.json">
@@ -23,50 +23,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap");
-
-      html { background-color: #e5e7eb; }
-      html.dark { background-color: #030712; }
-
-      body {
-        font-family: "Hind Siliguri", sans-serif;
-        padding-bottom: 80px;
-        transition: background-color 0.3s ease, color 0.3s ease;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-
-      .view-section {
-        display: none;
-        animation: fadeIn 0.3s ease-in-out;
-      }
-      .view-section.active {
-        display: block;
-      }
-
-      @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
-
-      .accordion-content {
-        transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
-        max-height: 0;
-        opacity: 0;
-        overflow: hidden;
-      }
-      .accordion-content.expanded {
-        max-height: 250px;
-        opacity: 1;
-      }
+    <link rel="stylesheet" href="style.css">
       
-      select option {
-          padding: 10px;
-      }
-    </style>
   </head>
   <body class="max-w-[768px] mx-auto relative min-h-screen bg-[#f0fdf4] dark:bg-gray-900 text-gray-800 dark:text-gray-200 antialiased selection:bg-green-200 dark:selection:bg-green-800 shadow-[0_0_40px_rgba(0,0,0,0.1)]">
     
@@ -85,7 +43,7 @@
 
     <main class="w-full mx-auto p-4 space-y-6">
       
-      <div class="flex items-center justify-between bg-white dark:bg-gray-800 p-3 rounded-xl shadow-sm border border-green-50 dark:border-gray-700 transition-colors">
+      <div id="district-container" class="flex items-center justify-between bg-white dark:bg-gray-800 p-3 rounded-xl shadow-sm border border-green-50 dark:border-gray-700 transition-colors">
         <label for="district-select" class="font-bold text-green-700 dark:text-green-400"><i class="fas fa-map-marker-alt mr-2"></i>আপনার জেলা:</label>
         <select id="district-select" class="bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-white border border-gray-200 dark:border-gray-600 rounded-lg px-3 py-1 outline-none focus:border-green-500 font-medium">
           <option value="ঢাকা">ঢাকা</option>
@@ -145,12 +103,42 @@
         </section>
 
         <section class="bg-teal-50 dark:bg-teal-900/30 border-l-4 border-teal-500 rounded-r-xl p-4 shadow-sm transition-colors">
-          <h2 class="text-base font-bold mb-1 text-teal-800 dark:text-teal-400">
+          <h2 class="text-base font-bold mb-3 text-teal-800 dark:text-teal-400">
             <i class="fas fa-heartbeat mr-2"></i>স্বাস্থ্য পরামর্শ - ইফতার ও সেহরির মাঝে
-          </h2><br />
-          <p class="text-teal-900 dark:text-teal-200 text-sm">১) পর্যাপ্ত পানি পান করুন (কমপক্ষে ৮-১০ গ্লাস)।</p><br />
-          <p class="text-teal-900 dark:text-teal-200 text-sm">২) ভাজাপোড়া ও অতিরিক্ত মশলাযুক্ত খাবার ত্যাগ করুন।</p><br />
-          <p class="text-teal-900 dark:text-teal-200 text-sm">৩) নিয়মিত শাক-সবজি ও ফলমূল খান।</p>
+          </h2>
+          
+          <div class="space-y-3">
+            <p class="text-teal-900 dark:text-teal-200 text-sm">
+              <strong>১) পর্যাপ্ত পানি:</strong> ইফতার থেকে সেহরি পর্যন্ত অল্প অল্প করে অন্তত ৮-১০ গ্লাস পানি পান করুন।
+            </p>
+            <p class="text-teal-900 dark:text-teal-200 text-sm">
+              <strong>২) সেহরি অপরিহার্য:</strong> সেহরি কখনোই বাদ দেবেন না। সারাদিন শক্তি পেতে ওটস বা লাল আটার রুটির মতো ধীরে হজম হয় এমন খাবার খান।
+            </p>
+            <p class="text-teal-900 dark:text-teal-200 text-sm">
+              <strong>৩) ভাজাপোড়া বর্জন:</strong> গ্যাস্ট্রিক ও বুক জ্বালাপোড়া এড়াতে ইফতারে অতিরিক্ত ভাজাপোড়া, তৈলাক্ত ও মশলাযুক্ত খাবার পরিহার করুন।
+            </p>
+            <p class="text-teal-900 dark:text-teal-200 text-sm">
+              <strong>৪) পরিমিত আহার:</strong> সারাদিন রোজা রাখার পর ইফতারে একবারে অতিরিক্ত খাবার খাবেন না। খেজুর ও পানি দিয়ে ইফতার শুরু করা উত্তম।
+            </p>
+            <p class="text-teal-900 dark:text-teal-200 text-sm">
+              <strong>৫) ফল ও আঁশযুক্ত খাবার:</strong> কোষ্ঠকাঠিন্য রোধ করতে খাদ্যতালিকায় প্রতিদিন প্রচুর তাজা ফলমূল ও শাক-সবজি রাখুন।
+            </p>
+            <p class="text-teal-900 dark:text-teal-200 text-sm">
+              <strong>৬) খাওয়ার নিয়ম:</strong> তাড়াহুড়ো করে না গিলে, খাবার ধীরে ধীরে ও ভালোভাবে চিবিয়ে খান; এতে হজম ভালো হয়।
+            </p>
+            <p class="text-teal-900 dark:text-teal-200 text-sm">
+              <strong>৭) স্বাস্থ্যকর পানীয়:</strong> অতিরিক্ত চিনিযুক্ত কৃত্রিম শরবতের বদলে ডাবের পানি, লেবুর শরবত বা ফলের জুস পান করুন।
+            </p>
+            <p class="text-teal-900 dark:text-teal-200 text-sm">
+              <strong>৮) ক্যাফেইন নিয়ন্ত্রণ:</strong> সেহরিতে চা বা কফি পান এড়িয়ে চলুন, কারণ এগুলো প্রস্রাবের মাত্রা বাড়িয়ে শরীরকে দ্রুত পানিশূন্য করে ফেলে।
+            </p>
+            <p class="text-teal-900 dark:text-teal-200 text-sm">
+              <strong>৯) পর্যাপ্ত ঘুম:</strong> শরীরকে সতেজ রাখতে ঘুমের রুটিন ঠিক করুন এবং দিনে বা রাতে মিলিয়ে ৬-৮ ঘণ্টার পর্যাপ্ত ঘুম নিশ্চিত করুন।
+            </p>
+            <p class="text-teal-900 dark:text-teal-200 text-sm">
+              <strong>১০) হালকা হাঁটাচলা:</strong> রোজা রেখে ভারী ব্যায়াম এড়িয়ে চলুন, তবে খাবার হজমের জন্য ইফতার বা রাতের খাবারের পর হালকা হাঁটাহাঁটি করুন।
+            </p>
+          </div>
         </section>
       </div>
 
@@ -184,21 +172,21 @@
             <i class="fas fa-quran mr-2"></i>আল-কোরআনে সাওম
           </h2>
           <div class="bg-gray-50 dark:bg-gray-700 p-5 rounded-2xl mb-6">
-              <div class="inline-block bg-[#dcfce7] dark:bg-green-900/50 text-[#166534] dark:text-green-300 font-bold px-4 py-1.5 rounded-full text-sm mb-4">সূরা আল-বাকারা, আয়াত ১৮৩</div>
+              <div class="inline-block bg-[#dcfce7] dark:bg-green-900/50 text-[#166534] dark:text-green-300 font-bold px-4 py-1.5 rounded-full text-sm mb-4">সূরা আল-বাকারা, আয়াত ১৮৩</div>
               <p class="text-center text-2xl text-gray-800 dark:text-gray-100 font-arabic mb-6 leading-loose" dir="rtl">
-                  يَا أَيُّهَا الَّذِينَ آمَنُوا كُتِبَ عَلَيْكُمُ الصِّيَامُ كَمَا كُتِبَ عَلَى الَّذِينَ مِن قَبْلِكُمْ لَعَلَّكُمْ تَتَّقُونَ
+                  يَا أَيُّهَا الَّذِينَ آمَنُوا كُتِبَ عَلَيْكُمُ الصِّيَامُ كَمَا كُتِبَ عَلَى الَّذِينَ مِن قَبْلِكُمْ لَعَلَّكُمْ تَتَّقُونَ
               </p>
               <div class="border-t border-gray-200 dark:border-gray-600 pt-4 mb-4">
-                  <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed"><strong>উচ্চারণ:</strong> ইয়া আইয়্যোহাল্লাজিনা আমানু কুতিবা আলাইকুমুস সিয়ামু কামা কুতিবা আলাল্লাজিনা মিন কবলিকুম লাআল্লাকুম তাত্তাকুন।</p>
+                  <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed"><strong>উচ্চারণ:</strong> ইয়া আইয়্যোহাল্লাজিনা আমানু কুতিবা আলাইকুমুস সিয়ামু কামা কুতিবা আলাল্লাজিনা মিন কবলিকুম লাআল্লাকুম তাত্তাকুন।</p>
               </div>
               <div class="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-600 p-4 rounded-xl shadow-sm text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
                   <strong>অর্থ:</strong> হে মুমিনগণ! তোমাদের ওপর রোজা ফরজ করা হয়েছে, যেমন ফরজ করা হয়েছিল তোমাদের পূর্ববর্তীদের ওপর; যাতে তোমরা তাকওয়া (আল্লাহভীতি) অর্জন করতে পারো।
               </div>
           </div>
           <div class="bg-gray-50 dark:bg-gray-700 p-5 rounded-2xl mb-6">
-              <div class="inline-block bg-[#dcfce7] dark:bg-green-900/50 text-[#166534] dark:text-green-300 font-bold px-4 py-1.5 rounded-full text-sm mb-4">সূরা আল-বাকারা, আয়াত ১৮৫ (আংশিক)</div>
+              <div class="inline-block bg-[#dcfce7] dark:bg-green-900/50 text-[#166534] dark:text-green-300 font-bold px-4 py-1.5 rounded-full text-sm mb-4">সূরা আল-বাকারা, আয়াত ১৮৫ (আংশিক)</div>
               <p class="text-center text-2xl text-gray-800 dark:text-gray-100 font-arabic mb-6 leading-loose" dir="rtl">
-                  شَهْرُ رَمَضَانَ الَّذِي أُنزِلَ فِيهِ الْقُرْآنُ هُدًى لِّلنَّاسِ وَبَيِّنَاتٍ مِّنَ الْهُدَىٰ وَالْفُرْقَانِ ۚ فَمَن شَهِدَ مِنكُمُ الشَّهْرَ فَلْيَصُمْهُ
+                  شَهْرُ رَمَضَانَ الَّذِي أُنزِلَ فِيهِ الْقُرْآنُ هُدًى لِّلنَّاسِ وَبَيِّنَاتٍ مِّنَ الْهُدَىٰ وَالْفُرْقَانِ ۚ فَمَن شَهِدَ مِنكُمُ الشَّهْرَ فَلْيَصُمْهُ
               </p>
               <div class="border-t border-gray-200 dark:border-gray-600 pt-4 mb-4">
                   <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed"><strong>উচ্চারণ:</strong> শাহরু রামাদানাল্লাযী উনযিলা ফীহিল কুরআন, হুদাল্লিন্নাসি ওয়া বাইয়্যিনাতিন মিনাল হুদা ওয়াল ফুরকান। ফামান শাহিদা মিনকুমুশ শাহরা ফালইয়াসুমহু।</p>
@@ -208,15 +196,15 @@
               </div>
           </div>
           <div class="bg-gray-50 dark:bg-gray-700 p-5 rounded-2xl mb-6">
-              <div class="inline-block bg-[#dcfce7] dark:bg-green-900/50 text-[#166534] dark:text-green-300 font-bold px-4 py-1.5 rounded-full text-sm mb-4">সূরা আল-বাকারা, আয়াত ১৮৭ (আংশিক)</div>
+              <div class="inline-block bg-[#dcfce7] dark:bg-green-900/50 text-[#166534] dark:text-green-300 font-bold px-4 py-1.5 rounded-full text-sm mb-4">সূরা আল-বাকারা, আয়াত ১৮৭ (আংশিক)</div>
               <p class="text-center text-2xl text-gray-800 dark:text-gray-100 font-arabic mb-6 leading-loose" dir="rtl">
-                  وَكُلُوا وَاشْرَبُوا حَتَّىٰ يَتَبَيَّنَ لَكُمُ الْخَيْطُ الْأَبْيَضُ مِنَ الْخَيْطِ الْأَسْوَدِ مِنَ الْفَجْرِ ۖ ثُمَّ أَتِمُّوا الصِّيَامَ إِلَى اللَّيْلِ
+                  وَكُلُوا وَاشْرَبُوا حَتَّىٰ يَتَبَيَّنَ لَكُمُ الْخَيْطُ الْأَبْيَضُ مِنَ الْخَيْطِ الْأَسْوَدِ مِنَ الْفَجْرِ ۖ ثُمَّ أَتِمُّوا الصِّيَامَ إِلَى اللَّيْلِ
               </p>
               <div class="border-t border-gray-200 dark:border-gray-600 pt-4 mb-4">
-                  <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed"><strong>উচ্চারণ:</strong> ওয়া কুলু ওয়াশরাবু হাত্তা ইয়াতাবাইয়্যানা লাকুমুল খাইতুল আবইয়াদু মিনাল খাইতিল আসওয়াদি মিনাল ফাজরি ছুম্মা আতিম্মুস সিয়ামা ইলাল লাইল।</p>
+                  <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed"><strong>উচ্চারণ:</strong> ওয়া কুলু ওয়াশরাবু হাত্তা ইয়াতাবাইয়্যানা লাকুমুল খাইতুল আবইয়াদু মিনাল খাইতিল আসওয়াদি মিনাল ফাজরি ছুম্মা আতিম্মুস সিয়ামা ইলাল লাইল।</p>
               </div>
               <div class="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-600 p-4 rounded-xl shadow-sm text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-                  <strong>অর্থ:</strong> আর তোমরা পানাহার কর যতক্ষণ না ভোরের কালো রেখা থেকে সাদা রেখা তোমাদের কাছে স্পষ্ট হয়। এরপর রাত পর্যন্ত রোজা পূর্ণ কর।
+                  <strong>অর্থ:</strong> আর তোমরা পানাহার কর যতক্ষণ না ভোরের কালো রেখা থেকে সাদা রেখা তোমাদের কাছে স্পষ্ট হয়। এরপর রাত পর্যন্ত রোজা পূর্ণ কর।
               </div>
           </div>
           <div class="mt-4 rounded-xl overflow-hidden shadow-sm border border-gray-100 dark:border-gray-600">
@@ -241,7 +229,7 @@
             <div class="border-t border-gray-200 dark:border-gray-600 pt-3 mb-2">
                 <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed"><strong>উচ্চারণ:</strong> আল্লাহুম্মা লাকা ছুমতু ওয়া আলা রিযকিকা আফতারতু।</p>
             </div>
-            <p class="text-sm text-gray-600 dark:text-gray-400 bg-white dark:bg-gray-800 p-3 rounded-lg border border-gray-100 dark:border-gray-600 mt-2"><strong>অর্থ:</strong> হে আল্লাহ! আমি তোমারই সন্তুষ্টির জন্য রোজা রেখেছি এবং তোমারই দেয়া রিযিক দ্বারা ইফতার করছি।</p>
+            <p class="text-sm text-gray-600 dark:text-gray-400 bg-white dark:bg-gray-800 p-3 rounded-lg border border-gray-100 dark:border-gray-600 mt-2"><strong>অর্থ:</strong> হে আল্লাহ! আমি তোমারই সন্তুষ্টির জন্য রোজা রেখেছি এবং তোমারই দেয়া রিযিক দ্বারা ইফতার করছি。</p>
           </div>
         </section>
 
@@ -316,7 +304,7 @@
                 </div>
                 <div class="bg-green-600 dark:bg-green-700 text-white p-4 rounded-xl shadow-md flex justify-between items-center">
                     <span class="text-green-100 dark:text-green-200 font-medium text-sm">জাকাতের পরিমাণ:</span>
-                    <span class="text-2xl font-bold font-mono" id="zakat-result">৳ ০</span>
+                    <span class="text-2xl font-bold font-mono" id="zakat-result">০৳</span>
                 </div>
             </div>
         </section>
@@ -327,14 +315,14 @@
             </h2>
             <div class="bg-gray-50 dark:bg-gray-700 p-5 rounded-2xl mb-6">
                 <div class="inline-block bg-[#dcfce7] dark:bg-green-900/50 text-[#166534] dark:text-green-300 font-bold px-4 py-1.5 rounded-full text-sm mb-4">
-                    সূরা আল-আনফাল, আয়াত ৪১ (আংশিক)
+                    সূরা আল-আনফাল, আয়াত ৪১ (আংশিক)
                 </div>
                 <p class="text-center text-xl text-gray-800 dark:text-gray-100 font-arabic mb-6 leading-loose" dir="rtl">
-                    وَاعْلَمُوا أَنَّمَا غَنِمْتُم مِّن شَيْءٍ فَأَنَّ لِلَّهِ خُمُسَهُ
+                    وَاعْلَمُوا أَنَّمَا غَنِمْتُم مِّن شَيْءٍ فَأَنَّ لِلَّهِ خُمُسَهُ
                 </p>
                 <div class="border-t border-gray-200 dark:border-gray-600 pt-4 mb-4">
                     <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-                        <strong>উচ্চারণ:</strong> ওয়া'লামু আন্নামা গানিমতুম মিন শাইয়িন ফাআন্না লিল্লাহি খুমুসাহু...
+                        <strong>উচ্চারণ:</strong> ওয়া'লামু আন্নামা গানিমতুম মিন শাইয়িন ফাআন্না লিল্লাহি খুমুসাহু...
                     </p>
                 </div>
                 <div class="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-600 p-4 rounded-xl shadow-sm text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
@@ -349,7 +337,7 @@
                 </div>
                 <div class="bg-indigo-600 dark:bg-indigo-700 text-white p-4 rounded-xl shadow-md flex justify-between items-center">
                     <span class="text-indigo-100 dark:text-indigo-200 font-medium text-sm">খুমসের পরিমাণ:</span>
-                    <span class="text-2xl font-bold font-mono" id="khums-result">৳ ০</span>
+                    <span class="text-2xl font-bold font-mono" id="khums-result">০৳</span>
                 </div>
             </div>
         </section>
@@ -358,7 +346,7 @@
             <h2 class="text-lg font-bold mb-3 text-green-700 dark:text-green-400 border-b border-gray-100 dark:border-gray-700 pb-3">
                 <i class="fas fa-hand-holding-heart mr-2"></i>ফিতরা ক্যালকুলেটর
             </h2>
-            <p class="text-sm text-gray-600 dark:text-gray-400 mb-4 bg-gray-50 dark:bg-gray-700 p-2 rounded border border-gray-100 dark:border-gray-600">পরিবারের সদস্য সংখ্যা এবং খাদ্যের ধরন অনুযায়ী ফিতরা হিসেব করুন।</p>
+            <p class="text-sm text-gray-600 dark:text-gray-400 mb-4 bg-gray-50 dark:bg-gray-700 p-2 rounded border border-gray-100 dark:border-gray-600">পরিবারের সদস্য সংখ্যা এবং খাদ্যের ধরন অনুযায়ী ফিতরা হিসেব করুন।</p>
             <div class="space-y-4">
                 <div class="flex items-center border border-gray-300 dark:border-gray-600 rounded-xl overflow-hidden bg-white dark:bg-gray-700 shadow-inner focus-within:border-teal-500 transition">
                     <span class="px-4 text-gray-500 dark:text-gray-400 font-bold bg-gray-50 dark:bg-gray-800 border-r border-gray-200 dark:border-gray-600 py-3.5"><i class="fas fa-users"></i></span>
@@ -377,16 +365,16 @@
                 </div>
                 <div class="bg-teal-600 dark:bg-teal-700 text-white p-4 rounded-xl shadow-md flex justify-between items-center">
                     <span class="text-teal-100 dark:text-teal-200 font-medium text-sm">মোট ফিতরা:</span>
-                    <span class="text-2xl font-bold font-mono" id="fitra-result">৳ ০</span>
+                    <span class="text-2xl font-bold font-mono" id="fitra-result">০৳</span>
                 </div>
             </div>
         </section>
 
         <section class="bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-sm border border-green-50 dark:border-gray-700 transition-colors">
             <h2 class="text-lg font-bold mb-3 text-green-700 dark:text-green-400 border-b border-gray-100 dark:border-gray-700 pb-3">
-                <i class="fas fa-hand-holding-medical mr-2"></i>ফিদিয়া ক্যালকুলেটর
+                <i class="fas fa-hand-holding-medical mr-2"></i>ফিদিয়া ক্যালকুলেটর
             </h2>
-            <p class="text-sm text-gray-600 dark:text-gray-400 mb-4 bg-gray-50 dark:bg-gray-700 p-2 rounded border border-gray-100 dark:border-gray-600">ভাঙা বা কাজা রোজার সংখ্যা এবং খাদ্যের ধরন অনুযায়ী ফিদিয়া হিসেব করুন।</p>
+            <p class="text-sm text-gray-600 dark:text-gray-400 mb-4 bg-gray-50 dark:bg-gray-700 p-2 rounded border border-gray-100 dark:border-gray-600">ভাঙা বা কাজা রোজার সংখ্যা এবং খাদ্যের ধরন অনুযায়ী ফিদিয়া হিসেব করুন।</p>
             <div class="space-y-4">
                 <div class="flex items-center border border-gray-300 dark:border-gray-600 rounded-xl overflow-hidden bg-white dark:bg-gray-700 shadow-inner focus-within:border-rose-500 transition">
                     <span class="px-4 text-gray-500 dark:text-gray-400 font-bold bg-gray-50 dark:bg-gray-800 border-r border-gray-200 dark:border-gray-600 py-3.5"><i class="fas fa-calendar-times"></i></span>
@@ -404,12 +392,440 @@
                     <i class="fas fa-chevron-down absolute right-4 text-gray-400 pointer-events-none"></i>
                 </div>
                 <div class="bg-rose-600 dark:bg-rose-700 text-white p-4 rounded-xl shadow-md flex justify-between items-center">
-                    <span class="text-rose-100 dark:text-rose-200 font-medium text-sm">মোট ফিদিয়া:</span>
-                    <span class="text-2xl font-bold font-mono" id="fidiya-result">৳ ০</span>
+                    <span class="text-rose-100 dark:text-rose-200 font-medium text-sm">মোট ফিদিয়া:</span>
+                    <span class="text-2xl font-bold font-mono" id="fidiya-result">০৳</span>
                 </div>
             </div>
         </section>
 
+      </div>
+
+      <div id="view-blog" class="view-section">
+        
+        <div id="article-list-container" class="space-y-4 animation-fadeIn">
+          <section class="bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-sm border border-green-50 dark:border-gray-700 transition-colors">
+            <h2 class="text-lg font-bold mb-4 text-green-700 dark:text-green-400 border-b border-gray-100 dark:border-gray-700 pb-3">
+              <i class="fas fa-book-reader mr-2"></i>আর্টিকেল
+            </h2>
+
+            <div onclick="openArticle('article-1')" class="group cursor-pointer bg-gray-50 dark:bg-gray-700 rounded-xl overflow-hidden border border-gray-100 dark:border-gray-600 mb-6 hover:shadow-md transition-all active:scale-[0.98]">
+              <img src="https://i.ibb.co.com/bRYfwRLr/night-day-bn-ramadan.jpg" alt="Article Cover" class="w-full h-full" />
+              <div class="p-4">
+                <span class="bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-300 text-[10px] font-bold px-2 py-1 rounded-full mb-2 inline-block">সিয়াম সাধনা</span>
+                <h3 class="text-base font-bold text-gray-800 dark:text-gray-100 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">আল্লাহর রহমতের সিয়াম সাধনা – রাত থেকে রাত অবধি সিয়াম পূর্ণ করো</h3>
+                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1 line-clamp-5">১. সত্যের কোন দল, সম্প্রদায়, ফেরকা হয় না, সত্যের কেবল অনুসারী হয়। এ বিজ্ঞপ্তি হচ্ছে সে সমস্ত নর-নারীদের উদ্দেশ্যে,যারা আল্লাহর দাসত্বের অঙ্গিকার পালনার্থে ঈমান ধারণ করে, সালাত কায়েম করে, সিয়াম সাধনা করে, যাকাত পরিশোধ করে এবং হজ্জ পালন করে।...</p>
+              </div>
+            </div>
+
+            <div onclick="openArticle('article-2')" class="group cursor-pointer bg-gray-50 dark:bg-gray-700 rounded-xl overflow-hidden border border-gray-100 dark:border-gray-600 mb-6 hover:shadow-md transition-all active:scale-[0.98]">
+              <img src="https://i.ibb.co/SDp6KjZ5/ramadan-rahmat-vs-lanat-meaning.png" alt="Article Cover" class="w-full h-full" />
+              <div class="p-4">
+                <span class="bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 text-[10px] font-bold px-2 py-1 rounded-full mb-2 inline-block">রমজান</span>
+                <h3 class="text-base font-bold text-gray-800 dark:text-gray-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">রমজান – রহমত, গুনাহ্ মাফ ও জাহান্নাম থেকে মুক্তি বনাম অভিশাপ, লা’নত্ ও আল্লাহর গজবের মাস</h3>
+                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1 line-clamp-5">রমজান মাস রহমতের মাস তাদের জন্য – যারাঃ
+আল্লাহর বাণীতে বিশ্বাস স্থাপন করে যে شَهْرُ رَمَضَانَ الَّذِي أُنزِلَ فِيهِ الْقُرْآنُ هُدًى لِّلنَّاسِ وَبَيِّنَاتٍ مِّنَ الْهُدَىٰ وَالْفُرْقَانِ ...</p>
+              </div>
+            </div>
+
+            <div onclick="openArticle('article-3')" class="group cursor-pointer bg-gray-50 dark:bg-gray-700 rounded-xl overflow-hidden border border-gray-100 dark:border-gray-600 mb-6 hover:shadow-md transition-all active:scale-[0.98]">
+              <img src="https://i.ibb.co.com/jqxZD85/mahe-ramadan-siyam-sadhona.png" alt="Article Cover" class="w-full h-full" />
+              <div class="p-4">
+                <span class="bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-300 text-[10px] font-bold px-2 py-1 rounded-full mb-2 inline-block">দ্বীনের পুনর্জাগরণ</span>
+                <h3 class="text-base font-bold text-gray-800 dark:text-gray-100 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">এসো হে ঈমানদার মানব মানবী! আমরা এবার থেকে পুনঃ আল্লাহর রহমতের সিয়াম সাধনা করি! আবার কুরআন নাযিল ও পালনের মাহে রমযান আসছে।</h3>
+                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1 line-clamp-5">আউযু বিল্লাহি মিনাশ শায়তানির রাজীম বিসমিল্লাহির রাহমানির রাহীম এসো হে ঈমানদার মানব মানবী ! আমরা এবার থেকে পুনঃ আল্লাহর রহমতের সিয়াম সাধনা করি ! আবার কুরআন নাযিল ও পালনের মাহে রমযান আসছে।...</p>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <div id="article-reader-container" class="hidden animation-fadeIn">
+          <button onclick="closeArticle()" class="mb-4 flex items-center text-gray-600 dark:text-gray-300 hover:text-green-600 font-bold bg-white dark:bg-gray-800 px-4 py-2 rounded-full shadow-sm border border-gray-100 dark:border-gray-700 active:scale-95 transition-transform">
+            <i class="fas fa-arrow-left mr-2"></i> ফিরে যান
+          </button>
+
+          <article id="article-1" class="blog-content hidden bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-sm border border-gray-100 dark:border-gray-700">
+            <img src="https://i.ibb.co.com/bRYfwRLr/night-day-bn-ramadan.jpg" class="w-full h-48 object-cover rounded-xl mb-4" alt="Ramadan Article Cover" />
+            
+            <h1 class="text-2xl font-bold text-gray-800 dark:text-white mb-2">সিয়াম সাধনা: ক্বোরআন ও সুন্নাহর আলোকে সঠিক দিকনির্দেশনা</h1>
+            
+            <div class="text-xs text-gray-500 dark:text-gray-400 mb-6 flex items-center border-b border-gray-100 dark:border-gray-700 pb-3">
+              <i class="fas fa-clock mr-1"></i> ৫ মিনিট পাঠ | <i class="fas fa-calendar-alt ml-3 mr-1"></i> ২৩ ফেব্রুয়ারি, ২০২৬
+            </div>
+            
+            <div class="text-gray-700 dark:text-gray-300 leading-relaxed space-y-5 text-sm md:text-base">
+              
+              <h3 class="font-bold text-lg text-green-700 dark:text-green-400 mt-6 border-b border-gray-100 dark:border-gray-700 pb-2">১. সিয়ামের প্রকৃত উদ্দেশ্য</h3>
+              <p>সত্যের কোন দল, সম্প্রদায়, ফেরকা হয় না, সত্যের কেবল অনুসারী হয়। এ বিজ্ঞপ্তি হচ্ছে সে সমস্ত নর-নারীদের উদ্দেশ্যে,যারা আল্লাহর দাসত্বের অঙ্গিকার পালনার্থে ঈমান ধারণ করে, সালাত কায়েম করে, সিয়াম সাধনা করে, যাকাত পরিশোধ করে এবং হজ্জ পালন করে। যারা লোক দেখানো সাম্প্রদায়ীক পূজা-পার্বণের মতো ধর্মীয় অনুষ্ঠানাদি করে, তাদের জন্য নয়। আমরা আল্লাহর সেই বান্দাদের মধ্যে অর্ন্তভূক্ত হওয়ার জন্য আল্লাহর কাছে দোয়াপ্রাথী যারা একমাত্র আল্লাহকে তাঁর কিতাব ও রাসূলদের অনুকরণে বিশ্বাস করে, জানে ও মানে। </p>
+              
+              <p>পৃথিবীতে আল্লাহর পর তাঁর সবচেয়ে বড়ো দান শাশ্বত দ্বীন ইসলাম। এর স্তম্ভগুলোঃ ঈমান, সালাত ক্বায়েম, সিয়াম সাধনা, যাকাত আদায় ও হজ্জ পালন করলে মানব সমাজ আল্লাহর রহমতে ভূ-পৃষ্ঠ বেহেশতে রূপান্তর হয়। বর্তমানে বিশ্বে উক্ত কাজগুলো ঈমানহীন অনুষ্ঠানরুপে পালনের ফলে মানবজাতি আজ ধ্বংসের কিনারে।</p>
+              
+              <p>সংযম, সাশ্রয় এবং ত্যাগের মাস, রমজান সঠিক সিয়াম সাধনায় উত্তীর্ন হতে আল্লাহর আদিষ্ট ও রাসূল পালিত সেহরী ও ইফতারের রোজা পালনে রহমত, মাগফিরাত ও নরকাগ্নি থেকে মুক্তির সাফল্য অর্জন করো। বর্তমান প্রথার উপবাস সর্বস্ব রোজার প্রহসনে গোটা মানব জাতি, বিশেষ করে নামধারী “মুসলমানরা” আল্লাহ কর্তৃক অভিশপ্ত।</p>
+
+              <p>সষ্টার শ্রেষ্ঠ জীব মানবজাতি আল্লাহর প্রতিনিধি রূপে গোটা সৃষ্টির লালনে ভারসাম্য রক্ষার দায়িত্বে আদিষ্ট। প্রাণী জগতের ক্ষুধা-পিপাসায় আল্লাহ খাদ্য-পানীয় দিয়ে সৃষ্টির লালন পলন করেন। জীবশ্রেষ্ঠ মানুষ মাহে রমজানে এক মাস নিশা- নিষ্কৃতির সুবহে সাদেক থেকে নিশা আগমনের এশার ওয়াক্ত শুরু পর্যন্ত সিয়াম পালনে আদিষ্ট।</p>
+
+              <p>ক্ষুধা-তৃষ্ণার জ্বালা ভোগ করে স্রষ্টার দানা-পানির মূল্যায়ন ও দীন দুঃখির অভাব-অনটন বিদূরনের কঠোর অনুশীলনের নিমিত্ত্ব মানব সৃষ্টির ঊষালগ্ন থেকে সকল প্রাপ্ত বয়স্ক মানুষের জন্যে “উপবাস” পালন বাধ্যতা মূলক ছিলো। মানব সভ্যতার ক্রম বিকাশে পূর্ণতার সূচকে হযরত ইব্রাহীম, মূসা ও ঈসা আঃদের সমাপক শেষ নবী মুহাম্মাদ সঃ প্রেরিত হন। তিনি রমজানের সিয়াম সাধনার চূড়ান্ত রূপদানে আল্লাহ কর্তৃক আদিষ্ট হন। তিনি চূড়ান্ত আদর্শ।</p>
+
+              <p>মর্ত্যের মানুষ স্বর্গরোহন, তথা মেরাজের প্রতীক মুহাম্মাদুর রাসুলুল্লাহ। তাঁর উপর ক্বোরআন নাযিল আরম্ভ হয় এ রমজান মাসে, সত্য প্রতিষ্ঠায় অসত্য নির্মূলে আত্মরক্ষার বদর যুদ্ধ সংঘটিত হয় এ রমজান মাসে, পূর্ণ ক্বোরআন চর্চার প্রশিক্ষন কার্যক্রম চালু হয় এ রমজান মাসে এবং সর্বপরি মানুষ বেচা কেনা, মানবতার অবমাননা ও পৈশাচিক গোত্র ও বর্ণবাদী শোষনের হোতা মক্কার ক্বোরেশীদের কব্জা থেকে মান সাম্যের ঐশী মন্দির কা’বা মুক্ত ও পবিত্র হয় এ মাহে রমজানুল মুবারকে।</p>
+
+              <h3 class="font-bold text-lg text-green-700 dark:text-green-400 mt-8 border-b border-gray-100 dark:border-gray-700 pb-2">২. দ্বীনের বিকৃতি ও আমাদের করণীয়</h3>
+              <p>ইয়াহুদী ও খৃষ্টানরা আল্লাহর নবীদের প্রদর্শিত দ্বীনকে বিকৃত করে মানুষকে জাতে ধর্মে বহুধা বিভক্ত করেছে। তা না হলে মানবজাতি এক পরিবার রয়ে যেতো। সকল নবী রাসূলগণ আল্লাহর দ্বীন পালনে হুবহু একই শরীআ ও একই সালাত, সিয়াম ও হজ্জ পালন করেছেন এবং তাদের অনুসারী সবাই তাদের মতো মুসলিম ছিলো। কেউ ইয়াহুদী, খৃষ্টান ও মোহামেডান ছিলোনা।</p>
+              
+              <ul class="list-disc pl-5 space-y-3 mt-2 bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl">
+                <li>তাই আল্লাহ তাঁর শেষ নবী সঃ কে বলেছেন, <em>“তুমি কি ওদের দেখেছো যারা আল্লাহর দ্বীনকে বিকৃত করে তাদের সম্প্রদায়কে ধ্বংসের দ্বারপ্রান্তে জাহান্নামের কিনারে দাঁড় করিয়েছে? একটু পরেই তারা তাতে পতিত হবে। কতোই না করুণ তাদের পরিণতি!</em> (ইব্রাহীম-২৮-২৯)</li>
+                <li>হযরত মূসা ও ঈসা আঃদের শিখানো তাওহীদী কালেমা, সালাত ও সিয়ামকে ইয়াহুদী ও খৃষ্টানরা আকার প্রকার সব দিক দিয়ে বিকৃত করে ফেলে অভিশপ্ত হয়। তাই আল্লাহ তাঁর আখেরী নবী সঃ এর মাধ্যমে ঈমানদারদের আল ক্বোরআন ও রাসূল আঃ এর মুখে বার বার নির্দেশ করেছেন, তারা যেন কোনো ব্যাপারেই ইয়াহুদী নাসারাদের বিকৃত ঐক্যের দ্বীনকে অনৈক্যের এবং বিভক্তির, সাম্প্রদায়িক ধর্ম ও ধর্মাচারকে অনুসরণ না করে। করলে তারাও ওদের মতো হয়ে যাবে। আল্লাহ সকল ঈমানদারদের জন্য সর্বকালে একই ভাবে সিয়াম পালন ও সাধনা করতে বলেছেন। সিয়াম সাধনা মানুষকে তাক্বওয়ার আগুনে পুড়ে খাঁটি সোনা মুত্তাক্বী বানায়।</li>
+              </ul>
+
+              <h3 class="font-bold text-lg text-green-700 dark:text-green-400 mt-8 border-b border-gray-100 dark:border-gray-700 pb-2">৩. সিয়াম ও অর্থনৈতিক ভারসাম্য</h3>
+              <p>মাহে রমজান সঠিক সিয়াম পালনকারীদের জন্য শুধু বরকত ও বরকতের মাস। আর যারা ইয়াহুদী খৃষ্ঠানদের মতো বিকৃতভাবে পালন করে, তাদের জন্য অপচয় ও পাপাচারের দুর্যোগের মাস। </p>
+              
+              <p>ঈমানদারের জন্য কম খরচে বেশি ইবাদত করে আগামী এগারো মাসের কৃচ্ছতা সাধনার শিক্ষা দেয় মাহে রমজান। আল্লাহর নির্দেশ ও রাসূল সঃ এর আমল অনুযায়ী রোজা পালন করলে রমজান মাসে খরচ অর্ধেক কমে বাজারের দ্রব্যমূল্য কমে যায়।</p>
+
+              <ul class="list-disc pl-5 space-y-3 mt-2">
+                <li>ইয়াহুদী –খৃষ্টানদের মতো রোজা রাখলে অন্যান্য মাসের তুলনায় রোজার মাসে খরচ দ্বিগুণ হয়ে যায়। বাজারে নিত্য প্রয়োজনীয় দ্রব্যের মূল্য বাড়ে। অফিস আদালতে ঘুষ বাড়ে। হাটে বাজারে ভোগবাদের প্রদর্শন হয় এবং ইফতার পার্টি ও ঈদের পোষাকের প্রতিযোগিতায় ক্রিসমাসের মতো রোজা ও ঈদ ভোগ কেন্দ্রিক উৎসব / পার্বণ হয়ে যায়।</li>
+                <li>ইসলামের বিধান মতো রোজা রেখে ইফতার করলে হিসাব করে দেখা যায় যে, বাংলাদেশে এক রমযানের সঞ্চয়ে একটি যমুনা ব্রীজ নির্মাণ করা যায়।</li>
+              </ul>
+
+              <h3 class="font-bold text-lg text-green-700 dark:text-green-400 mt-8 border-b border-gray-100 dark:border-gray-700 pb-2">৪. তোমরা রাত্র থেকে রাত্র র্পযন্ত সিয়াম পূর্ণ করো</h3>
+              <p>আল ক্বোরআনে আল্লাহ বলেছেন সোবহে সাদেকের পূর্বে সেহরী শেষ করে রাত্রি পর্যন্ত সিয়াম পূর্ণ করতে। তদ্রূপ আল ক্বোরআনে ফজর ও মাগরিবকে দিবসের দু’প্রান্ত “তারাফাঁইন নাহার” বলা হয়েছে। এশাকে বলা হয়েছে নিশার প্ররম্ভ বা “যুলাফাম মিনাললাইল”। অর্থাৎ ফজর যেমন রাত নয়, মাগরিবও রাত নয়। এশা শুরূ হলে রাত্রের আগমন ঘটে। তখন ইফতারের সময় হয়। মাগরিবের সময় নয়।</p>
+
+              <p>বিশ্বের অভিন্ন, অবিভক্ত ও একান্ন আদম পরিবার মানবজাতির সেতু বন্ধনের মাস, রমজানে আল্লাহ তাঁর শেষ নবীর মাধ্যমে আমাদের সকলকে আদেশ করেন <strong>“তোমরা রাত্র অবধি সিয়ামকে পূর্ণ করবেই।”</strong></p>
+              
+              <div class="bg-green-50 dark:bg-green-900/30 p-4 rounded-xl my-4 text-center border border-green-100 dark:border-green-800">
+                <p class="text-xl font-arabic text-green-800 dark:text-green-300" dir="rtl">ثُمَّ أَتِمُّ الْصِياَمَ إلَيْلِ</p>
+                <p class="text-sm mt-2 text-green-700 dark:text-green-400">(সূরা বাক্বারা-১৮৭)</p>
+              </div>
+
+              <p>রাসূল সঃ অবশ্যই রাত্র পর্যন্ত রোজা পূর্ণ করেছেন। “মাগরিব” অর্থাৎ সন্ধ্যা পর্যন্ত করেন নি। তার মৃত্যুর পর সুন্নি খলিফা উমর ও ওসমান রোজা অবস্থায় মাগরিব পড়ে রাতের অন্ধকারের অপেক্ষা করতো। তারপর এশার সালাত আদায় করে তারপরেই ইফতার করতো। ভাড়াটে মাওলানারা এটা জানলেও তারা সাম্প্রদায়িক কুশিক্ষার ফলে স্বেচ্ছায় অন্ধত্ববরণ করেছেন এবং বাকিদেরও অন্ধকারে রাখাই তাদের সাম্প্রদায়িক ধর্মের পুরহিততন্ত্রের পেশা।</p>
+
+              <div class="bg-gray-50 dark:bg-gray-700/50 p-5 rounded-xl my-4 border-l-4 border-indigo-500">
+                <p class="text-lg font-arabic text-right mb-3 text-gray-800 dark:text-gray-200 leading-loose" dir="rtl">
+                  وحَدَّثَنِى عَنْ مَالِكْ، عَنْ إبْن شِهَاب، عَنْ حَمِيْد بِنْ عَبْد الرَحْمَان، أنَّ عُمَر بْن الْخَطَّاب و عُثْمَان بْنَ عَفَّان كَانَا يُصَلِّيَانِ الْمَغْرِبَ، حِيْنَ ينظران إلى الليل الأسود، قبل أن يفطرا. ثم يفطران بعد الصلاة. وذالك في رمضان…
+                </p>
+                <p class="text-sm text-gray-700 dark:text-gray-300 border-t border-gray-200 dark:border-gray-600 pt-3">
+                  <strong>অর্থ:</strong> উমর ইবনুল খাত্তাব ও উসমান ইবন আফফান মাগরিবের সালাত পড়তো, তারপর তারা রাতের অন্ধকারের অপেক্ষা করতো, ইফতারের পূর্বে। অতঃপর তারা সালাতের পর ইফতার করতো। এবং অবশ্যই তা রমজান মাসে।
+                </p>
+              </div>
+
+              <p>স্মর্তব্য, মুয়াত্তা মালিক সুন্নী সম্প্রদায়ের বোখারী ও মুসলিম থেকেও নির্ভর ও প্রাচীনতম হাদিস গ্রন্থ। খলিফা আলীর অনুসারী শিয়া সম্প্রদায় অদ্যবধি আল্লাহর হুকুম ও নবী সঃএর আচরণ অনুযায়ী এশার নামাজ পড়ে তারপর ইফতার করে।</p>
+
+              <p>মাগরিব পর্যন্ত রোজা যেরূপ আল ক্বোরআন ও রাসূলের আদর্শে নেই, ঠিক তদরূপ রমজান মাসে রাতের প্রথমার্ধে বিশ রাকাত তারাবীহ্ ক্বোরআন ও রাসূল সঃ এর জীবনীতে কোথাও নেই। বরং রাসূল সঃ রমজানে এশার পর রাতের প্রথমার্ধে কোন নামাজের সংযোজন কঠোর ভাষায় নিষেধ করেছেন। (বোখারী-মুসলিম)</p>
+
+              <p>নিছক ব্যক্তিগত খেয়াল-খুশীর উপর খলিফা উমর এ তারাবীর প্রচলন করে তাকে নিজেই “বিদআত” আখ্যায়িত করে নিরুৎসাহিত করেছে।</p>
+              
+              <p>বিশেষ সাহাবা ও ওলামাদের ‘ইজমা’ ভিত্তিক বিশ রাকাত তারাবীর পক্ষে উল্লেখিত পত্রিকাটিতে প্রচার চালায়। হে মানুষ! বিবেককে প্রশ্ন করো, এরা কোন জাত, ও কোন ধর্মের?! আল্লাহ বিধায়ক, রাসূল সঃ আদর্শ। তার বাইরে যে ইজমা বা Consensus, বা ঐকমত্য, কি পয়লা রমজানে এক মহিলাকে ঘিরে ঐক্য জোটের মোল্লাদের ইফতার খাওয়ার ইজমা?! না আল্লাহ রাসূল সঃকে ত্যাগ করে উষ্ট্র ও সিফফিনের যুদ্ধে এক লাখ মুসলমানের(?) লাশ ফেলে সুন্নী-শিয়ার জন্মদাতা সাহাবাদের ইজমা, যার ফলে কুয়েত, লিবিয়া, ইরাক ও সৌদীআরব সহ গোটা মুসলিম বিশ্বে বুশ-ব্লেয়ারদের ইমামত(?) প্রতিষ্ঠিত এবং ইরাকে সুন্নী-শিয়া ইজমার আত্মহনন যজ্ঞে দজ্বলা-ফোরাতের জল রক্তলাল?! মধ্যপ্রাচ্যেও তেলের সাগর ও স্বর্নের খনিও সেই ইজমায় ইউরোপ-আমেরিকার লুটপাটের স্বর্গ?!</p>
+
+              <p>এই বিশ্ব লুটেরাদের নির্বিশেষে দোসর খন্ডিত জাতীয়বাদের রাষ্ট্র সমূহের সরকার সমূহ। এই রাষ্ট্রপুঞ্জের শোষন ব্যাভিচারের প্রতিক্রিয়ায় জন্ম নিয়েছে সন্ত্রাসবাদ। রাষ্ট্রীয় সন্ত্রাসবাদে পিষ্ট আমজনতার প্রতিরোধ ও প্রতিবাদের ভাষা সন্ত্রাসবাদ ও বোমাবাজী। বিশ্বের এ পিষ্ট আমজনতাকেই আল ক্বোরআনে আল্লাহ নাম করেছেন “আল মুস্তাদআফুন”। এদের ক্ষমতায়নে “নয়া বিশ্ব ব্যবস্থা” New World Order প্রতিষ্ঠার অঙ্গিকারে আল্লাহ প্রেরন করেছেন শেষ নবী মুহাম্মাদ সঃকে “রাহমাতুল্লিল আলামীন” বিশেষনে।</p>
+              
+              <p>তাঁর নবুওত প্রাপ্তি, তাঁর উপর প্রথম ঐশী আদেশ “অহী” নাযিল, বদরের আত্মরক্ষার যুদ্ধ, পরিখার আত্মরক্ষার সংগ্রাম এবং মক্কা মুক্তির ঘটনা এ রমজান মাসে সংঘটিত হয়। সুদ, ঘুষ, চাঁদাবাজী, দ্রব্যমূল্য বৃদ্ধি ও নগ্ন নারীদেহের মাংস ব্যবসা, ঈদ মেলা ও ঈদ ফ্যাশনের হারাম পয়সায় ইফতারবাজীর জন্যে এ রমজান নয়। বরং এ দূর্বৃত্তায়ন প্রতিরোধ ও নির্মূলের জন্য সংযম সংগ্রামের মাস এ রমজান। বাংলাদেশের কোন সরকার, কোন সন্ত্রাসালয়, কোন সচিবালয়, কোন বিচারালয়, কোন অধিদফতর ও সংস্থাপন ও হারামখোরদের কলঙ্ক ও পাপ মুক্ত? অথচ এদেরই ইফতার ও ঈদের দুর্বুত্তায়নে হাট-বাজার নরক! তাও আবার মাহে রমজানে?!</p>
+
+              <h3 class="font-bold text-lg text-green-700 dark:text-green-400 mt-8 border-b border-gray-100 dark:border-gray-700 pb-2">৫. ইফতারের সঠিক সময় ও তারাবীহ প্রসঙ্গ</h3>
+              <p>অভিশপ্ত ও সাম্প্রদায়িকতার জন্মদাতা ইয়াহুদী-খৃষ্টানরা আল্লাহর নির্দেশ অমান্য করে এক এশা আরেক এশা পর্যন্ত অর্থাৎ চব্বিশ ঘন্টা রোজা চালু করে। আখেরী নবী সঃ বলে যান ওদের অনুসরন না করে এশার ওয়াক্ত হতেই ইফতার করতে। আরব সাম্রাজ্যবাদীরা আল্লাহ ও রাসূলের নির্দেশ অমান্য করে ইসলাম ও ইয়াহুদীবাদ উভয় বাদ দিয়ে একটি তৃতীয় শয়তানী চালু করে। অর্থাৎ শেষ রাত্র থেকে সন্ধ্যা পর্যন্ত। রাত পর্যন্ত নয়। ইয়াহুদীরা লম্বা করে ফেলে, ওদের চাচাতো ভাই আরবরা রোজাকে খাটো করে মানব জাতিকে মাহে রমজানের বরকত ও রহমত থেকে বিচ্যুত করে।</p>
+
+              <ul class="list-disc pl-5 space-y-2 mt-2">
+                <li>ইফতারীর দোকানদাররা এটাকে লুফে নেয়। কারণ ইফতারের নামে মুসলিম বিশ্বে বাজারে অতিভোজ ও ভোগের জাহান্নাম শুরু হয়। দশ টাকার পেঁয়াজ বিশ টাকা হয়, পাঁচ টাকার বেগুন ষোল টাকা এবং এ হারে লুটের বাজার চালু হয়।</li>
+              </ul>
+
+              <p>আর যদি ক্বোরআন ও রাসূল সঃ এর নির্দেশ অনুযায়ী ইফতার করা হয়, তা হলে ইসলামী সমাজ আসরের সময় থেকে মাগরিব ও মাগরিব থেকে এশা পর্যন্ত ঘরে ঘরে ক্বোরআন তেলাওয়াত ও শিক্ষার বেহেশ্‌তী সময় পায়। গৃহিণীরা দিবাভাগে রাতের খাবার পাকিয়ে ক্বোরআন শিক্ষায় স্বামী সন্তানদের সাথে শরীক হতে পারে। এশার আযানের পর যখন মানুষ রাতের খাবার খাবে, তখন তার সাথে পেয়াজী, বেগুনী, বুট, ভাজাপোড়া ও অন্যান্য রাক্ষুসে খাওয়া খাবে না। শুধু উপাদেয় সুপাচ্য সুষম খাদ্য খাবে। তাতে গৃহকর্তার অর্ধেক সাশ্রয় হবে। বাড়তি কামাই এর জন্য ঘুষ খেতে হবেনা। গৃহিনীর এতো কিছু পাকাতে গলদঘর্ম হতে হবেনা। এশা পড়ে ঘুমিয়ে আবার মধ্য রাতের পর ঘুম থেকে উঠে তৃপ্তিভরে তাহাজ্জুদ নামাজ ও ক্বোরআন তেলাওয়াত করতে পারবে।</p>
+
+              <p>এখানে অতি গুরুত্বের সাথে মনে রাখতে হবে যা, ইসলামে “তারাবী” নামের কোন নামাজ নেই। রাসূল সঃ এরূপ কোন সালাতের সংযোজন কঠোর ভাবে নিষেধ করেছেন। (বোখারী-মুসলিম) খলিফা ওমর “বিদ্‌আত” বলে এটাকে চালু করে এ বলে যে, “যারা শেষ রাতে উঠে রমজানে তাহাজ্জুদ পড়বেনা, তারা রাত্রের প্রথমার্ধে হাট বাজারে আড্ডা না দিয়ে নামাজে দাঁড়িয়ে ক্বোরআন শুনুক। তবে এটি একটি বিদ্‌আত”। রাসূল সঃ যা করেন নি, ধর্মে তা করাই বিদ্‌আত। বিদ্‌আত দাঁড় করা কঠোরভাবে নিষিদ্ধ। কিন্তু রমজান মাসে মস্‌জিদ কমিটি চাঁদা তোলা ও হাফেজ ভাড়া করে অতিরিক্ত আয়ের ব্যবস্থা করতে এ বিদ্‌আতকে এমনভাবে প্রতিষ্ঠিত করেছে যে, তার চাপে মাহে রমজানে ক্বোরআন বুঝার ফরজই চাপা পড়ে হারিয়ে গেছে। তারাবীর তারাহুড়ায় হাফেজ, ইমাম ও মুসল্লী সবাই ক্বোরআন শুনে বুঝে, ক্বোরআনের গভীরে পৌঁছার সুযোগ চীরতরে হারিয়েছে। ইন্নালিল্লাহি ওয়া ইন্না ইলাই হি রাজিউন।</p>
+
+              <p>আল ক্বোরআনে আল্লাহ যেভাবে ফজর ও মাগরিবকে দিবসের দু’আঁচল বলেছেন, রাত নয়, তদরূপ রাসূল সঃ বলেছেন মাগরিব হলো দিবসের বিতির, যেমন এশার পর রাতের বিতির হয়। তাহাবীতে আব্দুল্লাহ ইবন উমর এ হাদীস বর্ণনা করেছে, বিতিরের অধ্যায়ে। এ বর্ণনা যেহেতু ক্বোরআনের সাথে মিল, তাই তা গ্রহণীয়।</p>
+
+              <p>যারা মুসলিম উম্মার চরম দুর্দিনে সত্য ও নাজাতের পথ চায়, তাদের সঠিক বুঝের জন্য সিয়াম ও ইফতারের সঠিক সময় ক্বোরআন ও রাসূল সঃ এর শিক্ষা অনুযায়ী দেওয়া হলো। সহজভাবে বুঝার জন্য দিনরাত, দিনের আচল ও রাতের প্রারম্ভ সূচক অত্যন্ত সূক্ষ্ণ নির্দেশক চিত্র তুলে ধরা হলো। </p>
+
+              <figure class="mt-6 border border-gray-200 dark:border-gray-600 rounded-xl overflow-hidden shadow-sm bg-white dark:bg-gray-800">
+                <img 
+                  src="https://i.ibb.co.com/bRYfwRLr/night-day-bn-ramadan.jpg" 
+                  alt="সিয়াম সাধনার শুরু ও শেষ প্রাকৃতিক সময়ের সুষম বন্টনে অবস্থিত, জীবশ্রেষ্ঠ মানুষ মাহে রমজানে এক মাস নিশা- নিষ্কৃতির সুবহে সাদেক থেকে নিশা আগমনের এশার ওয়াক্ত শুরু পর্যন্ত সিয়াম পালনে আদিষ্ট" 
+                  class="w-full h-auto object-contain bg-white" 
+                />
+                <figcaption class="p-4 bg-gray-50 dark:bg-gray-700/50 text-sm text-gray-700 dark:text-gray-300 text-center leading-relaxed border-t border-gray-200 dark:border-gray-600">
+                  সিয়াম সাধনার শুরু ও শেষ প্রাকৃতিক সময়ের সুষম বন্টনে অবস্থিত, জীবশ্রেষ্ঠ মানুষ মাহে রমজানে এক মাস নিশা- নিষ্কৃতির সুবহে সাদেক থেকে নিশা আগমনের এশার ওয়াক্ত শুরু পর্যন্ত সিয়াম পালনে আদিষ্ট
+                </figcaption>
+              </figure>
+              
+              <figure class="mt-6 border border-gray-200 dark:border-gray-600 rounded-xl overflow-hidden shadow-sm bg-white dark:bg-gray-800">
+                <img 
+                  src="https://i.ibb.co.com/Ght7Nzr/twilight.webp" 
+                  alt="ঠিক যেরূপ সেহেরী খাওয়ার অনুমতি রয়েছে সুবেহ সাদিক পর্যন্ত, অর্থাৎ আলোর রেখা প্রকাশিত হওয়ার পূর্ব পর্যন্ত (যখনও সূর্য ওঠেনি)। ঠিক তেমনি সূর্য ডোবার পরে আলোর রেখার গমনের সময়ের পরেই রাত/ লাইল আসে এবং সেই রাত পর্যন্তই সিয়াম পূর্ণ করার নির্দেশ রয়েছে ক্বুরআনে। সুবহে সাদিক থেকে সূর্যোদয়ের সময়ের ব্যবধান যতখানি, সুর্যাস্ত থেকে রাত আসার সময়ের ব্যবধানও সমান। এটি আল্লাহর অপূর্ব সৃষ্টির এক লীলা, একটি আয়াত, সুবহানাল্লাহ!" 
+                  class="w-full h-auto object-contain bg-white" 
+                />
+                <figcaption class="p-4 bg-gray-50 dark:bg-gray-700/50 text-sm text-gray-700 dark:text-gray-300 text-center leading-relaxed border-t border-gray-200 dark:border-gray-600">
+                  ঠিক যেরূপ সেহেরী খাওয়ার অনুমতি রয়েছে সুবেহ সাদিক পর্যন্ত, অর্থাৎ আলোর রেখা প্রকাশিত হওয়ার পূর্ব পর্যন্ত (যখনও সূর্য ওঠেনি)। ঠিক তেমনি সূর্য ডোবার পরে আলোর রেখার গমনের সময়ের পরেই রাত/ লাইল আসে এবং সেই রাত পর্যন্তই সিয়াম পূর্ণ করার নির্দেশ রয়েছে ক্বুরআনে। সুবহে সাদিক থেকে সূর্যোদয়ের সময়ের ব্যবধান যতখানি, সুর্যাস্ত থেকে রাত আসার সময়ের ব্যবধানও সমান। এটি আল্লাহর অপূর্ব সৃষ্টির এক লীলা, একটি আয়াত, সুবহানাল্লাহ!
+                </figcaption>
+              </figure>
+
+              <p>রাসূল সঃ বলেছেন, “তোমরা ঠিক সময়ে ইফতার করবে, ইয়াহুদীদের মত দেরী করবে না”। তাঁর এ আদেশ অবশ্যই ইয়াহুদীদের ২৪ ঘণ্টার উপবাসের বিরুদ্ধে। তদ্রূপ, তা বর্তমানে রমজানের প্রহসনকারী নামধারী মুসলমানদের বিরুদ্ধেও, যারা ইয়াহুদীদের পদাঙ্ক অনুসরণে সিয়ামকে খাটো না করে রাত না হতেই দিনের প্রান্তভাগে সন্ধ্যায় ইফতার করে। ইয়াহুদী খৃষ্টানদের ন্যায় এদেরও সিয়াম হয় না। এবং আল্লাহই চূড়ান্ত ফয়সালাকারী।</p>
+
+              <figure class="mt-6 border border-gray-200 dark:border-gray-600 rounded-xl overflow-hidden shadow-sm bg-white dark:bg-gray-800">
+                <img 
+                  src="https://i.ibb.co.com/TBg1dWxy/fasting-till-night-3.jpg" 
+                  alt="" 
+                  class="w-full h-auto object-contain bg-white" 
+                />
+                <figcaption class="p-4 bg-gray-50 dark:bg-gray-700/50 text-sm text-gray-700 dark:text-gray-300 text-center leading-relaxed border-t border-gray-200 dark:border-gray-600">
+                  
+                </figcaption>
+              </figure>
+
+              <p class="font-semibold text-lg text-green-700 dark:text-green-400 leading-snug">
+                মাগরিবে নামায যদি দিনের বেলার বিতরের সালাত হয় তাহলে আজানের সাথে সাথে কিভাবে রোজা ভাঙার উৎসব শুরু হতে পারে?
+              </p>
+
+              <div class="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl border-l-4 border-green-500 shadow-sm">
+                <p class="italic">"তবে কি আমি আল্লাহ ব্যতীত অন্য কোন বিচারক অনুসন্ধান করব, অথচ তিনিই তোমাদের প্রতি বিস্তারিত গ্রন্থ অবতীর্ন করেছেন? আমি যাদেরকে গ্রন্থ প্রদান করেছি, তারা নিশ্চিত জানে যে, এটি আপনার প্রতি পালকের পক্ষ থেকে সত্যসহ অবর্তীর্ন হয়েছে। অতএব, আপনি সংশয়কারীদের অন্তর্ভুক্ত হবেন না।"</p>
+                <p class="text-sm font-bold mt-2 text-green-700 dark:text-green-400">- (সূরা আনআম: ১১৪)</p>
+              </div>
+
+              <div class="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl border border-gray-100 dark:border-gray-600 text-center shadow-sm">
+                <p class="text-2xl font-arabic text-gray-800 dark:text-gray-100 mb-3" dir="rtl">ثُمَّ أَتِمُّوا الصِّيَامَ إِلَى اللَّيْلِ</p>
+                <p><strong>অর্থ:</strong> অতঃপর তোমরা রাত্র পর্যন্ত সিয়াম পূর্ণ কর।</p>
+                <p class="text-sm font-bold mt-1 text-green-700 dark:text-green-400">- (সূরা বাকারা: ১৮৭)</p>
+              </div>
+
+              <div class="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl border border-gray-100 dark:border-gray-600 text-center shadow-sm">
+                <p class="text-2xl font-arabic text-gray-800 dark:text-gray-100 mb-3" dir="rtl">وَأَقِمِ الصَّلَاةَ طَرَفَيِ النَّهَارِ وَزُلَفًا مِّنَ اللَّيْلِ</p>
+                <p><strong>অর্থ:</strong> সালাত কায়েম কর দিবসের দু’আচলে এবং রাতের প্রারম্ভেও।</p>
+                <p class="text-sm font-bold mt-1 text-green-700 dark:text-green-400">- (সূরা হুদ: ১১৪)</p>
+              </div>
+
+              <div class="py-2">
+                <h3 class="font-bold text-lg text-gray-800 dark:text-gray-200 mb-3">ক্বোরআনের আলোকে রাত ও সন্ধ্যা:</h3>
+                <ul class="list-disc pl-5 space-y-3">
+                  <li><strong>রাত:</strong> রাত হল যখন অন্ধকার হয় অর্থাৎ দিনের আলোকে যখন অন্ধকার আচ্ছন্ন করে। <span class="text-sm font-bold text-gray-500">(সূরা আল লাইল: ০১)</span></li>
+                  <li><strong>সন্ধ্যা:</strong> আকাশে যতক্ষন লাল রঙ থাকবে অর্থাৎ লাল আভা থাকবে ততক্ষণ পর্যন্ত তাকে সন্ধ্যা বলে। <span class="text-sm font-bold text-gray-500">(সূরা আল ইনশিকাক: ১৬)</span></li>
+                  <li>সন্ধ্যার পরে রাত হয়, মানে সন্ধ্যা রাত্রিতে সমাবেশ বা দাখিল হয়। <span class="text-sm font-bold text-gray-500">(সূরা আল ইনশিকাক: ১৭)</span></li>
+                </ul>
+              </div>
+
+              <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-xl border-l-4 border-indigo-500 my-4 shadow-sm">
+                <p>মাগরিবের সালাত আদায়ের পরে ইফতার করতে হবে। আগে ইফতার পরে সালাত, এমনটা নয়। হরযত আবু বকর, হযরত উসমান, হরযত ওমর মাগরিবের সালাতের পরে ইফতার করতেন।</p>
+                <p class="text-sm font-bold mt-2 text-indigo-700 dark:text-indigo-400">- (বোখারী, মুয়াত্তা)</p>
+              </div>
+
+              <div class="text-center bg-green-50 dark:bg-green-900/30 p-5 rounded-xl border border-green-200 dark:border-green-800 mt-6">
+                <p class="font-bold text-green-800 dark:text-green-300 leading-relaxed">
+                  এসো হে আল ক্বোরআনের অনুসারী নবী রাসূলদের সিয়াম পালনকারী আল্লাহর দাস দাসীরা! সঠিক সালাত ও সিয়াম পালন করে বিশ্বে পুনঃ মুস্‌লিম উম্মার পুনর্জাগরণের কাফেলায় শরীক হও।
+                </p>
+              </div>
+
+              <h3 class="font-bold text-lg text-green-700 dark:text-green-400 mt-8 border-b border-gray-100 dark:border-gray-700 pb-2">সঠিক সময় নির্ধারণঃ</h3>
+              <p>যেমনঃ ১৮ ফেব্রুয়ারী ১ম রমজানে ৫ঃ১০ মিনিট এ সাহরীর সময় শেষ এবং ফজরের ওয়াক্ত হবে।</p>
+              <p>আর সূর্যোদয় হবে ৬ঃ৩৩ মিনিট এ।</p>
+              <p><i>[এখানে সময় ১ঃ২৩ মিনিট।</i></p>
+              <p>ঠিক একইভাবে সূর্যাস্ত ৫ঃ৫৭ মিনিট এ এবং সূর্য অস্ত যাবে (রাত শুরু হবে) এক ঘন্টা তেইস মিনিট পর।</p>
+              <p>তাহলে ইফতারের সময় হবে ০৭ঃ২০ মিনিট এ।</p>
+              
+              <figure class="mt-6 border border-gray-200 dark:border-gray-600 rounded-xl overflow-hidden shadow-sm bg-white dark:bg-gray-800">
+                <img 
+                  src="https://i.ibb.co.com/Txr8N0yz/fasting-till-night-4.jpg" 
+                  alt="" 
+                  class="w-full h-auto object-contain bg-white" 
+                />
+                <figcaption class="p-4 bg-gray-50 dark:bg-gray-700/50 text-sm text-gray-700 dark:text-gray-300 text-center leading-relaxed border-t border-gray-200 dark:border-gray-600">
+                  
+                </figcaption>
+              </figure>
+
+            </div>
+          </article>
+
+              <!-- <figure class="mt-6 border border-gray-200 dark:border-gray-600 rounded-xl overflow-hidden shadow-sm bg-white dark:bg-gray-800">
+                <img 
+                  src="" 
+                  alt="" 
+                  class="w-full h-auto object-contain bg-white" 
+                />
+                <figcaption class="p-4 bg-gray-50 dark:bg-gray-700/50 text-sm text-gray-700 dark:text-gray-300 text-center leading-relaxed border-t border-gray-200 dark:border-gray-600">
+                  
+                </figcaption>
+              </figure> -->
+
+          <article id="article-2" class="blog-content hidden bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-sm border border-gray-100 dark:border-gray-700">
+            
+            <h1 class="text-2xl font-bold text-gray-800 dark:text-white mb-2 leading-snug">যাদের জন্য রমজান রহমতের, আর যাদের জন্য লা'নতের</h1>
+            
+            <div class="text-xs text-gray-500 dark:text-gray-400 mb-6 flex items-center border-b border-gray-100 dark:border-gray-700 pb-3">
+              <i class="fas fa-clock mr-1"></i> ৫ মিনিট পাঠ | <i class="fas fa-calendar-alt ml-3 mr-1"></i> ২৩ ফেব্রুয়ারি, ২০২৬
+            </div>
+            
+            <div class="text-gray-700 dark:text-gray-300 leading-relaxed space-y-6 text-sm md:text-base">
+              
+              <div class="bg-green-50 dark:bg-green-900/10 border-l-4 border-green-600 p-5 rounded-r-xl">
+                <h3 class="font-bold text-lg text-green-800 dark:text-green-400 mb-4 border-b border-green-200 dark:border-green-800 pb-2">
+                  <i class="fas fa-check-circle mr-2"></i>রমজান মাস রহমতের মাস তাদের জন্য – যারাঃ
+                </h3>
+                <ul class="list-disc pl-5 space-y-3 text-green-900 dark:text-green-200">
+                  <li>আল্লাহর বাণীতে বিশ্বাস স্থাপন করে যে, 
+                    <p class="font-arabic text-xl my-2 text-center" dir="rtl">شَهْرُ رَمَضَانَ الَّذِي أُنزِلَ فِيهِ الْقُرْآنُ هُدًى لِّلنَّاسِ وَبَيِّنَاتٍ مِّنَ الْهُدَىٰ وَالْفُرْقَانِ</p>
+                    "এই সেই রমজান মাস, যে মাসে ক্বোর’আন অবতীর্ণ হয়েছে মানুষমাত্রের পথ নির্দেশনার জন্য , যাতে সবিস্তার হেদায়াত রয়েছে , যা ন্যায় অন্যায় যাচাইয়ের কষ্টিপাথর।”
+                  </li>
+                  <li>আল্লাহর নির্দেশ ও রাসূল (সা:) এর আমল অনুযায়ী সিয়াম সাধনা করবে।</li>
+                  <li>ক্বোর’আন শিখবে ও শিখাবে, অর্থ বুঝে আমল করবে।</li>
+                  <li>না বুঝে ক্বোর’আন খতমের প্রচলন ত্যাগ করে পরিবার ও সমাজে ক্বোরআন বুঝে পড়ার প্রচলন করবে।</li>
+                  <li>ব্যবসায়ী হলে রমজান মাসে জিনিসপত্রের মূল্য বৃদ্ধি করবে না।</li>
+                  <li>জনসাধারণ হলে রমজান মাসে কম খেয়ে বেশী এবাদতের দ্বারা সংযমের অনুশীলন করবে।</li>
+                  <li>বেশী খেয়ে দ্রব্যমূল্য বাড়ানোর কারণ হবে না। “রমজান মাসে খাওয়ার হিসাব হয় না” এ কথা ভুল এবং এটা ধর্ম ব্যবসায়ী পরভুক শ্রেনীর বানোয়াট।</li>
+                  <li>অফিস আদালতে রোজার মাসে বেশী খাওয়া ও ঈদের জন্য ঘুষ খাবে না।</li>
+                  <li>হালাল খেয়ে রোজা থাকবে এবং হালাল দিয়ে ইফতার করবে।</li>
+                  <li>না বুঝে “তাড়াহুড়ার তারাবী” ত্যাগ করে মধ্যরাতের পর উঠে ক্বোর’আন বুঝে পড়ে আল্লাহর সামনে সালাত বা নামাজে দাঁড়াবে, যেমন আখেরী নবী (সঃ) করতেন।</li>
+                  <li>মেয়েরা বে-পর্দা হাটে-বাজারে না ঘুরে বাড়িতে বসে ক্বোর’আন শিক্ষা ও সিয়াম সাধনায় রমজান মাস কাটাবে।</li>
+                  <li>রমজান মাসে যে সমস্ত নারী বাড়তি আয়ের জন্য স্বামীদের ঘুষ ও হারাম উপার্জন থেকে বিরত রাখবে।</li>
+                  <li>পিতা-মাতারা রমজান মাসে কোর’আন শিক্ষার মাধ্যমে সন্তানদের চরিত্র গঠনের বিশেষ উদ্যোগ নিবে।</li>
+                  <li>বে-রোজদারদের ‘ইফতার পার্টি’তে কোন পরিস্থিতিতেই যোগ দিবে না।</li>
+                  <li>যে সমস্ত আলেম রোজার মাসে যাকাত, ফেত্রার ভিক্ষায় না নেমে বিনা পারিশ্রমিকে জনগনকে রমজান ও ক্বোরআনের শিক্ষাদানের এবাদতের মাধ্যমে আল্লাহর সাহায্য কামনা করবে।</li>
+                  <li>সাধ্য মতো জাতি ধর্ম নির্বিশেষে গরীব মিস্কিনদের হালাল মালের যাকাত সদকা দানে সাহায্য করবে। হারাম মালের যাকাত সদকা হয় না।</li>
+                  <li>সিয়াম সাধনার মাধ্যমে বিগত বছরের পাপ থেকে খাঁটি তওবা করে আগামী এগারো মাস পাপমুক্ত জীবন যাপনের শপথ নিবে।</li>
+                  <li>অর্থবহ সিয়াম সাধনার মাধ্যমে “শবে ক্বদরের” অন্বেষা এবং এ’তেকাফের অনুশীলন করে আত্মশুদ্ধির পরীক্ষায় উত্তীর্ণ হবে এবং</li>
+                  <li>সবশেষে আল্লাহর শুকুরের জন্য রমজান পালনকারীদের সাথে এক কাতার হয়ে ঈদের নামাযান্তে ঈদের আনন্দ উদযাপন করবে। একমাত্র এদের জন্যই “খুশীর ঈদ”।</li>
+                </ul>
+              </div>
+
+              <div class="bg-red-50 dark:bg-red-900/10 border-l-4 border-red-600 p-5 rounded-r-xl">
+                <h3 class="font-bold text-lg text-red-800 dark:text-red-400 mb-4 border-b border-red-200 dark:border-red-800 pb-2">
+                  <i class="fas fa-times-circle mr-2"></i>রমজান মাস গজব ও লা’নতের মাস তাদের জন্য – যারাঃ
+                </h3>
+                <ul class="list-disc pl-5 space-y-3 text-red-900 dark:text-red-200">
+                  <li>রোজার মাসকে লোক দেখানো ‘মুসলমান’ নামধারী সম্প্রদায়ের “ঐচ্ছিক উপবাসের” মাস হিসেবে গন্য করে। ক্বোর’আনের শিক্ষা, দীক্ষা ও কর্মসূচী বাস্তবায়নের অঙ্গীকার পালন না করে নিরর্থক তারাবী ও ক্বোরআন খতমের প্রহসন করে।</li>
+                  <li>যে সমস্ত ধর্ম ব্যবসায়ী আলেম রমজান মাসে স্বীয় এবাদত না করে যাকাত ফেত্রার জন্য ফাসেক-ফাজেরদের দুয়ারে দুয়ারে ধর্ণা দেয়।</li>
+                  <li>যে সমস্ত ধর্ম ব্যবসায়ী বৈধ-অবৈধ নির্বিশেষে বিত্তবানদের নিকট ক্বোর’আন খতম ও সওয়াব বিক্রী করবে এবং তাদের ইফতার পার্টিতে যোগ দিবে।</li>
+                  <li>যে সমস্ত রাষ্ট্র ও সরকার প্রধানরা ক্বোরআনকে আল্লাহর দেয়া একমাত্র জীবন বিধান না মেনে জনগনের পয়সায় ইফতার পার্টি, ঈদের জামাত ও ঈদ পুনর্মিলনীর আয়োজন করে।</li>
+                  <li>যে সমস্ত রাজনৈতিক দল ও অরাজনৈতিক সংগঠন ইসলাম ও ক্বোরআনে ঈমান রাখে না, রোজাও পালন করে না, অথচ রাজনৈতিক ও সামাজিক উদ্দেশ্যে জনগণকে প্রতারণার জন্য ইফতার পার্টি ও ঈদ পুনর্মিলনী করে।</li>
+                  <li>যে সমস্ত ব্যবসায়ী অতিরিক্ত মুনাফাখোরীর জন্য দ্রব্য মূল্য বৃদ্ধি করে।</li>
+                  <li>যারা সংযমের মাসে অতিভোজের দ্বারা বাজারে পণ্যের চাহিদা বাড়ায় ও মূল্য বৃদ্ধির কারণ হয়।</li>
+                  <li>যে সমস্ত কর্মকর্তা ও কর্মচারীরা ঈদ ও ভোগের জন্য অফিস আদালতে ঘুষের জন্য ফাইল আটকায়।</li>
+                  <li>যে সমস্ত মেয়েরা শাড়ি ও ঈদের পোশাকের জন্য পরিবার প্রধানদের অবৈধ উপার্জনে বাধ্য করে।</li>
+                  <li>যে সমস্ত মেয়েরা রোজার মাসে হাটে-বাজারে বেপর্দা হয়ে উদোম মাংস দেখিয়ে কেনাকাটা করতে বের হয়।</li>
+                  <li>যে সমস্ত নর-নারী মাহে রমজানের সিয়াম সাধনায় বিশ্বাসী নয়, পালনও করে না, অথচ ইফতার এবং ঈদের ভোগ ও আনন্দের প্রহসন করে।</li>
+                  <li>যে সমস্ত ধনী হালাল হারাম নির্বিচারে অর্থোপার্জন করে রোজার মাসে ক্বোরআন খতম ও দোয়ার মজলিস করে এবং জেয়াফত ও যাকাতের কাপড় বন্টনের “শো” করে। কারণ, হারাম পথে অর্জিত সম্পদের মালিকানা হয় না, তাই তার দান-খয়রাতও অবৈধ।</li>
+                  <li>যে সমস্ত প্রচার মাধ্যম, বেতার, টেলিভিশন, সংবাদপত্র ও সিনেমা ব্যবসায়ী প্রতিষ্ঠানের মালিক, কর্মকর্তা ও কর্মচারীরা প্রত্যেক্ষ বা পরোক্ষভাবে অশ্লীলতা প্রচারে লিপ্ত থাকে।</li>
+                  <li>যে সমস্ত লোকেরা ফরজ নামায পড়ে না, ফরজ রোজা রাখে না এবং ক্বোরআনে পাকের বিধি নিষেধ মানে না, অথচ ঈদের বাজারে ভীড় জমায় এবং ঈদের জামাতে প্রথম সারিতে প্রচার মাধ্যমের ক্যামেরার সামনে উপস্থিত হয়।</li>
+                  <li>সবার ঊর্ধ্বে ঐ সমস্ত আলেম ও খতীবদের উপর আল্লাহ, তাঁর ফেরেশ্তারা ও পবিত্র আত্মাদের লা’নত ও ধিক্কার, যারা মাহে রমজানের নাযিলকৃত আল্-ক্বোরআনের অমান্যকারী শাসক ও জনগোষ্ঠির ঈদের জামাতের ইমামতি করে, অথচ, নবী (সঃ)-এর নির্দেশ মতো ঘোষনা করে না- <em>“যারা যথার্থ রমজান পালন করেনি, তারা আমাদের ঈদগাহের কাছেও ঘেঁষবে না। আজ যারা নতুন নতুন পোষাক পরে এসেছো, তাদের জন্য ঈদ নয়। তাঁদের জন্য আজ অভিসম্পাত। যারা সিয়াম সাধনায় উত্তীর্ণ, একমাত্র আজ তাদের জন্য ঈদ”।</em></li>
+                </ul>
+              </div>
+
+              <div class="mt-8 space-y-4">
+                <p>হে ঈমানদার নর-নারী ! বিশ্বময় নারী পুরুষের স্বেচ্ছাচারিতার ফলে বিপন্ন মানবজাতির মুক্তি ও তার নেতৃত্ব দানের জন্য আগত মাহে রমজানে আত্মশুদ্ধির সিয়াম সাধনার শপথ নিয়ে তওবা কর। মানব মুক্তির আদি তীর্থ, পবিত্র মক্কা, মদিনাহ্ এবং বাইতুল মাকদিস আজ এক বিশ্ব মুক্তি দাতার আগমনের প্রহর গুনছে। জেরুজালেমের মতো মক্কা মদিনাহ্ অভিশপ্ত ইয়াহুদীবাদ এবং পথভ্রষ্ঠ খৃষ্টবাদের সেবা দাসদের হাতে অবরুদ্ধ, জিম্মী। হযরত ইব্রাহীম ও হযরত মুহাম্মদ (সঃ) এবং মা হাজেরা ও মা খাদিজার পবিত্র নগরী মক্কা ও মদিনার হাট-বাজারও বর্তমানে সারারাত পাপিষ্ঠ নর-নারীর পাপাচারের মেলা।</p>
+                
+                <p>অতএব, হে ইব্রাহীম, মুহাম্মদ (সঃ), বিবি হাজেরা ও বিবি খাদিজার আদর্শের সন্তানেরা, এসো, এই রমজানেই আমরা ইব্রাহীম ও মুহাম্মদী তওবা করি। কারণ,</p>
+                
+                <ul class="list-decimal pl-5 space-y-2 font-medium">
+                  <li>এই রমজান মাসেই সৃষ্টির কল্যাণের পূর্ণ বিধান আল-ক্বোর’আন নাযিল হয়েছে।</li>
+                  <li>এই রমজানেই বদরের যুদ্ধের দ্বারা অন্যায় উৎখাতের সশস্ত্র জেহাদের সূচনা হয়, এবং</li>
+                  <li>এই রমজানেই ধর্মাবেসাতী কোরেশদের হাত থেকে মক্কা বিজয় ও পবিত্র হয়।</li>
+                </ul>
+
+                <p>শয়তান কর্তৃক ইসলামে ইয়াহুদীবাদ, খৃস্টবাদ, শিয়া ও সুন্নিবাদের বিভক্তি, খন্ডিত রাষ্ট্রীয় সীমানা, ঘর ভাঙ্গা স্বেচ্ছাচারী নারী ও তাদের পুরুষ দালালদের স্বৈরাচার দ্বারা শোষিত ও প্রতারিত বিশ্ববাসী, এসো, আমরা এই পবিত্র মাসে তওবা ও শপথের মাধ্যমে সকল সংকট উত্তরণ, আল্লাহর রহমত্, মাগফিরাত ও মুক্তি অর্জন করে আখেরী নবী (সঃ)-এর ভবিষ্যদ্বাণী অনুযায়ী বাংলাদেশকে “বিশ্ব তৌহিদী জাগরণের উৎস” রূপ দানে ধন্য হই।</p>
+              </div>
+
+              <div class="bg-gray-50 dark:bg-gray-700/50 p-5 rounded-xl border border-gray-200 dark:border-gray-600 mt-8 shadow-inner">
+                <p class="text-center font-bold text-gray-800 dark:text-gray-200 mb-3">যারা রমজান মাসে নাযিলকৃত ক্বোরআনের নির্দেশাবলীকে মানব সমাজে বর্ণনা না করে, অর্থাৎ গোপন করে, অনুষ্ঠান সর্বস্ব বাৎসরিক পার্বণরুপে রোজার উপবাস করে ও ঈদের উৎসব করে, তারা ভূপৃষ্ঠে নিকৃষ্টতম অভিশপ্ত জাত। প্রমাণ:</p>
+                
+                <p class="text-2xl font-arabic text-center text-red-700 dark:text-red-400 my-4 leading-loose" dir="rtl">
+                  إِنَّ الَّذِينَ يَكْتُمُونَ مَا أَنزَلْنَا مِنَ الْبَيِّنَاتِ وَالْهُدَىٰ مِن بَعْدِ مَا بَيَّنَّاهُ لِلنَّاسِ فِي الْكِتَابِ ۙ أُولَٰئِكَ يَلْعَنُهُمُ اللَّهُ وَيَلْعَنُهُمُ اللَّاعِنُونَ
+                </p>
+                
+                <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed border-t border-gray-200 dark:border-gray-600 pt-3 text-center">
+                  <strong>অর্থ:</strong> আল্লাহ বলেন “আমি গোটা মানব জাতির পথ নির্দেশ রুপে দ্ব্যর্থহীন ভাবে যা’ আল কোরআনে নাযিল করেছি, তাকে যারাই গোপন করে, তাদের সকলকে আমি আল্লাহ স্বয়ং এবং আমার সাথে আমার সৃষ্ট সকল অভিসম্পাতকারী অবশ্যই অভিসম্পাত করে।” <br><span class="font-bold text-gray-500 mt-2 block">(সূরা বাক্বারা: ১৫৯)</span>
+                </p>
+              </div>
+
+            </div>
+          </article>
+
+          <article id="article-3" class="blog-content hidden bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-sm border border-gray-100 dark:border-gray-700">
+            
+            <h1 class="text-2xl font-bold text-gray-800 dark:text-white mb-2 leading-snug">এসো হে ঈমানদার মানব মানবী! আমরা এবার থেকে পুনঃ আল্লাহর রহমতের সিয়াম সাধনা করি! আবার কুরআন নাযিল ও পালনের মাহে রমযান আসছে।</h1>
+            
+            <div class="text-xs text-gray-500 dark:text-gray-400 mb-6 flex items-center border-b border-gray-100 dark:border-gray-700 pb-3">
+              <i class="fas fa-clock mr-1"></i> ৬ মিনিট পাঠ | <i class="fas fa-calendar-alt ml-3 mr-1"></i> ২৬ ফেব্রুয়ারি, ২০২৬
+            </div>
+            
+            <div class="text-gray-700 dark:text-gray-300 leading-relaxed space-y-5 text-sm md:text-base">
+              
+              <div class="text-center mb-6">
+                <p class="font-arabic text-lg text-gray-600 dark:text-gray-400" dir="rtl">أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ</p>
+                <p class="font-arabic text-xl text-green-700 dark:text-green-400 mt-1 mb-4" dir="rtl">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</p>
+                <p class="font-bold text-lg text-gray-800 dark:text-gray-200">এসো হে ঈমানদার মানব মানবী ! আমরা এবার থেকে পুনঃ আল্লাহর রহমতের সিয়াম সাধনা করি ! আবার কুরআন নাযিল ও পালনের মাহে রমযান আসছে।</p>
+              </div>
+
+              <div class="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl border border-gray-100 dark:border-gray-600 text-center shadow-sm">
+                <p class="text-2xl font-arabic text-gray-800 dark:text-gray-100 mb-3" dir="rtl">يَا أَيُّهَا الَّذِينَ آمَنُوا كُتِبَ عَلَيْكُمُ الصِّيَامُ كَمَا كُتِبَ عَلَى الَّذِينَ مِن قَبْلِكُمْ لَعَلَّكُمْ تَتَّقُونَ</p>
+                <p class="text-sm font-bold mt-1 text-green-700 dark:text-green-400">- (সূরা বাক্বারা: ১৮৩)</p>
+              </div>
+
+              <p>এ বিজ্ঞপ্তি হচ্ছে সে সমস্ত নর-নারীদের উদ্দেশ্যে, যারা আল্লাহর দাসত্বের অঙ্গিকার পালনার্থে ঈমান ধারণ করে, সালাত কায়েম করে, সিয়াম সাধনা করে, যাকাত পরিশোধ করে এবং হজ্জ পালন করে। যারা লোক দেখানো সাম্প্রদায়ীক পূজা-পার্বণের মতো ধর্মীয় অনুষ্ঠানাদি করে, তাদের জন্য এ লেখা ও তার আবেদন নয়। তারা যে যেরুপ ইচ্ছা ধর্মাচার করুক। তাদের সাথে আমার কোনো সম্পর্কও নেই, বিবাদও নেই।</p>
+              
+              <p>আমি আল্লাহর এমন বান্দা যে, একমাত্র আল্লাহকে তাঁর কিতাব ও রাসূলদের অনুকরণে বিশ্বাস করি, জানি ও মানি। অন্য কাউকে মানি না।</p>
+
+              <h3 class="font-bold text-lg text-green-700 dark:text-green-400 mt-8 border-b border-gray-100 dark:border-gray-700 pb-2">ইসলামের স্তম্ভ ও ধর্মের বিকৃতি</h3>
+              <p>আমার বিশ্বাসের মানদণ্ডের ভাইবোনদের আবেদন করছি যে, পৃথিবীতে আল্লাহর পর তাঁর সবচেয়ে বড়ো দান শাশ্বত দ্বীন ইসলাম। এর স্তম্ভগুলোঃ ঈমান, সালাত ক্বায়েম, সিয়াম সাধনা, যাকাত আদায় ও হজ্জ পালন করলে মানব সমাজ আল্লাহর রহমতে ভূ-পৃষ্ঠ বেহেশতে রুপান্তর হয়। বর্তমানে বিশ্বে উক্ত কাজগুলো ঈমানহীন অনুষ্ঠানরুপে পালনের ফলে মানবজাতি আজ ধ্বংসের কিনারে।</p>
+              
+              <p>ইয়াহুদী ও খৃষ্টানরা আল্লাহর নবীদের প্রদর্শিত দ্বীনকে বিকৃত করে মানুষকে জাতে ধর্মে বহুধা বিভক্ত করেছে। তা না হলে মানবজাতি এক পরিবার রয়ে যেতো। সকল নবী রাসূলগণ আল্লাহর দ্বীন পালনে হুবহু একই শরীআ ও একই সালাত, সিয়াম ও হজ্জ পালন করেছেন এবং তাদের অনুসারী সবাই তাদের মতো মুসলিম ছিলো। কেউ ইয়াহুদী, খৃষ্টান ও মোহামেডান ছিলোনা।</p>
+              
+              <div class="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl border-l-4 border-indigo-500 shadow-sm my-4">
+                <p class="italic">তাই আল্লাহ তাঁর শেষ নবী (সঃ) কে বলেছেন, “তুমি কি ওদের দেখেছো যারা আল্লাহর দ্বীনকে বিকৃত করে তাদের সম্প্রদায়কে ধ্বংসের দ্বারপ্রান্তে জাহান্নামের কিনারে দাঁড় করিয়েছে? একটু পরেই তারা তাতে পতিত হবে। কতোই না করুণ তাদের পরিণতি!" <span class="font-bold text-indigo-700 dark:text-indigo-400 text-sm">(সূরা ইব্রাহীম: ২৮-২৯)</span></p>
+              </div>
+
+              <p>হযরত মূসা ও ঈসা (আঃ)-দের শিখানো তাওহীদী কালেমা, সালাত ও সিয়ামকে ইয়াহুদী ও খৃষ্টানরা আকার প্রকার সব দিক দিয়ে বিকৃত করে ফেলে অভিশপ্ত হয়। তাই আল্লাহ তাঁর আখেরী নবী (সঃ) এর মাধ্যমে ঈমানদারদের আল ক্বোরআন ও রাসূল (আঃ) এর মুখে বার বার নির্দেশ করেছেন, তারা যেন কোনো ব্যাপারেই ইয়াহুদী নাসারাদের বিকৃত ধর্মকে অনুসরণ না করে। করলে তারাও ওদের মতো হয়ে যাবে। আল্লাহ সকল ঈমানদারদের জন্য সর্বকালে একই ভাবে সিয়াম পালন ও সাধনা করতে বলেছেন।</p>
+
+              <h3 class="font-bold text-lg text-green-700 dark:text-green-400 mt-8 border-b border-gray-100 dark:border-gray-700 pb-2">সিয়াম ও অর্থনৈতিক প্রভাব</h3>
+              <p>সালাত মানুষকে সামাজিক শৃঙ্খলা ও নেতৃত্বের প্রশিক্ষণ দেয়। অশ্লীলতা ও পাপাচার থেকে বিরত রাখে। সিয়াম সাধনা মানুষকে তাক্বওয়ার আগুনে পুড়ে খাঁটি সোনা মুত্তাক্বী বানায়। মাহে রমজান সঠিক সিয়াম পালনকারীদের জন্য শুধু বরকত ও বরকতের মাস। আর যারা ইয়াহুদী খৃষ্ঠানদের মতো বিকৃতভাবে পালন করে, তাদের জন্য অপচয় ও পাপাচারের দুর্যোগের মাস।</p>
+              
+              <ul class="list-disc pl-5 space-y-3 mt-4">
+                <li>ঈমানদারের জন্য কম খরচে বেশি ইবাদত করে আগামী এগারো মাসের কৃচ্ছতা সাধনার শিক্ষা দেয় মাহে রমজান। আল্লাহর নির্দেশ ও রাসূল (সঃ) এর আমল অনুযায়ী রোজা পালন করলে রমজান মাসে খরচ অর্ধেক কমে বাজারের দ্রব্যমূল্য কমে যায়।</li>
+                <li>ইয়াহুদী-খৃষ্টানদের মতো রোজা রাখলে অন্যান্য মাসের তুলনায় রোজার মাসে খরচ দ্বিগুণ হয়ে যায়। বাজারে নিত্য প্রয়োজনীয় দ্রব্যের মূল্য বাড়ে। অফিস আদালতে ঘুষ বাড়ে। হাটে বাজারে উলঙ্গ নারীদের মাংস প্রদর্শন হয় এবং ইফতার পার্টি ও ঈদের পোষাকের প্রতিযোগিতায় খৃষ্টমাসের মতো রোজা ও ঈদ এক পার্বণ হয়ে যায়।</li>
+                <li>ইসলামের বিধান মতো রোজা রেখে ইফতার করলে হিসাব করে দেখা যায় যে, বাংলাদেশে এক রমযানের সঞ্চয়ে একটি যমুনা ব্রীজ নির্মাণ করা যায়।</li>
+              </ul>
+
+              <h3 class="font-bold text-lg text-green-700 dark:text-green-400 mt-8 border-b border-gray-100 dark:border-gray-700 pb-2">ইফতারের সঠিক সময় ও ক্বোরআনের নির্দেশ</h3>
+              
+              <div class="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl border border-gray-100 dark:border-gray-600 text-center shadow-sm my-4">
+                <p class="text-2xl font-arabic text-gray-800 dark:text-gray-100 mb-3" dir="rtl">ثُمَّ أَتِمُّوا الصِّيَامَ إِلَى اللَّيْلِ</p>
+                <p><strong>অর্থ:</strong> অতঃপর তোমরা রাত্র পর্যন্ত সিয়াম পূর্ণ কর।</p>
+                <p class="text-sm font-bold mt-1 text-green-700 dark:text-green-400">- (সূরা বাকারা: ১৮৭)</p>
+              </div>
+
+              <p>আল ক্বোরআনে আল্লাহ বলেছেন সোবহে সাদেকের পূর্বে সেহরী শেষ করে রাত্রি পর্যন্ত সিয়াম পূর্ণ করতে। তদ্রূপ আল ক্বোরআনে ফজর ও মাগরিবকে দিবসের দু’প্রান্ত “তারাফাঁইন নাহার” বলা হয়েছে। এশাকে বলা হয়েছে নিশার প্ররম্ভ বা “যুলাফাম মিনাললাইল”। অর্থাৎ ফজর যেমন রাত নয়, মাগরিবও রাত নয়। এশা শুরূ হলে রাত্রের আগমন ঘটে। তখন ইফতারের সময় হয়। মাগরিবের সময় নয়।</p>
+
+              <div class="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl border border-gray-100 dark:border-gray-600 text-center shadow-sm my-4">
+                <p class="text-2xl font-arabic text-gray-800 dark:text-gray-100 mb-3" dir="rtl">وَأَقِمِ الصَّلَاةَ طَرَفَيِ النَّهَارِ وَزُلَفًا مِّنَ اللَّيْلِ</p>
+                <p><strong>অর্থ:</strong> সালাত কায়েম কর দিবসের দু’আচলে এবং রাতের প্রারম্ভেও।</p>
+                <p class="text-sm font-bold mt-1 text-green-700 dark:text-green-400">- (সূরা হুদ: ১১৪)</p>
+              </div>
+
+              <p>দিবসের দু’ প্রান্তিক আঁচল হলো ফজর ও মাগরিব। রাতের শুরু হয় এশার ওয়াক্ত শুরু হলে। তাকে কুরআনে “যুলাফাম মিনাল লাইল” বলা হয়েছে। মাগরিব দিবসের দ্বিতীয় প্রান্ত, রাত্র নয়। ফজর ও মাগরিবকে আল্লাহ কুরআনে “তারাফাইন নাহার” বলে উল্লেখ করেন।</p>
+
+              <p>অভিশপ্ত ইয়াহুদী-খৃষ্টানরা আল্লাহর নির্দেশ অমান্য করে এক এশা আরেক এশা পর্যন্ত অর্থাৎ চব্বিশ ঘন্টা রোজা চালু করে। আখেরী নবী (সঃ) বলে যান ওদের অনুসরন না করে এশার ওয়াক্ত হতেই ইফতার করতে। আরব সাম্রাজ্যবাদীরা আল্লাহ ও রাসূলের নির্দেশ অমান্য করে ইসলাম ও ইয়াহুদীবাদ উভয় বাদ দিয়ে একটি তৃতীয় শয়তানী চালু করে। অর্থাৎ শেষ রাত্র থেকে সন্ধ্যা পর্যন্ত। রাত পর্যন্ত নয়। ইয়াহুদীরা লম্বা করে ফেলে, ওদের চাচাতো ভাই আরবরা রোজাকে খাটো করে মানব জাতিকে মাহে রমজানের বরকত ও রহমত থেকে বিচ্যুত করে। ইফতারীর দোকানদাররা এটাকে লুফে নেয়। কারণ ইফতারের নামে মুসলিম বিশ্বে বাজারে অতিভোজ ও ভোগের জাহান্নাম শুরু হয়।</p>
+
+              <h3 class="font-bold text-lg text-green-700 dark:text-green-400 mt-8 border-b border-gray-100 dark:border-gray-700 pb-2">সঠিক আমলের সামাজিক প্রভাব ও তারাবীহ প্রসঙ্গ</h3>
+              <p>আর যদি ক্বোরআন ও রাসূল (সঃ) এর নির্দেশ অনুযায়ী ইফতার করা হয়, তা হলে ইসলামী সমাজ আসরের সময় থেকে মাগরিব ও মাগরিব থেকে এশা পর্যন্ত ঘরে ঘরে ক্বোরআন তেলাওয়াত ও শিক্ষার বেহেশ্‌তী সময় পায়। গৃহিণীরা দিবাভাগে রাতের খাবার পাকিয়ে ক্বোরআন শিক্ষায় স্বামী সন্তানদের সাথে শরীক হতে পারে। এশার আযানের পর যখন মানুষ রাতের খাবার খাবে, তখন তার সাথে পেয়াজী, বেগুনী, বুট, ভাজাপোড়া ও অন্যান্য রাক্ষুসে খাওয়া খাবে না। শুধু উপাদেয় সুপাচ্য সুষম খাদ্য খাবে। তাতে গৃহকর্তার অর্ধেক সাশ্রয় হবে। বাড়তি কামাই এর জন্য ঘুষ খেতে হবেনা। গৃহিনীর এতো কিছু পাকাতে গলদঘর্ম হতে হবেনা। এশা পড়ে ঘুমিয়ে আবার মধ্য রাতের পর ঘুম থেকে উঠে তৃপ্তিভরে তাহাজ্জুদ নামাজ ও ক্বোরআন তেলাওয়াত করতে পারবে।</p>
+
+              <p>এখানে অতি গুরুত্বের সাথে মনে রাখতে হবে যা, ইসলামে “তারাবী” নামের কোন নামাজ নেই। রাসূল (সঃ) এরূপ কোন সালাতের সংযোজন কঠোর ভাবে নিষেধ করেছেন। (বোখারী-মুসলিম) খলিফা ওমর “বিদ্‌আত” বলে এটাকে চালু করে এ বলে যে, <em>“যারা শেষ রাতে উঠে রমজানে তাহাজ্জুদ পড়বেনা, তারা রাত্রের প্রথমার্ধে হাট বাজারে আড্ডা না দিয়ে নামাজে দাঁড়িয়ে ক্বোরআন শুনুক। তবে এটি একটি বিদ্‌আত”</em>। রাসূল (সঃ) যা করেন নি, ধর্মে তা করাই বিদ্‌আত। বিদ্‌আত দাঁড় করা কঠোরভাবে নিষিদ্ধ। কিন্তু রমজান মাসে মস্‌জিদ কমিটি চাঁদা তোলা ও হাফেজ ভাড়া করে অতিরিক্ত আয়ের ব্যবস্থা করতে এ বিদ্‌আতকে এমনভাবে প্রতিষ্ঠিত করেছে যে, তার চাপে মাহে রমজানে ক্বোরআন বুঝার ফরজই চাপা পড়ে হারিয়ে গেছে। তারাবীর তারাহুড়ায় হাফেজ, ইমাম ও মুসল্লী সবাই ক্বোরআন শুনে বুঝে, ক্বোরআনের গভীরে পৌঁছার সুযোগ চীরতরে হারিয়েছে। ইন্নালিল্লাহি ওয়া ইন্না ইলাই হি রাজিউন।</p>
+
+              <p>আল ক্বোরআনে আল্লাহ যেভাবে ফজর ও মাগরিবকে দিবসের দু’আঁচল বলেছেন, রাত নয়, তদরূপ রাসূল (সঃ) বলেছেন মাগরিব হলো দিবসের বিতির, যেমন এশার পর রাতের বিতির হয়। তাহাবীতে আব্দুল্লাহ ইবন উমর এ হাদীস বর্ণনা করেছে, বিতিরের অধ্যায়ে। এ বর্ণনা যেহেতু ক্বোরআনের সাথে মিল, তাই তা গ্রহণীয়।</p>
+
+              <h3 class="font-bold text-lg text-green-700 dark:text-green-400 mt-8 border-b border-gray-100 dark:border-gray-700 pb-2">শেষ কথা</h3>
+              <p>যারা মুসলিম উম্মার চরম দুর্দিনে সত্য ও নাজাতের পথ চায়, তাদের সঠিক বুঝের জন্য সিয়াম ও ইফতারের সঠিক সময় ক্বোরআন ও রাসূল (সঃ) এর শিক্ষা অনুযায়ী দেওয়া হলো। সহজভাবে বুঝার জন্য দিনরাত, দিনের আচল ও রাতের প্রারম্ভ সূচক অত্যন্ত সূক্ষ্ণ নির্দেশক চিত্র তুলে ধরা হলো। যারা বুঝা ও আমলের জন্য আরও জানতে আগ্রহী, তাদের জন্য আরও জিজ্ঞাসার সুযোগ রয়েছে। তাদের জন্য সঠিক সিয়াম সাধনা, বর্জনীয় ও করণীয় নির্দেশক আরও একটি পোস্টারও ছাপা হয়েছে।</p>
+              
+              <p>আর যারা বিবাদ ও ফিতনা সৃষ্টিতে আগ্রহী, তাদের সাথে বিতর্ক করার সময় ও সুযোগ নেই। তারা রোজ তিনবার ইফতার খেয়ে এক দিনে তিনটি করে রোজা রাখলেও তাতে আমার আপত্তি নেই, তারা যা খুশি করুক। আমি তাদের কেউ নই, তারাও আমার কেউ নয়। তারা গণধর্ম, গণতন্ত্র, গণরোজা, গণইফতার ও গণঈদ যত পারে, তাতে মেতে থাকুক। তাদের আনন্দ উৎসবে আমার ঈর্ষা নেই। কেয়ামতের দিন আল্লাহ ও তাঁর রাসূলদের সামনে ফয়সালা হবে।</p>
+
+              <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-xl border-l-4 border-indigo-500 my-4 shadow-sm">
+                <p>রাসূল (সঃ) বলেছেন, “তোমরা ঠিক সময়ে ইফতার করবে, ইয়াহুদীদের মত দেরী করবে না”।</p>
+              </div>
+
+              <p>তাঁর এ আদেশ অবশ্যই ইয়াহুদীদের ২৪ ঘণ্টার উপবাসের বিরুদ্ধে। তদ্রূপ, তা বর্তমানে রমজানের প্রহসনকারী নামধারী মুসলমানদের বিরুদ্ধেও, যারা ইয়াহুদীদের পদাঙ্ক অনুসরণে সিয়ামকে খাটো না করে রাত না হতেই দিনের প্রান্তভাগে সন্ধ্যায় ইফতার করে। ইয়াহুদী খৃষ্টানদের ন্যায় এদেরও সিয়াম হয় না।</p>
+
+              <div class="text-center bg-green-50 dark:bg-green-900/30 p-5 rounded-xl border border-green-200 dark:border-green-800 mt-6">
+                <p class="font-bold text-green-800 dark:text-green-300 leading-relaxed text-lg">
+                  এসো হে আল ক্বোরআনের অনুসারী নবী রাসূলদের সিয়াম পালনকারী আল্লাহর দাস দাসীরা! সঠিক সালাত ও সিয়াম পালন করে বিশ্বে পুনঃ মুস্‌লিম উম্মার পুনর্জাগরণের কাফেলায় শরীক হও।
+                </p>
+              </div>
+
+            </div>
+          </article>
+
+        </div>
       </div>
 
       <div class="text-center pt-4 pb-2 text-sm text-gray-500 dark:text-gray-400 transition-colors">
@@ -419,389 +835,30 @@
     </main>
 
     <nav class="fixed bottom-0 w-full max-w-[768px] left-1/2 -translate-x-1/2 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 shadow-[0_-4px_20px_rgba(0,0,0,0.04)] z-50 transition-colors duration-300">
-      <div class="w-full flex justify-around px-2 py-3">
-        <button onclick="switchTab('home', this)" class="nav-btn flex flex-col items-center text-green-600 dark:text-green-500 w-16">
+      <div class="w-full flex justify-between px-1 py-3">
+        <button onclick="switchTab('home', this)" class="nav-btn flex flex-col items-center text-green-600 dark:text-green-500 flex-1">
           <i class="fas fa-home text-xl mb-1"></i>
           <span class="text-[11px] font-bold">হোম</span>
         </button>
-        <button onclick="switchTab('schedule', this)" class="nav-btn flex flex-col items-center text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition w-16">
+        <button onclick="switchTab('schedule', this)" class="nav-btn flex flex-col items-center text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition flex-1">
           <i class="fas fa-calendar-alt text-xl mb-1"></i>
-          <span class="text-[11px] font-medium">সময়সূচী</span>
+          <span class="text-[11px] font-medium">সময়সূচী</span>
         </button>
-        <button onclick="switchTab('duas', this)" class="nav-btn flex flex-col items-center text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition w-16">
+        <button onclick="switchTab('duas', this)" class="nav-btn flex flex-col items-center text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition flex-1">
           <i class="fas fa-praying-hands text-xl mb-1"></i>
           <span class="text-[11px] font-medium">দোয়া</span>
         </button>
-        <button onclick="switchTab('tools', this)" class="nav-btn flex flex-col items-center text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition w-16">
+        <button onclick="switchTab('blog', this)" class="nav-btn flex flex-col items-center text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition flex-1">
+          <i class="fas fa-book-open text-xl mb-1"></i>
+          <span class="text-[11px] font-medium">আর্টিকেল</span>
+        </button>
+        <button onclick="switchTab('tools', this)" class="nav-btn flex flex-col items-center text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition flex-1">
           <i class="fas fa-toolbox text-xl mb-1"></i>
           <span class="text-[11px] font-medium">টুলস</span>
         </button>
       </div>
     </nav>
 
-    <script>
-      // ================= PWA Service Worker Registration =================
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('sw.js').then(reg => {
-            console.log('PWA Service Worker registered:', reg);
-          }).catch(err => console.log('SW config error:', err));
-        });
-      }
-
-      // ================= Disable Right-Click (Context Menu) =================
-      document.addEventListener("contextmenu", (event) => event.preventDefault());
-
-      // ================= Disable common developer tools keyboard shortcuts =================
-      document.onkeydown = function (e) {
-        if (event.keyCode == 123) return false;
-        if (e.ctrlKey && e.shiftKey && e.keyCode == "I".charCodeAt(0)) return false;
-        if (e.ctrlKey && e.shiftKey && e.keyCode == "J".charCodeAt(0)) return false;
-        if (e.ctrlKey && e.keyCode == "U".charCodeAt(0)) return false;
-        if (e.ctrlKey && e.keyCode == "C".charCodeAt(0)) return false;
-      };
-
-      // ================= SPA NAVIGATION LOGIC =================
-      function switchTab(tabId, btnElement) {
-        document.querySelectorAll(".view-section").forEach((el) => el.classList.remove("active"));
-        document.getElementById("view-" + tabId).classList.add("active");
-
-        document.querySelectorAll(".nav-btn").forEach((btn) => {
-          btn.classList.remove("text-green-600", "dark:text-green-500");
-          btn.classList.add("text-gray-400");
-          btn.querySelector("span").classList.remove("font-bold");
-          btn.querySelector("span").classList.add("font-medium");
-        });
-        btnElement.classList.remove("text-gray-400");
-        btnElement.classList.add("text-green-600", "dark:text-green-500");
-        btnElement.querySelector("span").classList.remove("font-medium");
-        btnElement.querySelector("span").classList.add("font-bold");
-
-        window.scrollTo(0, 0);
-      }
-
-      // ================= DARK MODE LOGIC =================
-      const themeToggleBtn = document.getElementById("theme-toggle");
-      const themeIconDark = document.getElementById("theme-icon-dark");
-      const themeIconLight = document.getElementById("theme-icon-light");
-      const htmlElement = document.documentElement;
-
-      if (localStorage.getItem("color-theme") === "dark" || (!("color-theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
-        htmlElement.classList.add("dark");
-        themeIconDark.classList.add("hidden");
-        themeIconLight.classList.remove("hidden");
-      } else {
-        htmlElement.classList.remove("dark");
-        themeIconLight.classList.add("hidden");
-        themeIconDark.classList.remove("hidden");
-      }
-
-      themeToggleBtn.addEventListener("click", function () {
-        themeIconDark.classList.toggle("hidden");
-        themeIconLight.classList.toggle("hidden");
-        if (htmlElement.classList.contains("dark")) {
-          htmlElement.classList.remove("dark");
-          localStorage.setItem("color-theme", "light");
-        } else {
-          htmlElement.classList.add("dark");
-          localStorage.setItem("color-theme", "dark");
-        }
-      });
-
-      // ================= AMAL TRACKER LOGIC =================
-      for (let i = 1; i <= 5; i++) {
-        let checkbox = document.getElementById("amal-" + i);
-        if (checkbox) {
-          if (localStorage.getItem("amal-" + i) === "true") checkbox.checked = true;
-          checkbox.addEventListener("change", function () {
-            localStorage.setItem("amal-" + i, this.checked);
-          });
-        }
-      }
-
-      // ================= ACCORDION LOGIC =================
-      const accordionHeaders = document.querySelectorAll(".accordion-header");
-      accordionHeaders.forEach((header) => {
-        header.addEventListener("click", () => {
-          const content = header.nextElementSibling;
-          const icon = header.querySelector(".icon");
-
-          document.querySelectorAll(".accordion-content").forEach((otherContent) => {
-            if (otherContent !== content && otherContent.classList.contains("expanded")) {
-              otherContent.classList.remove("expanded");
-              otherContent.previousElementSibling.querySelector(".icon").innerText = "+";
-            }
-          });
-
-          if (content.classList.contains("expanded")) {
-            content.classList.remove("expanded");
-            icon.innerText = "+";
-          } else {
-            content.classList.add("expanded");
-            icon.innerText = "-";
-          }
-        });
-      });
-
-      // ================= DISTRICT SELECTION & OFFSET LOGIC =================
-      const districtOffsets = {
-        ঢাকা: 0,
-        জামালপুর: 2,
-        শেরপুর: 2,
-        টাংগাইল: 1,
-        মানিকগঞ্জ: 1,
-      };
-
-      const districtSelect = document.getElementById("district-select");
-      let currentDistrict = localStorage.getItem("selected-district") || "জামালপুর";
-      districtSelect.value = currentDistrict;
-
-      districtSelect.addEventListener("change", function (e) {
-        currentDistrict = e.target.value;
-        localStorage.setItem("selected-district", currentDistrict);
-        generateSchedule();
-        updateTimer();
-      });
-
-      function bnDigit(str) {
-        const bnDigits = ["০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯"];
-        return str.toString().replace(/\d/g, (d) => bnDigits[d]);
-      }
-
-      // Convert Bengali input to English numbers for calculation
-      function enDigit(str) {
-        if (!str) return '';
-        const bnDigits = ['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
-        return str.replace(/[০-৯]/g, d => bnDigits.indexOf(d));
-      }
-
-      // ================= DATES & TIMER LOGIC =================
-      const ramadanStartDate = new Date("2026-02-17T00:00:00");
-      const currentHijriYear = "১৪৪৭";
-      let scheduleData = [];
-
-      function generateSchedule() {
-        scheduleData = [];
-        let curDate = new Date(ramadanStartDate);
-        let sehriBase = new Date("2026-02-17T05:08:00");
-        let sunriseBase = new Date("2026-02-17T06:29:00");
-        let sunsetBase = new Date("2026-02-17T17:55:00");
-        let offsetMs = (districtOffsets[currentDistrict] || 0) * 60 * 1000;
-
-        const tbody = document.getElementById("schedule-body");
-        tbody.innerHTML = "";
-
-        for (let i = 1; i <= 30; i++) {
-          let localSehri = new Date(sehriBase.getTime() + offsetMs);
-          let localSunrise = new Date(sunriseBase.getTime() + offsetMs);
-          let localSunset = new Date(sunsetBase.getTime() + offsetMs);
-
-          let gapMs = localSunrise.getTime() - localSehri.getTime();
-          let calculatedIftar = new Date(localSunset.getTime() + gapMs);
-
-          let dayData = {
-            ramadanDay: i,
-            dateStr: curDate.toLocaleDateString("en-GB", { day: "numeric", month: "short" }),
-            sehriStr: localSehri.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" }),
-            iftarStr: calculatedIftar.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" }),
-            sehriDate: new Date(localSehri),
-            iftarDate: new Date(calculatedIftar),
-          };
-          scheduleData.push(dayData);
-
-          const tr = document.createElement("tr");
-          tr.className = "hover:bg-gray-50 dark:hover:bg-gray-700/50 transition border-b dark:border-gray-700";
-          tr.innerHTML = `
-                    <td class="p-3 text-gray-700 dark:text-gray-300 font-bold font-mono">${bnDigit(dayData.ramadanDay)}</td>
-                    <td class="p-3 border-l dark:border-gray-700 text-gray-700 dark:text-gray-300 font-mono">${bnDigit(dayData.dateStr)}</td>
-                    <td class="p-3 border-l dark:border-gray-700 font-mono text-gray-700 dark:text-gray-300">${bnDigit(dayData.sehriStr)}</td>
-                    <td class="p-3 border-l dark:border-gray-700 font-mono text-gray-700 dark:text-gray-300">${bnDigit(dayData.iftarStr)}</td>
-                `;
-          tbody.appendChild(tr);
-
-          curDate.setDate(curDate.getDate() + 1);
-          sehriBase.setDate(sehriBase.getDate() + 1);
-          sehriBase.setMinutes(sehriBase.getMinutes() - 1);
-          sunriseBase.setDate(sunriseBase.getDate() + 1);
-          sunriseBase.setMinutes(sunriseBase.getMinutes() - 1);
-          sunsetBase.setDate(sunsetBase.getDate() + 1);
-          if (i % 2 === 0) sunsetBase.setMinutes(sunsetBase.getMinutes() + 1);
-        }
-      }
-
-      generateSchedule();
-
-      function updateTimer() {
-        const now = new Date();
-        let diffTime = now.getTime() - ramadanStartDate.getTime();
-        let currentDayIndex = Math.floor(diffTime / (1000 * 3600 * 24));
-
-        if (currentDayIndex < 0) currentDayIndex = 0;
-        if (currentDayIndex > 29) currentDayIndex = 29;
-
-        const todayData = scheduleData[currentDayIndex];
-
-        document.getElementById("current-date-display").innerText = ` আজ ${bnDigit(todayData.ramadanDay)} রমজান ${currentHijriYear} (${bnDigit(todayData.dateStr)})`;
-        document.getElementById("sehri-time").innerText = bnDigit(todayData.sehriStr);
-        document.getElementById("iftar-time").innerText = bnDigit(todayData.iftarStr);
-
-        let targetTime;
-        let labelText = "";
-
-        if (now < todayData.sehriDate) {
-          targetTime = todayData.sehriDate;
-          labelText = "সেহরির বাকি আছে";
-        } else if (now >= todayData.sehriDate && now < todayData.iftarDate) {
-          targetTime = todayData.iftarDate;
-          labelText = "ইফতারের বাকি আছে";
-        } else {
-          let nextDayData = scheduleData[currentDayIndex + 1] || scheduleData[29];
-          targetTime = nextDayData.sehriDate;
-          labelText = "সেহরির বাকি আছে";
-        }
-
-        document.getElementById("countdown-label").innerText = labelText;
-
-        let diff = targetTime - now;
-        if (diff <= 0) diff = 0;
-
-        const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const s = Math.floor((diff % (1000 * 60)) / 1000);
-
-        let timerStr = `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
-        document.getElementById("countdown").innerText = bnDigit(timerStr);
-      }
-
-      updateTimer();
-      setInterval(updateTimer, 1000);
-
-      // ================= PDF DOWNLOAD LOGIC =================
-      function downloadPDF() {
-        const element = document.createElement("div");
-
-        element.style.width = "794px";
-        element.style.height = "1123px";
-        element.style.padding = "20px";
-        element.style.boxSizing = "border-box";
-        element.style.backgroundColor = "white";
-        element.style.display = "block"; 
-
-        element.innerHTML = `
-                <div style="text-align: center; margin-bottom: 10px;">
-                    <p dir="rtl" style="font-size: 16px; margin: 0; font-weight: bold; color: #15803d; font-family: 'Hind Siliguri';">أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ</p>
-                    <h2 style="font-size: 22px; margin: 2px 0; color: #15803d; font-family: 'Hind Siliguri';">রমজান সূচী ২০২৬</h2>
-                    <p style="font-size: 14px; margin: 0; color: black; font-family: 'Hind Siliguri';">জেলা: ${currentDistrict} | হিজরী: <span style="font-family: ui-monospace;">${currentHijriYear}</span></p>
-                </div>
-                
-                <table style="width: 100%; border-collapse: collapse; text-align: center; font-size: 12px; font-family: 'Hind Siliguri';">
-                    <thead>
-                        <tr style="background-color: #15803d; color: white;">
-                            <th style="border: 1px solid #14532d; padding: 6px;">রমজান</th>
-                            <th style="border: 1px solid #14532d; padding: 6px;">তারিখ</th>
-                            <th style="border: 1px solid #14532d; padding: 6px;">সেহরি (শেষ)</th>
-                            <th style="border: 1px solid #14532d; padding: 6px;">ইফতার (শুরু)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        ${scheduleData.map((day) => `
-                            <tr style="background-color: #ffffff; line-height: 1;">
-                                <td style="border: 1px solid #000000; padding: 4px; font-family: ui-monospace; color: #000000;">${bnDigit(day.ramadanDay)}</td>
-                                <td style="border: 1px solid #000000; padding: 4px; font-family: ui-monospace; color: #000000;">${bnDigit(day.dateStr)}</td>
-                                <td style="border: 1px solid #000000; padding: 4px; font-family: ui-monospace; color: #000000;">${bnDigit(day.sehriStr)}</td>
-                                <td style="border: 1px solid #000000; padding: 4px; font-family: ui-monospace; color: #000000;">${bnDigit(day.iftarStr)}</td>
-                            </tr>
-                        `).join("")}
-                    </tbody>
-                </table>
-                
-                <div style="margin-top: 15px; text-align: center; font-size: 10px; color: #000000; font-family: 'Hind Siliguri';">
-                    Design & Developed with ❤️ by Kamrul Hasan
-                </div>
-            `;
-
-        document.body.appendChild(element);
-
-        const opt = {
-          margin: 0,
-          filename: `Ramadan-2026-${currentDistrict}.pdf`,
-          image: { type: "jpeg", quality: 1.0 },
-          html2canvas: { scale: 2, useCORS: true, logging: false, width: 794, height: 1123 },
-          jsPDF: { unit: "px", format: [794, 1123], orientation: "portrait" },
-        };
-
-        html2pdf().set(opt).from(element).save().then(() => document.body.removeChild(element));
-      }
-
-      // ================= TOOLS LOGIC =================
-      let count = parseInt(localStorage.getItem("tasbih-count")) || 0;
-      document.getElementById("tasbih-counter").innerText = bnDigit(count);
-
-      function incrementTasbih() {
-        count++;
-        document.getElementById("tasbih-counter").innerText = bnDigit(count);
-        localStorage.setItem("tasbih-count", count);
-        if (navigator.vibrate) navigator.vibrate(50);
-      }
-      function resetTasbih() {
-        count = 0;
-        document.getElementById("tasbih-counter").innerText = bnDigit(count);
-        localStorage.setItem("tasbih-count", count);
-      }
-
-      function calculateZakat() {
-        let rawInput = document.getElementById("zakat-input").value;
-        let amount = parseFloat(enDigit(rawInput));
-        const resultElement = document.getElementById("zakat-result");
-        
-        if (!isNaN(amount) && amount > 0) {
-            const zakat = amount * 0.025;
-            resultElement.innerText = "৳ " + bnDigit(Math.floor(zakat));
-        } else {
-            resultElement.innerText = "৳ ০";
-        }
-      }
-
-      function calculateKhums() {
-        let rawInput = document.getElementById("khums-input").value;
-        let amount = parseFloat(enDigit(rawInput));
-        const resultElement = document.getElementById("khums-result");
-        
-        if (!isNaN(amount) && amount > 0) {
-            const khums = amount * 0.20; // 20% calculation
-            resultElement.innerText = "৳ " + bnDigit(Math.floor(khums));
-        } else {
-            resultElement.innerText = "৳ ০";
-        }
-      }
-
-      function calculateFitra() {
-        let rawMembers = document.getElementById("fitra-members").value;
-        let members = parseFloat(enDigit(rawMembers));
-        let rate = parseFloat(document.getElementById("fitra-rate").value);
-        const resultElement = document.getElementById("fitra-result");
-        
-        if (!isNaN(members) && members > 0) {
-            const fitra = members * rate;
-            resultElement.innerText = "৳ " + bnDigit(Math.floor(fitra));
-        } else {
-            resultElement.innerText = "৳ ০";
-        }
-      }
-
-      function calculateFidiya() {
-        let rawDays = document.getElementById("fidiya-days").value;
-        let days = parseFloat(enDigit(rawDays));
-        let rate = parseFloat(document.getElementById("fidiya-rate").value);
-        const resultElement = document.getElementById("fidiya-result");
-        
-        if (!isNaN(days) && days > 0) {
-            const fidiya = days * rate;
-            resultElement.innerText = "৳ " + bnDigit(Math.floor(fidiya));
-        } else {
-            resultElement.innerText = "৳ ০";
-        }
-      }
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
